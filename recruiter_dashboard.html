@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Career & Scholarship Portal- Recruiter Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/recruiter_dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ================= Sidebar ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div class="logo-text">
+                    <h4>Student Career & Scholarship Portal</h4>
+                    <span>Recruiter Portal</span>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" id="dashboard-btn" class="active">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    Dashboard
+                </a>
+
+                <a href="#" id="post-opportunity-btn">
+                    <i class="fa-regular fa-square-plus"></i>
+                    Post Opportunity
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <div class="user">
+
+                    <div class="avatar">
+                        GO
+                    </div>
+
+                    <div class="user-info">
+                        <h4>Talent — Google</h4>
+                        <p>campus@google.com</p>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- =============== Main Content =============== -->
+
+        <main id="dashboard-section" class="main-content">
+
+            <!-- Top Navbar -->
+
+            <header class="topbar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" placeholder="Search opportunities, organizations...">
+
+                </div>
+
+                <div class="top-icons">
+
+                    <button>
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Dashboard Heading -->
+
+            <div id="dashboard_1" class="dashboard_1">
+                <section class="page-header">
+
+                    <div>
+
+                        <h1>Recruiter Dashboard</h1>
+
+                        <p>
+                            Manage the opportunities you have posted for students.
+                        </p>
+
+                    </div>
+
+                    <button id="post-opportunity-btn" class="primary-btn">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Post New Opportunity
+
+                    </button>
+
+                </section>
+
+                <!-- Statistics Cards -->
+
+                <section class="stats-grid">
+
+                    <!-- Card 01 -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+
+                        <h2>6</h2>
+
+                        <p>Total Posted Opportunities</p>
+
+                    </div>
+
+                    <!-- Card 02 -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">
+                            <i class="fa-regular fa-circle-check"></i>
+                        </div>
+
+                        <h2>2</h2>
+
+                        <p>Active Opportunities</p>
+
+                    </div>
+
+                    <!-- Card 03 -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon orange">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <h2>2</h2>
+
+                        <p>Pending Verification</p>
+
+                    </div>
+
+                    <!-- Card 04 -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon teal">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <h2>426</h2>
+
+                        <p>Total Applicants</p>
+
+                    </div>
+
+                </section>
+
+                <!-- ======================================
+                                                                        Posted Opportunities
+                                                                ======================================= -->
+
+                <section class="opportunity-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>My Posted Opportunities</h2>
+
+                            <p>
+                                Manage the opportunities you have posted. Edit,
+                                update, delete, or monitor applicant information.
+                            </p>
+
+                        </div>
+
+                        <button class="new-btn">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            New
+
+                        </button>
+
+                    </div>
+
+                    <!-- Filters -->
+
+                    <div class="filters">
+
+                        <div class="filter-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input type="text" placeholder="Search by opportunity title...">
+
+                        </div>
+
+                        <select>
+
+                            <option>All Categories</option>
+                            <option>Internship</option>
+                            <option>Job</option>
+                            <option>Scholarship</option>
+
+                        </select>
+
+                        <select>
+
+                            <option>All Statuses</option>
+                            <option>Verified</option>
+                            <option>Pending Verification</option>
+                            <option>Rejected</option>
+                            <option>Expired</option>
+
+                        </select>
+
+                        <select>
+
+                            <option>Sort: Newest First</option>
+                            <option>Oldest First</option>
+                            <option>Deadline</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Table -->
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Opportunity Title</th>
+
+                                    <th>Organization</th>
+
+                                    <th>Category</th>
+
+                                    <th>Deadline</th>
+
+                                    <th>Status</th>
+
+                                    <th>Applicants</th>
+
+                                    <th>Last Updated</th>
+
+                                    <th>Actions</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <!-- Row 1 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Software Engineer Intern</strong>
+                                    </td>
+
+                                    <td>bKash Limited</td>
+
+                                    <td>Internship</td>
+
+                                    <td>15 Aug 2026</td>
+
+                                    <td>
+
+                                        <span class="badge verified">
+                                            Verified
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        125
+
+                                    </td>
+
+                                    <td>2 days ago</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Row 2 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Junior Software Engineer</strong>
+                                    </td>
+
+                                    <td>Grameenphone</td>
+
+                                    <td>Job</td>
+
+                                    <td>20 Sep 2026</td>
+
+                                    <td>
+
+                                        <span class="badge pending">
+                                            Pending Verification
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        0
+
+                                    </td>
+
+                                    <td>Today</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Row 3 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>UGC Merit Scholarship</strong>
+                                    </td>
+
+                                    <td>UGC Bangladesh</td>
+
+                                    <td>Scholarship</td>
+
+                                    <td>30 Oct 2026</td>
+
+                                    <td>
+
+                                        <span class="badge rejected">
+                                            Rejected
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        0
+
+                                    </td>
+
+                                    <td>Yesterday</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Row 4 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Frontend Developer</strong>
+                                    </td>
+
+                                    <td>Chaldal</td>
+
+                                    <td>Job</td>
+
+                                    <td>05 Aug 2026</td>
+
+                                    <td>
+
+                                        <span class="badge verified">
+                                            Verified
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        87
+
+                                    </td>
+
+                                    <td>3 days ago</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Row 5 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Data Analyst Intern</strong>
+                                    </td>
+
+                                    <td>Pathao</td>
+
+                                    <td>Internship</td>
+
+                                    <td>12 Nov 2026</td>
+
+                                    <td>
+
+                                        <span class="badge pending">
+                                            Pending Verification
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        4
+
+                                    </td>
+
+                                    <td>5 days ago</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Row 6 -->
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Chevening Scholarship</strong>
+                                    </td>
+
+                                    <td>UK Government</td>
+
+                                    <td>Scholarship</td>
+
+                                    <td>01 Jun 2026</td>
+
+                                    <td>
+
+                                        <span class="badge expired">
+                                            Expired
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        210
+
+                                    </td>
+
+                                    <td>3 weeks ago</td>
+
+                                    <td class="actions">
+
+                                        <button>
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+
+                                        <button>
+                                            <i class="fa-solid fa-user-group"></i>
+                                        </button>
+
+                                        <button class="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+            </div>
+
+            <div id="dashboard_2" class="dashboard_2">
+                <div class="page-header">
+                    <h1>Create opportunity</h1>
+                    <p>Submitted listings are reviewed by our admin team before going live.</p>
+                </div> <a href="#" class="back-link"> <i class="fa-solid fa-arrow-left"></i> Back to dashboard </a>
+                <div class="layout">
+                    <div class="left-panel">
+                        <div class="card">
+                            <h2>Basics</h2>
+                            <p>Title and category help students discover the listing.</p>
+                            <form id="opportunityForm">
+                                <div class="form-group"> <label for="title">Title</label> <input type="text" id="title"
+                                        placeholder="e.g. Junior Frontend Engineer" required> </div>
+                                <div class="grid">
+                                    <div class="form-group"> <label for="category">Category</label> <select
+                                            id="category">
+                                            <option>Internship</option>
+                                            <option>Job</option>
+                                            <option>Scholarship</option>
+                                            <option>Competition</option>
+                                        </select> </div>
+                                    <div class="form-group"> <label for="organization">Organization</label> <input
+                                            type="text" id="organization" placeholder="e.g. Stripe" required> </div>
+                                    <div class="form-group"> <label for="location">Location</label> <input type="text"
+                                            id="location" placeholder="e.g. Berlin, Germany (Hybrid)" required> </div>
+                                    <div class="form-group"> <label for="deadline">Deadline</label> <input type="date"
+                                            id="deadline" required> </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card">
+                            <h2>Description</h2>
+                            <p>Explain the role, programme or competition in detail.</p>
+                            <div class="form-group"> <textarea id="description" rows="8"
+                                    placeholder="Describe the opportunity, what students will learn or build, benefits, etc."></textarea>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h2>Eligibility</h2>
+                            <p>One requirement per line.</p>
+                            <div class="form-group"> 
+                            <textarea placeholder="e.g.
+                            Currently enrolled student
+                            CGPA 3.0+
+                            Proficient in React"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="right-panel">
+                        <div class="review-card">
+                            <h3>Review process</h3>
+                            <ol>
+                                <li>You submit the listing</li>
+                                <li>Admin team reviews within 24h</li>
+                                <li>Verified badge & published</li>
+                            </ol>
+                        </div> <button type="submit" form="opportunityForm" class="submit-btn"> Submit for verification
+                        </button>
+                        <button type="button" id="draftBtn" class="draft-btn"> Save as draft </button>
+                    </aside>
+                </div>
+            </div>
+
+        </main>
+
+
+    </div>
+    <script src="js/recruiter_dashboard.js"></script>
+
+</body>
+
+</html>

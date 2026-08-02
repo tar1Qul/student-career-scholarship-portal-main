@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>Login</title>
+    <link rel='stylesheet' href='login.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'>
+</head>
+
+<body>
+    <div class='wrap'>
+        <div class='card'>
+            <div class='logo'><i class='fa-solid fa-graduation-cap'></i></div>
+            <h4>Student Career & Scholarship Portal</h4>
+            <h1>Welcome back</h1>
+            <p>Sign in to continue to your dashboard.</p>
+            <div class='tabs'><button class='tab active' data-role='Student'>Student</button><button class='tab'
+                    data-role='Recruiter'>Recruiter</button><button class='tab' data-role='Admin'>Admin</button></div>
+            <label>Email address</label><input placeholder='example@ulab.edu.bd'><label>Password</label>
+            <div class='pass'><input type='password' placeholder='********'><i class='fa-regular fa-eye'></i></div>
+            <div class='opts'><label><input type='checkbox'> Remember me for 30 days</label><a href='#'>Forgot
+                    password?</a></div><button id='signin'>Sign in as Student →</button>
+            <div class='reg'>New to CareerScope? <a href='register.html'>Create account</a></div>
+        </div>
+    </div>
+    <script>const t = document.querySelectorAll('.tab'), b = document.getElementById('signin'); t.forEach(x => x.onclick = () => { t.forEach(a => a.classList.remove('active')); x.classList.add('active'); b.textContent = 'Sign in as ' + x.dataset.role + ' →'; });</script>
+</body>
+
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Student Career & Scholarship Portal</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <div class="logo-text">
+                <h2>Student Career</h2>
+                <p>& Scholarship Portal</p>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <li class="active">
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_opportunities.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career Opportunities</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_scholarships.html">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Scholarships</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_applications.html">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>My Applications</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_saved.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Saved Opportunities</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_notifications.html">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="student_settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <li class="logout">
+                <a href="../login.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search opportunities, scholarships..."
+                >
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <a href="student_notifications.html">
+                    <i class="fa-regular fa-bell"></i>
+                </a>
+
+                <img
+                    src="../images/Ihana.JPG"
+                    alt="Profile"
+                    class="profile-img"
+                >
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <h1>
+                    Welcome back, Mehrab! 👋
+                </h1>
+
+                <p>
+                    Here’s what's happening with your career and
+                    scholarship journey today.
+                </p>
+
+            </div>
+
+
+            <a
+                href="student_opportunities.html"
+                class="filter-btn">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Explore Opportunities
+
+            </a>
+
+        </section>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div>
+
+                    <h3>18</h3>
+
+                    <p>Total Applications</p>
+
+                    <small>
+                        <i class="fa-solid fa-arrow-up"></i>
+                        3 this month
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div>
+
+                    <h3>7</h3>
+
+                    <p>Pending Applications</p>
+
+                    <small>
+                        Awaiting review
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+
+                    <h3>8</h3>
+
+                    <p>Accepted</p>
+
+                    <small>
+                        Great progress!
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-bookmark"></i>
+                </div>
+
+                <div>
+
+                    <h3>12</h3>
+
+                    <p>Saved Opportunities</p>
+
+                    <small>
+                        Jobs & scholarships
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFILE PROGRESS ================= -->
+
+        <div class="panel profile-progress-dashboard">
+
+            <div>
+
+                <h2>Complete Your Profile</h2>
+
+                <p>
+                    A complete profile helps us recommend better
+                    opportunities for you.
+                </p>
+
+            </div>
+
+
+            <strong>90%</strong>
+
+
+            <div class="progress-container">
+
+                <div class="progress-bar"
+                     style="width:90%;"></div>
+
+            </div>
+
+
+            <a href="student_profile.html">
+                Complete Profile
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <!-- ================= TWO COLUMN ================= -->
+
+        <div class="dashboard-two-column">
+
+
+            <!-- ================= RECENT APPLICATIONS ================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Recent Applications</h2>
+
+                        <p>
+                            Track your latest applications.
+                        </p>
+
+                    </div>
+
+
+                    <a href="student_applications.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="dashboard-table">
+
+                    <div class="dashboard-table-header">
+
+                        <span>Opportunity</span>
+                        <span>Type</span>
+                        <span>Status</span>
+
+                    </div>
+
+
+                    <div class="dashboard-table-row">
+
+                        <span>
+                            Software Engineer - Google
+                        </span>
+
+                        <span>
+                            Job
+                        </span>
+
+                        <span class="status pending">
+                            Pending
+                        </span>
+
+                    </div>
+
+
+                    <div class="dashboard-table-row">
+
+                        <span>
+                            Google Generation Scholarship
+                        </span>
+
+                        <span>
+                            Scholarship
+                        </span>
+
+                        <span class="status review">
+                            Under Review
+                        </span>
+
+                    </div>
+
+
+                    <div class="dashboard-table-row">
+
+                        <span>
+                            Microsoft Internship
+                        </span>
+
+                        <span>
+                            Internship
+                        </span>
+
+                        <span class="status accepted">
+                            Accepted
+                        </span>
+
+                    </div>
+
+
+                    <div class="dashboard-table-row">
+
+                        <span>
+                            Chevening Scholarship
+                        </span>
+
+                        <span>
+                            Scholarship
+                        </span>
+
+                        <span class="status rejected">
+                            Rejected
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= DEADLINES ================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Upcoming Deadlines</h2>
+
+                        <p>
+                            Don't miss important deadlines.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="deadline-item">
+
+                    <div class="deadline-icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Prime Minister Scholarship
+                        </h4>
+
+                        <p>
+                            Application deadline
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        25 Jun
+                    </strong>
+
+                </div>
+
+
+                <div class="deadline-item">
+
+                    <div class="deadline-icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Google Scholarship
+                        </h4>
+
+                        <p>
+                            Application deadline
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        30 Jun
+                    </strong>
+
+                </div>
+
+
+                <div class="deadline-item">
+
+                    <div class="deadline-icon">
+                        <i class="fa-solid fa-calendar"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Microsoft Internship
+                        </h4>
+
+                        <p>
+                            Application deadline
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        05 Jul
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECOMMENDED ================= -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Recommended For You</h2>
+
+                    <p>
+                        Opportunities based on your profile and interests.
+                    </p>
+
+                </div>
+
+
+                <a href="student_opportunities.html">
+                    View More
+                </a>
+
+            </div>
+
+
+            <div class="recommendation-grid">
+
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Software Engineer Intern
+                        </h3>
+
+                        <p>
+                            Google
+                        </p>
+
+                        <small>
+                            Python • Java • Software Development
+                        </small>
+
+                    </div>
+
+                    <a href="student_opportunities.html">
+                        View
+                    </a>
+
+                </div>
+
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Junior Web Developer
+                        </h3>
+
+                        <p>
+                            Brain Station 23
+                        </p>
+
+                        <small>
+                            HTML • CSS • JavaScript
+                        </small>
+
+                    </div>
+
+                    <a href="student_opportunities.html">
+                        View
+                    </a>
+
+                </div>
+
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Data Analyst Internship
+                        </h3>
+
+                        <p>
+                            DataSoft
+                        </p>
+
+                        <small>
+                            Python • SQL • Data Analysis
+                        </small>
+
+                    </div>
+
+                    <a href="student_opportunities.html">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECENT ACTIVITIES ================= -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>Recent Activities</h2>
+
+                    <p>
+                        Your latest activities on the portal.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="activity-list">
+
+
+                <div class="activity-item">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    <div>
+
+                        <strong>
+                            Applied for Google Software Engineer Internship
+                        </strong>
+
+                        <p>
+                            2 hours ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <div>
+
+                        <strong>
+                            Microsoft Internship application accepted
+                        </strong>
+
+                        <p>
+                            Yesterday
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                    <div>
+
+                        <strong>
+                            Saved Junior Web Developer opportunity
+                        </strong>
+
+                        <p>
+                            2 days ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <i class="fa-solid fa-user-pen"></i>
+
+                    <div>
+
+                        <strong>
+                            Updated your profile
+                        </strong>
+
+                        <p>
+                            3 days ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="dashboard-footer">
+
+            <div class="footer-content">
+
+                <div>
+
+                    <h3>
+                        Student Career & Scholarship Portal
+                    </h3>
+
+                    <p>
+                        Helping students discover career opportunities,
+                        scholarships and build a successful future.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <a href="student_profile.html">
+                        My Profile
+                    </a>
+
+                    <a href="student_opportunities.html">
+                        Career Opportunities
+                    </a>
+
+                    <a href="student_scholarships.html">
+                        Scholarships
+                    </a>
+
+                    <a href="student_applications.html">
+                        Applications
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <p class="copyright">
+
+                © 2026 Student Career & Scholarship Portal.
+                All Rights Reserved.
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

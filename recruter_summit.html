@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Opportunity</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/recruter_summit.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+    
+        <div class="logo">
+    
+            <div class="logo-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+    
+            <div class="logo-text">
+                <h2>Student Career & Scholarship Portal</h2>
+                <span>Recruiter Portal</span>
+            </div>
+    
+        </div>
+    
+        <nav class="sidebar-menu">
+    
+            <a href="#" class="active">
+                <i class="fa-solid fa-table-cells-large"></i>
+                Dashboard
+            </a>
+    
+            <a href="#">
+                <i class="fa-regular fa-square-plus"></i>
+                Post Opportunity
+            </a>
+    
+        </nav>
+    
+        <div class="sidebar-footer">
+    
+            <div class="user">
+    
+                <div class="avatar">
+                    GO
+                </div>
+    
+                <div class="user-info">
+                    <h4>Talent — Google</h4>
+                    <p>campus@google.com</p>
+                </div>
+    
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    
+            </div>
+    
+        </div>
+    
+    </aside>
+
+        <!-- ================= Main Content ================= -->
+
+        <main class="main-content">
+
+            <!-- Top Navbar -->
+
+            <header class="topbar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" placeholder="Search opportunities, organizations...">
+
+                </div>
+
+                <div class="top-icons">
+
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Page Header -->
+
+            <section class="page-header">
+
+                <h1>Create opportunity</h1>
+
+                <p>
+                    Submitted listings are reviewed by our admin team before
+                    going live.
+                </p>
+
+            </section>
+
+            <!-- Back Button -->
+
+            <div class="back-link">
+
+                <a href="#">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to dashboard
+
+                </a>
+
+            </div>
+
+            <!-- Main Grid -->
+
+            <div class="content-grid">
+
+                <!-- ================= Left Side ================= -->
+
+                <div class="left-section">
+
+                    <!-- Basics Card -->
+
+                    <section class="card">
+
+                        <h2>Basics</h2>
+
+                        <p class="card-subtitle">
+                            Title and category help students discover the
+                            listing.
+                        </p>
+
+                        <!-- Title -->
+
+                        <div class="form-group">
+
+                            <label>
+                                Title
+                            </label>
+
+                            <input type="text" placeholder="e.g. Junior Frontend Engineer">
+
+                        </div>
+
+                        <!-- Category & Organization -->
+                        
+                        <div class="form-row">
+                        
+                            <div class="form-group">
+                        
+                                <label>
+                                    Category
+                                </label>
+                        
+                                <div class="select-box">
+                        
+                                    <select>
+                        
+                                        <option>Internship</option>
+                                        <option>Full Time</option>
+                                        <option>Part Time</option>
+                                        <option>Scholarship</option>
+                                        <option>Competition</option>
+                        
+                                    </select>
+                        
+                                    <i class="fa-solid fa-chevron-down"></i>
+                        
+                                </div>
+                        
+                            </div>
+                        
+                            <div class="form-group">
+                        
+                                <label>
+                                    Organization
+                                </label>
+                        
+                                <input type="text" placeholder="e.g. Stripe">
+                        
+                            </div>
+                        
+                        </div>
+                        
+                        <!-- Location & Deadline -->
+                        
+                        <div class="form-row">
+                        
+                            <div class="form-group">
+                        
+                                <label>
+                                    Location
+                                </label>
+                        
+                                <input type="text" placeholder="e.g. Berlin, Germany (Hybrid)">
+                        
+                            </div>
+                        
+                            <div class="form-group">
+                        
+                                <label>
+                                    Deadline
+                                </label>
+                        
+                                <div class="date-input">
+                        
+                                    <input type="date">
+                        
+                                    <i class="fa-regular fa-calendar"></i>
+                        
+                                </div>
+                        
+                            </div>
+                        
+                        </div>
+                        
+                        </section>
+                        
+                        <!-- ================= Description ================= -->
+                        
+                        <section class="card">
+                        
+                            <h2>Description</h2>
+                        
+                            <p class="card-subtitle">
+                                Explain the role, programme or competition in detail.
+                            </p>
+                        
+                            <div class="form-group">
+                        
+                                <textarea rows="8"
+                                    placeholder="Describe the opportunity, what students will learn or build, benefits, etc."></textarea>
+                        
+                            </div>
+                        
+                        </section>
+                        
+                        <!-- ================= Eligibility ================= -->
+                        
+                        <section class="card">
+                        
+                            <h2>Eligibility</h2>
+                        
+                            <p class="card-subtitle">
+                                One requirement per line.
+                            </p>
+                        
+                            <div class="form-group">
+                        
+                                <textarea rows="8" placeholder="e.g.
+                        Currently enrolled student
+                        CGPA 3.0+
+                        Proficient in React"></textarea>
+                        
+                            </div>
+                        
+                        </section>
+                        
+                        </div>
+                        
+                        <!-- ================= Right Sidebar ================= -->
+                        
+                        <aside class="right-panel">
+                        
+                            <div class="review-card">
+                        
+                                <h3>Review process</h3>
+                        
+                                <ol>
+                        
+                                    <li>You submit the listing</li>
+                        
+                                    <li>Admin team reviews within 24h</li>
+                        
+                                    <li>Verified badge & published</li>
+                        
+                                </ol>
+                        
+                            </div>
+                        
+                            <button class="submit-btn">
+                                Submit for verification
+                            </button>
+                        
+                            <button class="draft-btn">
+                                Save as draft
+                            </button>
+                        
+                        </aside>
+                        
+                        </div>
+
+            <!-- End Content Grid -->
+            </div>
+            
+            </main>
+            
+            </div>
+            
+            <!-- ================= Floating Edit Badge (Optional) ================= -->
+            
+            <div class="floating-badge">
+            
+                <span>Edit with</span>
+            
+                <strong>Lovable</strong>
+            
+                <button class="close-badge">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            
+            </div>
+            
+            <!-- ================= Scripts ================= -->
+            
+            <script src="js/recruter_summit.js"></script>
+            
+            </body>
+            
+            </html>

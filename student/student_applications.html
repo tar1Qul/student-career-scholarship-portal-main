@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | Student Career & Scholarship Portal</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <div class="logo-text">
+                <h2>Student Career</h2>
+                <p>& Scholarship Portal</p>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <li>
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_opportunities.html">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career Opportunities</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_scholarships.html">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Scholarships</span>
+                </a>
+            </li>
+
+
+            <!-- ACTIVE -->
+
+            <li class="active">
+                <a href="student_applications.html">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>My Applications</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_saved.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Saved Opportunities</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_notifications.html">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="student_settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+
+            <li class="logout">
+                <a href="../login.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search applications..."
+                >
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <img
+                    src="../images/Ihana.JPG"
+                    alt="Student Profile"
+                    class="profile-img"
+                >
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= PAGE TITLE ================= -->
+
+        <div class="section-title">
+
+            <h2>My Applications</h2>
+
+        </div>
+
+
+
+        <p style="color:#64748B; margin-bottom:30px;">
+            Track and manage your submitted job and scholarship applications.
+        </p>
+
+
+
+        <!-- ================= APPLICATION SUMMARY ================= -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-circle-check"></i>
+
+                <h3>18</h3>
+
+                <p>Total Applications</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-hourglass-half"></i>
+
+                <h3>7</h3>
+
+                <p>Pending Applications</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>8</h3>
+
+                <p>Accepted Applications</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                <h3>3</h3>
+
+                <p>Rejected Applications</p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= FILTER BAR ================= -->
+
+        <div class="filter-bar">
+
+            <div class="filter-left">
+
+                <select>
+
+                    <option>All Applications</option>
+
+                    <option>Job Applications</option>
+
+                    <option>Scholarship Applications</option>
+
+                </select>
+
+
+                <select>
+
+                    <option>All Status</option>
+
+                    <option>Pending</option>
+
+                    <option>Under Review</option>
+
+                    <option>Accepted</option>
+
+                    <option>Rejected</option>
+
+                </select>
+
+            </div>
+
+
+            <button class="filter-btn">
+
+                <i class="fa-solid fa-filter"></i>
+
+                Filter
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= APPLICATION HISTORY ================= -->
+
+        <div class="application-container">
+
+
+            <div class="section-title">
+
+                <h2>Application History</h2>
+
+            </div>
+
+
+            <table class="application-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Title</th>
+
+                        <th>Category</th>
+
+                        <th>Applied Date</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- APPLICATION 1 -->
+
+                    <tr>
+
+                        <td>
+                            Software Engineer - Google
+                        </td>
+
+                        <td>
+                            Job
+                        </td>
+
+                        <td>
+                            15 Jul 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status pending">
+                                Pending
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                            <button class="table-btn delete-btn">
+                                Withdraw
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- APPLICATION 2 -->
+
+                    <tr>
+
+                        <td>
+                            Google Generation Scholarship
+                        </td>
+
+                        <td>
+                            Scholarship
+                        </td>
+
+                        <td>
+                            12 Jul 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status review">
+                                Under Review
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                            <button class="table-btn delete-btn">
+                                Withdraw
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- APPLICATION 3 -->
+
+                    <tr>
+
+                        <td>
+                            Microsoft Internship
+                        </td>
+
+                        <td>
+                            Job
+                        </td>
+
+                        <td>
+                            05 Jul 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status accepted">
+                                Accepted
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- APPLICATION 4 -->
+
+                    <tr>
+
+                        <td>
+                            Chevening Scholarship
+                        </td>
+
+                        <td>
+                            Scholarship
+                        </td>
+
+                        <td>
+                            02 Jul 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status rejected">
+                                Rejected
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- APPLICATION 5 -->
+
+                    <tr>
+
+                        <td>
+                            Frontend Developer - Brain Station 23
+                        </td>
+
+                        <td>
+                            Job
+                        </td>
+
+                        <td>
+                            28 Jun 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status accepted">
+                                Accepted
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- APPLICATION 6 -->
+
+                    <tr>
+
+                        <td>
+                            Prime Minister Scholarship
+                        </td>
+
+                        <td>
+                            Scholarship
+                        </td>
+
+                        <td>
+                            25 Jun 2026
+                        </td>
+
+                        <td>
+
+                            <span class="status pending">
+                                Pending
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="table-btn view-btn">
+                                <i class="fa-solid fa-eye"></i>
+                                View
+                            </button>
+
+                            <button class="table-btn delete-btn">
+                                Withdraw
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ================= APPLICATION TIMELINE ================= -->
+
+        <div class="timeline" style="margin-top:30px;">
+
+            <div class="section-title">
+
+                <h2>Application Progress</h2>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Profile Completed</h4>
+
+                    <p>
+                        Your student profile is 90% complete.
+                    </p>
+
+                    <small>
+                        Current progress
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Job Applications</h4>
+
+                    <p>
+                        You have submitted applications to multiple companies.
+                    </p>
+
+                    <small>
+                        75% progress
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h4>Scholarship Applications</h4>
+
+                    <p>
+                        Your scholarship applications are being reviewed.
+                    </p>
+
+                    <small>
+                        60% progress
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= STATUS OVERVIEW ================= -->
+
+        <div class="dashboard-grid" style="margin-top:30px;">
+
+
+            <div class="left-content">
+
+                <div class="panel">
+
+                    <div class="section-title">
+
+                        <h2>Application Status Overview</h2>
+
+                    </div>
+
+
+                    <ul class="deadline-list">
+
+                        <li>
+
+                            <strong>
+                                Pending Review
+                            </strong>
+
+                            <span>
+                                07
+                            </span>
+
+                        </li>
+
+                        <li>
+
+                            <strong>
+                                Under Review
+                            </strong>
+
+                            <span>
+                                03
+                            </span>
+                        </li>
+
+                        <li>
+
+                            <strong>
+                                Accepted
+                            </strong>
+
+                            <span>
+                                08
+                            </span>
+
+                        </li>
+
+
+                        <li>
+                            <strong>
+                                Rejected
+                            </strong>
+
+                            <span>
+                                03
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- ================= RECENT ACTIVITIES ================= -->
+
+                <div class="recent-activity">
+                    <div class="section-title">
+                        <h2>Recent Activities</h2>
+
+                    </div>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Applied for Google Software Engineer Internship.
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Microsoft Internship application accepted.
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-award"></i>
+                            Submitted Chevening Scholarship application.
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                            Updated resume for future applications.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <!-- ================= IMPORTANT UPDATES ================= -->
+
+            <div class="right-content">
+                <div class="panel">
+                    <div class="section-title">
+
+                        <h2>Important Updates</h2>
+                    </div>
+
+                    <div class="notification-item">
+                        <h4>
+                            Application Review
+                        </h4>
+
+                        <p>
+                            Google has started reviewing internship applications.
+                        </p>
+                    </div>
+
+
+                    <div class="notification-item">
+                        <h4>
+                            Scholarship Deadline
+                        </h4>
+                        <p>
+                            Prime Minister Scholarship deadline is approaching.
+                        </p>
+
+                    </div>
+
+                    <div class="notification-item">
+
+                        <h4>
+                            Profile Reminder
+                        </h4>
+
+                        <p>
+                            Complete your profile to improve application success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <div class="quick-actions" style="margin-top:40px;">
+            <div class="section-title">
+                <h2>Quick Actions</h2>
+            </div>
+
+            <div class="action-grid">
+
+                <div class="action-card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h4>Browse Jobs</h4>
+                    <p>
+                        Find new job and internship opportunities.
+                    </p>
+                    <br>
+                    <a
+                        href="student_opportunities.html"
+                        class="hero-btn">
+
+                        Explore Jobs
+                    </a>
+                </div>
+
+                <div class="action-card">
+
+                    <i class="fa-solid fa-award"></i>
+                    <h4>Browse Scholarships</h4>
+                    <p>
+                        Discover scholarships that match your profile.
+                    </p>
+                    <br>
+                    <a
+                        href="student_scholarships.html"
+                        class="hero-btn">
+                        Explore Scholarships
+                    </a>
+                </div>
+
+                <div class="action-card">
+
+                    <i class="fa-solid fa-user"></i>
+                    <h4>Update Profile</h4>
+                    <p>
+                        Keep your profile updated for better recommendations.
+                    </p>
+                    <br>
+                    <a
+                        href="student_profile.html"
+                        class="hero-btn">
+                        Edit Profile
+                    </a>
+                </div>
+
+                <div class="action-card">
+                    <i class="fa-solid fa-bell"></i>
+                    <h4>Notifications</h4>
+                    <p>
+                        Check your latest notifications and updates.
+                    </p>
+                    <br>
+                    <a
+                        href="student_notifications.html"
+                        class="hero-btn">
+
+                        View Notifications
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <div>
+                    <h3>
+                        Student Career & Scholarship Portal
+                    </h3>
+                    <p>
+                        Helping students discover career opportunities,
+                        scholarships and build a successful future.
+                    </p>
+                </div>
+
+
+                <div class="footer-links">
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+                    <a href="student_opportunities.html">
+                        Career Opportunities
+                    </a>
+                    <a href="student_scholarships.html">
+                        Scholarships
+                    </a>
+                    <a href="student_profile.html">
+                        My Profile
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+
+            <p class="copyright">
+                © 2026 Student Career & Scholarship Portal.
+                All Rights Reserved.
+            </p>
+        </footer>
+    </main>
+</div>
+</body>
+</html>

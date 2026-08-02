@@ -1,0 +1,1791 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ===========================
+   Reset
+=========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+body{
+    background:#f4f7fc;
+    color:#1e293b;
+}
+/* ===========================
+   Dashboard Layout
+=========================== */
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+/* ===========================
+   Sidebar
+=========================== */
+.sidebar{
+    width:260px;
+    background:#111827;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    padding:25px 20px;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+}
+/* ===========================
+   Logo
+=========================== */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+.logo-icon{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    background:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+.logo-content h2{
+    font-size:18px;
+    font-weight:600;
+}
+.logo-content p{
+    font-size:12px;
+    color:#cbd5e1;
+}
+
+/* ===========================
+   Sidebar Menu
+=========================== */
+
+.sidebar-menu{
+    list-style:none;
+}
+.sidebar-menu li{
+    margin-bottom:6px;
+}
+.sidebar-menu li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:#cbd5e1;
+    padding:14px 16px;
+    border-radius:12px;
+    transition:.3s;
+    font-size:15px;
+}
+.sidebar-menu li a:hover{
+    background:#2563eb;
+    color:#fff;
+}
+
+.sidebar-menu li.active a{
+    background:#2563eb;
+    color:#fff;
+}
+
+.sidebar-menu i{
+    width:22px;
+    text-align:center;
+    font-size:17px;
+}
+
+/* ===========================
+   Logout
+=========================== */
+
+.sidebar-footer{
+    margin-top:auto;
+    padding-top:25px;
+}
+
+.logout{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:14px 16px;
+    text-decoration:none;
+    background:#ef4444;
+    color:#fff;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.logout:hover{
+    background:#dc2626;
+}
+
+/* ===========================
+   Main Content
+=========================== */
+
+.main-content{
+    flex:1;
+    margin-left:260px;
+    padding:30px;
+}
+
+/* ===========================
+   Topbar
+=========================== */
+
+.topbar{
+    background:#fff;
+    border-radius:18px;
+    padding:18px 25px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+    margin-bottom:30px;
+}
+
+/* ===========================
+   Search Box
+=========================== */
+
+.search-box{
+    width:420px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#f1f5f9;
+    padding:14px 18px;
+    border-radius:30px;
+}
+
+.search-box i{
+    color:#64748b;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    background:transparent;
+    outline:none;
+    font-size:15px;
+}
+
+/* ===========================
+   Right Section
+=========================== */
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* ===========================
+   Icons
+=========================== */
+
+.icon-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#f1f5f9;
+    cursor:pointer;
+    transition:.3s;
+    font-size:17px;
+}
+
+.icon-btn:hover{
+    background:#2563eb;
+    color:#fff;
+}
+
+/* ===========================
+   Admin Profile
+=========================== */
+
+.admin-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.admin-info img{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #2563eb;
+}
+
+.admin-info h4{
+    font-size:15px;
+    font-weight:600;
+}
+
+.admin-info small{
+    color:#64748b;
+    font-size:12px;
+}
+/* ===================================
+   Dashboard Content
+=================================== */
+
+.content{
+    width:100%;
+}
+
+/* ===================================
+   Welcome Banner
+=================================== */
+
+.welcome-banner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:#fff;
+    border-radius:20px;
+    padding:35px 40px;
+    margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(37,99,235,.25);
+}
+
+.welcome-text h1{
+    font-size:32px;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.welcome-text p{
+    font-size:15px;
+    line-height:28px;
+    opacity:.95;
+    max-width:520px;
+}
+
+.banner-btn{
+    display:inline-block;
+    margin-top:25px;
+    background:#fff;
+    color:#2563eb;
+    padding:12px 26px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.banner-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.welcome-image{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.welcome-image i{
+    font-size:70px;
+    color:#fff;
+}
+
+/* ===================================
+   Section Title
+=================================== */
+
+.section-title{
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    font-size:24px;
+    color:#1e293b;
+    margin-bottom:5px;
+}
+
+.section-title p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ===================================
+   Statistics Cards
+=================================== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.stat-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.card-icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:26px;
+}
+
+.card-icon.blue{
+
+    background:#2563eb;
+
+}
+
+.card-icon.green{
+
+    background:#10b981;
+
+}
+
+.card-icon.orange{
+
+    background:#f59e0b;
+
+}
+
+.card-icon.red{
+
+    background:#ef4444;
+
+}
+
+.card-info h3{
+
+    font-size:28px;
+
+    margin-bottom:6px;
+
+    color:#0f172a;
+
+}
+
+.card-info span{
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+/* ===================================
+   Quick Actions
+=================================== */
+
+.quick-actions{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-bottom:35px;
+
+}
+
+.action-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px 25px;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    color:#1e293b;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.action-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.action-card i{
+
+    width:75px;
+
+    height:75px;
+
+    border-radius:50%;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0 auto 18px;
+
+    font-size:30px;
+
+}
+
+.action-card h4{
+
+    margin-bottom:10px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.action-card p{
+    font-size:14px;
+    color:#64748b;
+    line-height:24px;
+}
+/* ===================================
+   Dashboard Grid
+=================================== */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+.left-panel,
+.right-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+/* ===================================
+   Card
+=================================== */
+
+.card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.card-header h3{
+
+    font-size:20px;
+
+    color:#1e293b;
+
+}
+
+.card-header a{
+
+    text-decoration:none;
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* ===================================
+   Dashboard Table
+=================================== */
+
+.dashboard-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.dashboard-table th{
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.dashboard-table td{
+
+    padding:18px 15px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-size:14px;
+
+}
+
+.dashboard-table tbody tr:hover{
+
+    background:#f8fafc;
+
+}
+
+/* ===================================
+   Status Badges
+=================================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.status.pending{
+
+    background:#fef3c7;
+
+    color:#b45309;
+
+}
+
+.status.approved{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+.status.rejected{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+/* ===================================
+   Approve Button
+=================================== */
+
+.approve-btn{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:8px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.approve-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===================================
+   User List
+=================================== */
+
+.user-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.user-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.user-item img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.user-item h4{
+
+    font-size:15px;
+
+    margin-bottom:4px;
+
+}
+
+.user-item span{
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+/* ===================================
+   System Status
+=================================== */
+
+.system-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.system-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.system-item span{
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+.system-item strong{
+
+    color:#0f172a;
+
+}
+
+.online{
+
+    color:#16a34a !important;
+
+}
+/* ===================================
+   Notification Section
+=================================== */
+
+.notification-section{
+
+    margin-bottom:30px;
+
+}
+
+.notification-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.notification-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+.notification-item:hover{
+
+    background:#f8fafc;
+
+}
+
+.notify-icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:20px;
+
+    flex-shrink:0;
+
+}
+
+.notify-icon.blue{
+
+    background:#2563eb;
+
+}
+
+.notify-icon.green{
+
+    background:#10b981;
+
+}
+
+.notify-icon.orange{
+
+    background:#f59e0b;
+
+}
+
+.notify-icon.red{
+
+    background:#ef4444;
+
+}
+
+.notify-content{
+
+    flex:1;
+
+}
+
+.notify-content h4{
+
+    font-size:16px;
+
+    margin-bottom:6px;
+
+    color:#1e293b;
+
+}
+
+.notify-content p{
+
+    font-size:14px;
+
+    color:#64748b;
+
+    line-height:22px;
+
+    margin-bottom:5px;
+
+}
+
+.notify-content span{
+
+    font-size:12px;
+
+    color:#94a3b8;
+
+}
+
+/* ===================================
+   Footer
+=================================== */
+
+.dashboard-footer{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#64748b;
+
+    font-size:14px;
+
+    border-top:1px solid #e5e7eb;
+
+}
+
+/* ===================================
+   Smooth Animation
+=================================== */
+
+.card,
+.stat-card,
+.action-card,
+.notification-item{
+
+    transition:all .3s ease;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+/* ===================================
+   Scrollbar
+=================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f5f9;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#94a3b8;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748b;
+
+}
+
+/* ===================================
+   Responsive (Laptop)
+=================================== */
+
+@media (max-width:1200px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .quick-actions{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ===================================
+   Responsive (Tablet)
+=================================== */
+
+@media (max-width:992px){
+
+    .sidebar{
+
+        width:90px;
+
+    }
+
+    .logo-content{
+
+        display:none;
+
+    }
+
+    .sidebar-menu span{
+
+        display:none;
+
+    }
+
+    .logout{
+
+        justify-content:center;
+
+        font-size:0;
+
+    }
+
+    .logout i{
+
+        font-size:18px;
+
+    }
+
+    .main-content{
+
+        margin-left:90px;
+
+    }
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===================================
+   Responsive (Mobile)
+=================================== */
+
+@media (max-width:768px){
+
+    .main-content{
+
+        padding:20px;
+
+    }
+
+    .welcome-banner{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:30px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .quick-actions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+    .admin-info div{
+
+        display:none;
+
+    }
+
+}
+
+/* ===================================
+   Responsive (Small Mobile)
+=================================== */
+
+@media (max-width:480px){
+
+    .welcome-text h1{
+
+        font-size:24px;
+
+    }
+
+    .welcome-text p{
+
+        font-size:14px;
+
+    }
+
+    .card{
+
+        padding:18px;
+
+    }
+
+    .top-actions{
+
+        gap:10px;
+
+    }
+}
+
+/* ===================================
+   User Management Toolbar
+=================================== */
+
+.table-toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:25px 0;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.table-search{
+
+    width:350px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#f1f5f9;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+}
+
+.table-search i{
+
+    color:#64748b;
+
+}
+
+.table-search input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:14px;
+
+}
+
+/* ===================================
+   Filter
+=================================== */
+
+.table-filter{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.table-filter select{
+
+    padding:12px 18px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+}
+
+/* ===================================
+   Add User Button
+=================================== */
+
+.add-btn{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.add-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===================================
+   Table Action Buttons
+=================================== */
+
+.dashboard-table td:last-child{
+
+    white-space:nowrap;
+
+}
+
+.view-btn,
+.edit-btn,
+.delete-btn{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    margin-right:6px;
+
+    transition:.3s;
+
+}
+
+.view-btn{
+
+    background:#2563eb;
+
+}
+
+.view-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.edit-btn{
+
+    background:#10b981;
+
+}
+
+.edit-btn:hover{
+
+    background:#059669;
+
+}
+
+.delete-btn{
+
+    background:#ef4444;
+
+}
+
+.delete-btn:hover{
+
+    background:#dc2626;
+
+}
+
+
+/* ===================================
+   Pagination
+=================================== */
+
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:30px 0 10px;
+
+}
+
+.page-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ffffff;
+
+    color:#334155;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.page-btn:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.active-page{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+/* ===================================
+   Table Improvements
+=================================== */
+
+.dashboard-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.dashboard-table tbody tr{
+
+    transition:.3s;
+
+}
+
+.dashboard-table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+.dashboard-table td{
+
+    vertical-align:middle;
+
+}
+
+/* ===================================
+   User Role Badge
+=================================== */
+
+.role{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.role.student{
+
+    background:#e0f2fe;
+
+    color:#0369a1;
+
+}
+
+.role.admin{
+
+    background:#ede9fe;
+
+    color:#6d28d9;
+
+}
+
+/* ===================================
+   Card Animation
+=================================== */
+
+.card{
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+/* ===================================
+   Responsive
+=================================== */
+
+@media(max-width:992px){
+
+    .table-toolbar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .table-search{
+
+        width:100%;
+
+    }
+
+    .table-filter{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .table-filter select{
+
+        flex:1;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+    .card-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        align-items:flex-start;
+
+    }
+
+    .add-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .page-btn{
+
+        width:36px;
+
+        height:36px;
+
+        font-size:13px;
+
+    }
+
+    .view-btn,
+    .edit-btn,
+    .delete-btn{
+
+        width:34px;
+
+        height:34px;
+
+        margin-right:4px;
+
+    }
+
+}
+
+/* ===================================
+   Scholarship Management
+=================================== */
+
+.dashboard-table td:nth-child(2){
+
+    font-weight:600;
+    color:#0f172a;
+
+}
+
+.dashboard-table td:nth-child(3){
+
+    color:#2563eb;
+    font-weight:500;
+
+}
+
+.dashboard-table td:nth-child(5){
+
+    color:#ef4444;
+    font-weight:600;
+
+}
+
+.dashboard-table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+.add-btn i{
+
+    margin-right:6px;
+
+}
+
+/* ===================================
+   Career Opportunities
+=================================== */
+
+.dashboard-table td:nth-child(2){
+
+    font-weight:600;
+
+}
+
+.dashboard-table td:nth-child(3){
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+.dashboard-table td:nth-child(5){
+
+    color:#475569;
+
+}
+
+.dashboard-table td:nth-child(6){
+
+    color:#ef4444;
+
+    font-weight:600;
+
+}
+
+.dashboard-table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+/* ===================================
+   Settings Page
+=================================== */
+
+.settings-form{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+.form-group{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+    font-size:14px;
+    font-weight:600;
+    color:#334155;
+
+}
+
+.form-group input{
+
+    padding:12px 15px;
+    border:1px solid #dbe2ea;
+    border-radius:10px;
+    outline:none;
+    font-size:14px;
+    transition:.3s;
+
+}
+
+.form-group input:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+.form-group input[type="file"]{
+
+    padding:10px;
+    background:#f8fafc;
+
+}
+
+/* ===================================
+   Notification Settings
+=================================== */
+
+.setting-option{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.setting-option:last-child{
+
+    border-bottom:none;
+
+}
+
+.setting-option span{
+
+    font-size:15px;
+    color:#334155;
+    font-weight:500;
+
+}
+
+.setting-option input[type="checkbox"]{
+
+    width:20px;
+    height:20px;
+    cursor:pointer;
+
+}
+
+/* ===================================
+   Save Button
+=================================== */
+
+.save-btn{
+
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.save-btn i{
+
+    margin-right:10px;
+
+}
+
+.save-btn:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-2px);
+
+}
+
+/* ===================================
+   Responsive
+=================================== */
+
+@media(max-width:992px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .form-group input{
+
+        font-size:14px;
+
+    }
+
+    .setting-option{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+
+    }
+
+}
