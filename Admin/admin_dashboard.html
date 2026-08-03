@@ -1,820 +1,559 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Admin Dashboard</title>
 
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <div class="dashboard">
+      <!-- ================= Sidebar ================= -->
 
-<div class="dashboard">
-
-    <!-- ================= Sidebar ================= -->
-
-    <aside class="sidebar">
-
+      <aside class="sidebar">
         <div class="logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
 
-            <div class="logo-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
+          <div class="logo-content">
+            <h2>Student Career</h2>
 
-            <div class="logo-content">
-
-                <h2>Student Career</h2>
-
-                <p>& Scholarship Portal</p>
-
-            </div>
-
+            <p>& Scholarship Portal</p>
+          </div>
         </div>
 
         <ul class="sidebar-menu">
+          <li class="active">
+            <a href="dashboard.html">
+              <i class="fa-solid fa-house"></i>
 
-            <li class="active">
+              <span>Overview</span>
+            </a>
+          </li>
 
-                <a href="dashboard.html">
+          <li>
+            <a href="opportunity-verification.html">
+              <i class="fa-solid fa-circle-check"></i>
 
-                    <i class="fa-solid fa-house"></i>
+              <span>Verification</span>
+            </a>
+          </li>
 
-                    <span>Overview</span>
+          <li>
+            <a href="user-management.html">
+              <i class="fa-solid fa-users"></i>
 
-                </a>
+              <span>Users</span>
+            </a>
+          </li>
 
-            </li>
+          <li>
+            <a href="scholarship-management.html">
+              <i class="fa-solid fa-award"></i>
 
-            <li>
+              <span>Scholarships</span>
+            </a>
+          </li>
 
-                <a href="opportunity-verification.html">
+          <li>
+            <a href="career-management.html">
+              <i class="fa-solid fa-briefcase"></i>
 
-                    <i class="fa-solid fa-circle-check"></i>
+              <span>Careers</span>
+            </a>
+          </li>
 
-                    <span>Verification</span>
+          <li>
+            <a href="reports.html">
+              <i class="fa-solid fa-chart-line"></i>
 
-                </a>
+              <span>Reports</span>
+            </a>
+          </li>
 
-            </li>
+          <li>
+            <a href="settings.html">
+              <i class="fa-solid fa-gear"></i>
 
-            <li>
-
-                <a href="user-management.html">
-
-                    <i class="fa-solid fa-users"></i>
-
-                    <span>Users</span>
-
-                </a>
-
-            </li>
-
-            <li>
-
-                <a href="scholarship-management.html">
-
-                    <i class="fa-solid fa-award"></i>
-
-                    <span>Scholarships</span>
-
-                </a>
-
-            </li>
-
-            <li>
-
-                <a href="career-management.html">
-
-                    <i class="fa-solid fa-briefcase"></i>
-
-                    <span>Careers</span>
-
-                </a>
-
-            </li>
-
-            <li>
-
-                <a href="reports.html">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                    <span>Reports</span>
-
-                </a>
-
-            </li>
-
-            <li>
-
-                <a href="settings.html">
-
-                    <i class="fa-solid fa-gear"></i>
-
-                    <span>Settings</span>
-
-                </a>
-
-            </li>
-
+              <span>Settings</span>
+            </a>
+          </li>
         </ul>
 
         <div class="sidebar-footer">
+          <a href="../login.html" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
 
-            <a href="../login.html" class="logout">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                Logout
-
-            </a>
-
+            Logout
+          </a>
         </div>
+      </aside>
 
-    </aside>
+      <!-- ================= Main ================= -->
 
-    <!-- ================= Main ================= -->
-
-    <main class="main-content">
-
+      <main class="main-content">
         <!-- Top Navigation -->
 
         <header class="topbar">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-            <div class="search-box">
+            <input
+              type="text"
+              placeholder="Search opportunities, users, scholarships..."
+            />
+          </div>
 
-                <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="top-actions">
+            <button class="icon-btn">
+              <i class="fa-regular fa-bell"></i>
+            </button>
 
-                <input
-                    type="text"
-                    placeholder="Search opportunities, users, scholarships...">
+            <button class="icon-btn">
+              <i class="fa-regular fa-envelope"></i>
+            </button>
 
+            <div class="admin-info">
+              <img src="images/admin.jpg" alt="Admin" />
+
+              <div>
+                <h4>Admin User</h4>
+
+                <small>Administrator</small>
+              </div>
+
+              <i class="fa-solid fa-angle-down"></i>
             </div>
-
-            <div class="top-actions">
-
-                <button class="icon-btn">
-
-                    <i class="fa-regular fa-bell"></i>
-
-                </button>
-
-                <button class="icon-btn">
-
-                    <i class="fa-regular fa-envelope"></i>
-
-                </button>
-
-                <div class="admin-info">
-
-                    <img src="images/admin.jpg" alt="Admin">
-
-                    <div>
-
-                        <h4>Admin User</h4>
-
-                        <small>Administrator</small>
-
-                    </div>
-
-                    <i class="fa-solid fa-angle-down"></i>
-
-                </div>
-
-            </div>
-
+          </div>
         </header>
 
         <!-- ================= Dashboard Content ================= -->
 
         <section class="content">
-            <!-- ================= Welcome Banner ================= -->
+          <!-- ================= Welcome Banner ================= -->
 
-<div class="welcome-banner">
+          <div class="welcome-banner">
+            <div class="welcome-text">
+              <h1>Welcome Back, Admin 👋</h1>
 
-    <div class="welcome-text">
+              <p>
+                Manage scholarships, career opportunities, students and platform
+                activities from one place.
+              </p>
 
-        <h1>Welcome Back, Admin 👋</h1>
-
-        <p>
-            Manage scholarships, career opportunities,
-            students and platform activities from one place.
-        </p>
-
-        <a href="reports.html" class="banner-btn">
-            View Reports
-        </a>
-
-    </div>
-
-    <div class="welcome-image">
-
-        <i class="fa-solid fa-user-shield"></i>
-
-    </div>
-
-</div>
-
-<!-- ================= Dashboard Title ================= -->
-
-<div class="section-title">
-
-    <h2>Dashboard Overview</h2>
-
-    <p>Quick summary of the portal activities.</p>
-
-</div>
-
-<!-- ================= Statistics Cards ================= -->
-
-<div class="stats-grid">
-
-    <!-- Card 1 -->
-
-    <div class="stat-card">
-
-        <div class="card-icon blue">
-
-            <i class="fa-solid fa-users"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h3>1,250</h3>
-
-            <span>Total Users</span>
-
-        </div>
-
-    </div>
-
-    <!-- Card 2 -->
-
-    <div class="stat-card">
-
-        <div class="card-icon green">
-
-            <i class="fa-solid fa-award"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h3>86</h3>
-
-            <span>Scholarships</span>
-
-        </div>
-
-    </div>
-
-    <!-- Card 3 -->
-
-    <div class="stat-card">
-
-        <div class="card-icon orange">
-
-            <i class="fa-solid fa-briefcase"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h3>145</h3>
-
-            <span>Career Posts</span>
-
-        </div>
-
-    </div>
-
-    <!-- Card 4 -->
-
-    <div class="stat-card">
-
-        <div class="card-icon red">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h3>18</h3>
-
-            <span>Pending Verification</span>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= Quick Actions ================= -->
-
-<div class="section-title">
-
-    <h2>Quick Actions</h2>
-
-</div>
-
-<div class="quick-actions">
-
-    <a href="opportunity-verification.html" class="action-card">
-
-        <i class="fa-solid fa-circle-check"></i>
-
-        <h4>Verify Opportunities</h4>
-
-        <p>Approve or reject submitted opportunities.</p>
-
-    </a>
-
-    <a href="scholarship-management.html" class="action-card">
-
-        <i class="fa-solid fa-award"></i>
-
-        <h4>Manage Scholarships</h4>
-
-        <p>Create, update and remove scholarships.</p>
-
-    </a>
-
-    <a href="career-management.html" class="action-card">
-
-        <i class="fa-solid fa-briefcase"></i>
-
-        <h4>Manage Careers</h4>
-
-        <p>Publish and edit career opportunities.</p>
-
-    </a>
-
-    <a href="user-management.html" class="action-card">
-
-        <i class="fa-solid fa-users"></i>
-
-        <h4>User Management</h4>
-
-        <p>Manage students, admins and moderators.</p>
-
-    </a>
-
-</div>
-<!-- ================= Dashboard Grid ================= -->
-
-<div class="dashboard-grid">
-
-    <!-- ================= Left Section ================= -->
-
-    <div class="left-panel">
-
-        <!-- Recent Applications -->
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h3>Recent Applications</h3>
-
-                <a href="#">View All</a>
-
+              <a href="reports.html" class="banner-btn"> View Reports </a>
             </div>
 
-            <table class="dashboard-table">
+            <div class="welcome-image">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+          </div>
 
-                <thead>
+          <!-- ================= Dashboard Title ================= -->
 
-                    <tr>
+          <div class="section-title">
+            <h2>Dashboard Overview</h2>
 
-                        <th>Student</th>
-                        <th>Program</th>
-                        <th>Status</th>
+            <p>Quick summary of the portal activities.</p>
+          </div>
 
-                    </tr>
+          <!-- ================= Statistics Cards ================= -->
 
-                </thead>
+          <div class="stats-grid">
+            <!-- Card 1 -->
 
-                <tbody>
+            <div class="stat-card">
+              <div class="card-icon blue">
+                <i class="fa-solid fa-users"></i>
+              </div>
 
-                    <tr>
+              <div class="card-info">
+                <h3>1,250</h3>
 
-                        <td>Rahim Ahmed</td>
-
-                        <td>Merit Scholarship</td>
-
-                        <td>
-                            <span class="status pending">
-                                Pending
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Fatema Khan</td>
-
-                        <td>Internship</td>
-
-                        <td>
-                            <span class="status approved">
-                                Approved
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Hasan Ali</td>
-
-                        <td>Career Program</td>
-
-                        <td>
-                            <span class="status rejected">
-                                Rejected
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Nusrat Jahan</td>
-
-                        <td>Scholarship</td>
-
-                        <td>
-                            <span class="status approved">
-                                Approved
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- Pending Verification -->
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h3>Pending Verification</h3>
-
-                <a href="opportunity-verification.html">
-
-                    Verify All
-
-                </a>
-
+                <span>Total Users</span>
+              </div>
             </div>
 
-            <table class="dashboard-table">
+            <!-- Card 2 -->
 
-                <thead>
+            <div class="stat-card">
+              <div class="card-icon green">
+                <i class="fa-solid fa-award"></i>
+              </div>
 
-                    <tr>
+              <div class="card-info">
+                <h3>86</h3>
 
-                        <th>Opportunity</th>
-
-                        <th>Type</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>Google Internship</td>
-
-                        <td>Career</td>
-
-                        <td>
-
-                            <button class="approve-btn">
-
-                                Approve
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Prime Bank Scholarship</td>
-
-                        <td>Scholarship</td>
-
-                        <td>
-
-                            <button class="approve-btn">
-
-                                Approve
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Robi Graduate Program</td>
-
-                        <td>Career</td>
-
-                        <td>
-
-                            <button class="approve-btn">
-
-                                Approve
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-    <!-- ================= Right Section ================= -->
-
-    <div class="right-panel">
-
-        <!-- Recent Users -->
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h3>Recent Users</h3>
-
+                <span>Scholarships</span>
+              </div>
             </div>
 
-            <div class="user-item">
+            <!-- Card 3 -->
 
-                <img src="images/user1.jpg">
+            <div class="stat-card">
+              <div class="card-icon orange">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
 
-                <div>
+              <div class="card-info">
+                <h3>145</h3>
 
+                <span>Career Posts</span>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+
+            <div class="stat-card">
+              <div class="card-icon red">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+
+              <div class="card-info">
+                <h3>18</h3>
+
+                <span>Pending Verification</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= Quick Actions ================= -->
+
+          <div class="section-title">
+            <h2>Quick Actions</h2>
+          </div>
+
+          <div class="quick-actions">
+            <a href="opportunity-verification.html" class="action-card">
+              <i class="fa-solid fa-circle-check"></i>
+
+              <h4>Verify Opportunities</h4>
+
+              <p>Approve or reject submitted opportunities.</p>
+            </a>
+
+            <a href="scholarship-management.html" class="action-card">
+              <i class="fa-solid fa-award"></i>
+
+              <h4>Manage Scholarships</h4>
+
+              <p>Create, update and remove scholarships.</p>
+            </a>
+
+            <a href="career-management.html" class="action-card">
+              <i class="fa-solid fa-briefcase"></i>
+
+              <h4>Manage Careers</h4>
+
+              <p>Publish and edit career opportunities.</p>
+            </a>
+
+            <a href="user-management.html" class="action-card">
+              <i class="fa-solid fa-users"></i>
+
+              <h4>User Management</h4>
+
+              <p>Manage students, admins and moderators.</p>
+            </a>
+          </div>
+          <!-- ================= Dashboard Grid ================= -->
+
+          <div class="dashboard-grid">
+            <!-- ================= Left Section ================= -->
+
+            <div class="left-panel">
+              <!-- Recent Applications -->
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Recent Applications</h3>
+
+                  <a href="#">View All</a>
+                </div>
+
+                <table class="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th>Student</th>
+                      <th>Program</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Rahim Ahmed</td>
+
+                      <td>Merit Scholarship</td>
+
+                      <td>
+                        <span class="status pending"> Pending </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Fatema Khan</td>
+
+                      <td>Internship</td>
+
+                      <td>
+                        <span class="status approved"> Approved </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Hasan Ali</td>
+
+                      <td>Career Program</td>
+
+                      <td>
+                        <span class="status rejected"> Rejected </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Nusrat Jahan</td>
+
+                      <td>Scholarship</td>
+
+                      <td>
+                        <span class="status approved"> Approved </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pending Verification -->
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Pending Verification</h3>
+
+                  <a href="opportunity-verification.html"> Verify All </a>
+                </div>
+
+                <table class="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th>Opportunity</th>
+
+                      <th>Type</th>
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Google Internship</td>
+
+                      <td>Career</td>
+
+                      <td>
+                        <button class="approve-btn">Approve</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Prime Bank Scholarship</td>
+
+                      <td>Scholarship</td>
+
+                      <td>
+                        <button class="approve-btn">Approve</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Robi Graduate Program</td>
+
+                      <td>Career</td>
+
+                      <td>
+                        <button class="approve-btn">Approve</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ================= Right Section ================= -->
+
+            <div class="right-panel">
+              <!-- Recent Users -->
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Recent Users</h3>
+                </div>
+
+                <div class="user-item">
+                  <img src="images/user1.jpg" />
+
+                  <div>
                     <h4>Rahim Ahmed</h4>
 
                     <span>Student</span>
-
+                  </div>
                 </div>
 
-            </div>
+                <div class="user-item">
+                  <img src="images/user2.jpg" />
 
-            <div class="user-item">
-
-                <img src="images/user2.jpg">
-
-                <div>
-
+                  <div>
                     <h4>Nusrat Jahan</h4>
 
                     <span>Student</span>
-
+                  </div>
                 </div>
 
-            </div>
+                <div class="user-item">
+                  <img src="images/user3.jpg" />
 
-            <div class="user-item">
-
-                <img src="images/user3.jpg">
-
-                <div>
-
+                  <div>
                     <h4>Tanvir Hasan</h4>
 
                     <span>Moderator</span>
-
+                  </div>
                 </div>
 
-            </div>
+                <div class="user-item">
+                  <img src="images/admin.jpg" />
 
-            <div class="user-item">
-
-                <img src="images/admin.jpg">
-
-                <div>
-
+                  <div>
                     <h4>Admin User</h4>
 
                     <span>Administrator</span>
+                  </div>
+                </div>
+              </div>
 
+              <!-- System Status -->
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>System Status</h3>
                 </div>
 
+                <div class="system-item">
+                  <span>Server Status</span>
+
+                  <strong class="online"> Online </strong>
+                </div>
+
+                <div class="system-item">
+                  <span>Database</span>
+
+                  <strong class="online"> Connected </strong>
+                </div>
+
+                <div class="system-item">
+                  <span>Pending Reports</span>
+
+                  <strong> 08 </strong>
+                </div>
+
+                <div class="system-item">
+                  <span>Today's Logins</span>
+
+                  <strong> 321 </strong>
+                </div>
+              </div>
             </div>
+          </div>
+          <!-- ================= Recent Notifications ================= -->
 
-        </div>
+          <div class="notification-section">
+            <div class="card">
+              <div class="card-header">
+                <h3>Recent Notifications</h3>
 
-        <!-- System Status -->
+                <a href="#">View All</a>
+              </div>
 
-        <div class="card">
-
-            <div class="card-header">
-
-                <h3>System Status</h3>
-
-            </div>
-
-            <div class="system-item">
-
-                <span>Server Status</span>
-
-                <strong class="online">
-
-                    Online
-
-                </strong>
-
-            </div>
-
-            <div class="system-item">
-
-                <span>Database</span>
-
-                <strong class="online">
-
-                    Connected
-
-                </strong>
-
-            </div>
-
-            <div class="system-item">
-
-                <span>Pending Reports</span>
-
-                <strong>
-
-                    08
-
-                </strong>
-
-            </div>
-
-            <div class="system-item">
-
-                <span>Today's Logins</span>
-
-                <strong>
-
-                    321
-
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-<!-- ================= Recent Notifications ================= -->
-
-<div class="notification-section">
-
-    <div class="card">
-
-        <div class="card-header">
-
-            <h3>Recent Notifications</h3>
-
-            <a href="#">View All</a>
-
-        </div>
-
-        <div class="notification-list">
-
-            <div class="notification-item">
-
-                <div class="notify-icon blue">
+              <div class="notification-list">
+                <div class="notification-item">
+                  <div class="notify-icon blue">
                     <i class="fa-solid fa-user-plus"></i>
-                </div>
+                  </div>
 
-                <div class="notify-content">
-
+                  <div class="notify-content">
                     <h4>New Student Registered</h4>
 
                     <p>Rahim Ahmed created a new account.</p>
 
                     <span>2 minutes ago</span>
-
+                  </div>
                 </div>
 
-            </div>
-
-            <div class="notification-item">
-
-                <div class="notify-icon green">
+                <div class="notification-item">
+                  <div class="notify-icon green">
                     <i class="fa-solid fa-award"></i>
-                </div>
+                  </div>
 
-                <div class="notify-content">
-
+                  <div class="notify-content">
                     <h4>Scholarship Published</h4>
 
                     <p>Prime Bank Merit Scholarship is now live.</p>
 
                     <span>15 minutes ago</span>
-
+                  </div>
                 </div>
 
-            </div>
-
-            <div class="notification-item">
-
-                <div class="notify-icon orange">
+                <div class="notification-item">
+                  <div class="notify-icon orange">
                     <i class="fa-solid fa-briefcase"></i>
-                </div>
+                  </div>
 
-                <div class="notify-content">
-
+                  <div class="notify-content">
                     <h4>Career Opportunity Added</h4>
 
                     <p>Google Internship has been submitted.</p>
 
                     <span>30 minutes ago</span>
-
+                  </div>
                 </div>
 
-            </div>
-
-            <div class="notification-item">
-
-                <div class="notify-icon red">
+                <div class="notification-item">
+                  <div class="notify-icon red">
                     <i class="fa-solid fa-circle-check"></i>
-                </div>
+                  </div>
 
-                <div class="notify-content">
-
+                  <div class="notify-content">
                     <h4>Verification Required</h4>
 
                     <p>18 opportunities are waiting for approval.</p>
 
                     <span>1 hour ago</span>
-
+                  </div>
                 </div>
-
+              </div>
             </div>
+          </div>
 
-        </div>
+          <!-- ================= Footer ================= -->
 
+          <footer class="dashboard-footer">
+            <p>© 2026 Student Career & Scholarship Portal | Admin Dashboard</p>
+          </footer>
+        </section>
+      </main>
     </div>
 
-</div>
+    <!-- ================= JavaScript ================= -->
 
-<!-- ================= Footer ================= -->
-
-<footer class="dashboard-footer">
-
-    <p>
-        © 2026 Student Career & Scholarship Portal |
-        Admin Dashboard
-    </p>
-
-</footer>
-
-</section>
-
-</main>
-
-</div>
-
-<!-- ================= JavaScript ================= -->
-
-<script src="js/admin.js"></script>
-
-</body>
-
+    <script src="js/admin.js"></script>
+  </body>
 </html>
-
-

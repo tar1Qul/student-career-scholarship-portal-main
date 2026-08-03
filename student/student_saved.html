@@ -1,1019 +1,672 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Saved Opportunities | Student Career & Scholarship Portal</title>
 
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.css" />
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <!-- ================= SIDEBAR ================= -->
 
-<div class="container">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar">
-
+      <aside class="sidebar">
         <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
 
-            <i class="fa-solid fa-graduation-cap"></i>
-
-            <div class="logo-text">
-                <h2>Student Career</h2>
-                <p>& Scholarship Portal</p>
-            </div>
-
+          <div class="logo-text">
+            <h2>Student Career</h2>
+            <p>& Scholarship Portal</p>
+          </div>
         </div>
 
-
         <ul class="menu">
+          <li>
+            <a href="dashboard.html">
+              <i class="fa-solid fa-house"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
+          <li>
+            <a href="student_profile.html">
+              <i class="fa-solid fa-user"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
 
+          <li>
+            <a href="student_opportunities.html">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Career Opportunities</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="student_profile.html">
-                    <i class="fa-solid fa-user"></i>
-                    <span>My Profile</span>
-                </a>
-            </li>
+          <li>
+            <a href="student_scholarships.html">
+              <i class="fa-solid fa-award"></i>
+              <span>Scholarships</span>
+            </a>
+          </li>
 
+          <li>
+            <a href="student_applications.html">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>My Applications</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="student_opportunities.html">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <span>Career Opportunities</span>
-                </a>
-            </li>
+          <!-- ACTIVE -->
 
+          <li class="active">
+            <a href="student_saved.html">
+              <i class="fa-solid fa-bookmark"></i>
+              <span>Saved Opportunities</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="student_scholarships.html">
-                    <i class="fa-solid fa-award"></i>
-                    <span>Scholarships</span>
-                </a>
-            </li>
+          <li>
+            <a href="student_notifications.html">
+              <i class="fa-solid fa-bell"></i>
+              <span>Notifications</span>
+            </a>
+          </li>
 
+          <li>
+            <a href="student_settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="student_applications.html">
-                    <i class="fa-solid fa-file-lines"></i>
-                    <span>My Applications</span>
-                </a>
-            </li>
-
-
-            <!-- ACTIVE -->
-
-            <li class="active">
-                <a href="student_saved.html">
-                    <i class="fa-solid fa-bookmark"></i>
-                    <span>Saved Opportunities</span>
-                </a>
-            </li>
-
-
-            <li>
-                <a href="student_notifications.html">
-                    <i class="fa-solid fa-bell"></i>
-                    <span>Notifications</span>
-                </a>
-            </li>
-
-
-            <li>
-                <a href="student_settings.html">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-
-
-            <li class="logout">
-                <a href="../login.html">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-
+          <li class="logout">
+            <a href="../login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Logout</span>
+            </a>
+          </li>
         </ul>
+      </aside>
 
-    </aside>
+      <!-- ================= MAIN CONTENT ================= -->
 
-
-
-    <!-- ================= MAIN CONTENT ================= -->
-
-    <main class="main-content">
-
-
+      <main class="main-content">
         <!-- ================= TOPBAR ================= -->
 
         <header class="topbar">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-            <div class="search-box">
+            <input type="text" placeholder="Search saved opportunities..." />
+          </div>
 
-                <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="top-icons">
+            <i class="fa-regular fa-bell"></i>
 
-                <input
-                    type="text"
-                    placeholder="Search saved opportunities..."
-                >
-
-            </div>
-
-
-            <div class="top-icons">
-
-                <i class="fa-regular fa-bell"></i>
-
-                <img
-                    src="../images/Ihana.JPG"
-                    alt="Student Profile"
-                    class="profile-img"
-                >
-
-            </div>
-
+            <img
+              src="../images/Ihana.JPG"
+              alt="Student Profile"
+              class="profile-img"
+            />
+          </div>
         </header>
-
-
 
         <!-- ================= PAGE HEADER ================= -->
 
         <div class="section-title">
-
-            <h2>Saved Opportunities</h2>
-
+          <h2>Saved Opportunities</h2>
         </div>
 
-
-        <p style="color:#64748B; margin-bottom:30px;">
-            Keep track of jobs, internships and scholarships you want to explore later.
+        <p style="color: #64748b; margin-bottom: 30px">
+          Keep track of jobs, internships and scholarships you want to explore
+          later.
         </p>
-
-
 
         <!-- ================= SUMMARY CARDS ================= -->
 
         <div class="cards">
+          <div class="card">
+            <i class="fa-solid fa-bookmark"></i>
 
-            <div class="card">
+            <h3>12</h3>
 
-                <i class="fa-solid fa-bookmark"></i>
+            <p>Total Saved</p>
+          </div>
 
-                <h3>12</h3>
+          <div class="card">
+            <i class="fa-solid fa-briefcase"></i>
 
-                <p>Total Saved</p>
+            <h3>6</h3>
 
-            </div>
+            <p>Saved Jobs</p>
+          </div>
 
+          <div class="card">
+            <i class="fa-solid fa-user-graduate"></i>
 
-            <div class="card">
+            <h3>3</h3>
 
-                <i class="fa-solid fa-briefcase"></i>
+            <p>Saved Internships</p>
+          </div>
 
-                <h3>6</h3>
+          <div class="card">
+            <i class="fa-solid fa-award"></i>
 
-                <p>Saved Jobs</p>
+            <h3>3</h3>
 
-            </div>
-
-
-            <div class="card">
-
-                <i class="fa-solid fa-user-graduate"></i>
-
-                <h3>3</h3>
-
-                <p>Saved Internships</p>
-
-            </div>
-
-
-            <div class="card">
-
-                <i class="fa-solid fa-award"></i>
-
-                <h3>3</h3>
-
-                <p>Saved Scholarships</p>
-
-            </div>
-
+            <p>Saved Scholarships</p>
+          </div>
         </div>
-
-
 
         <!-- ================= FILTER ================= -->
 
         <div class="filter-bar">
+          <div class="filter-left">
+            <select>
+              <option>All Saved</option>
 
-            <div class="filter-left">
+              <option>Jobs</option>
 
-                <select>
+              <option>Internships</option>
 
-                    <option>All Saved</option>
+              <option>Scholarships</option>
+            </select>
 
-                    <option>Jobs</option>
+            <select>
+              <option>All Categories</option>
 
-                    <option>Internships</option>
+              <option>Software Engineering</option>
 
-                    <option>Scholarships</option>
+              <option>Web Development</option>
 
-                </select>
+              <option>Data Science</option>
 
+              <option>UI/UX Design</option>
+            </select>
 
-                <select>
+            <select>
+              <option>Sort by Recently Saved</option>
 
-                    <option>All Categories</option>
+              <option>Deadline</option>
 
-                    <option>Software Engineering</option>
+              <option>Opportunity Name</option>
 
-                    <option>Web Development</option>
+              <option>Company / Provider</option>
+            </select>
+          </div>
 
-                    <option>Data Science</option>
+          <button class="filter-btn">
+            <i class="fa-solid fa-filter"></i>
 
-                    <option>UI/UX Design</option>
-
-                </select>
-
-
-                <select>
-
-                    <option>Sort by Recently Saved</option>
-
-                    <option>Deadline</option>
-
-                    <option>Opportunity Name</option>
-
-                    <option>Company / Provider</option>
-
-                </select>
-
-            </div>
-
-
-            <button class="filter-btn">
-
-                <i class="fa-solid fa-filter"></i>
-
-                Apply Filter
-
-            </button>
-
+            Apply Filter
+          </button>
         </div>
-
-
 
         <!-- ================= SAVED OPPORTUNITIES ================= -->
 
         <div class="panel">
+          <div class="section-title">
+            <h2>My Saved Opportunities</h2>
+          </div>
 
-            <div class="section-title">
+          <!-- ================= SAVED 1 ================= -->
 
-                <h2>My Saved Opportunities</h2>
-
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-brands fa-google"></i>
             </div>
 
+            <div class="opportunity-content">
+              <h3>Software Engineer Intern</h3>
 
+              <h4>Google</h4>
 
-            <!-- ================= SAVED 1 ================= -->
+              <p>
+                Software engineering internship opportunity for students
+                interested in real-world technology projects.
+              </p>
 
-            <div class="opportunity-card">
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-location-dot"></i>
+                  Dhaka / Remote
+                </span>
 
-                <div class="opportunity-icon">
+                <span>
+                  <i class="fa-solid fa-clock"></i>
+                  Internship
+                </span>
 
-                    <i class="fa-brands fa-google"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Software Engineer Intern</h3>
-
-                    <h4>Google</h4>
-
-                    <p>
-                        Software engineering internship opportunity for students
-                        interested in real-world technology projects.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Dhaka / Remote
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-clock"></i>
-                            Internship
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 30 Aug 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 30 Aug 2026
+                </span>
+              </div>
             </div>
 
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
 
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
 
-            <!-- ================= SAVED 2 ================= -->
+          <!-- ================= SAVED 2 ================= -->
 
-            <div class="opportunity-card">
-
-                <div class="opportunity-icon">
-
-                    <i class="fa-brands fa-microsoft"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Software Development Intern</h3>
-
-                    <h4>Microsoft</h4>
-
-                    <p>
-                        Gain practical software development experience while
-                        working with an experienced engineering team.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Dhaka
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-clock"></i>
-                            Internship
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 05 Sep 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-brands fa-microsoft"></i>
             </div>
 
+            <div class="opportunity-content">
+              <h3>Software Development Intern</h3>
 
+              <h4>Microsoft</h4>
 
-            <!-- ================= SAVED 3 ================= -->
+              <p>
+                Gain practical software development experience while working
+                with an experienced engineering team.
+              </p>
 
-            <div class="opportunity-card">
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-location-dot"></i>
+                  Dhaka
+                </span>
 
-                <div class="opportunity-icon">
+                <span>
+                  <i class="fa-solid fa-clock"></i>
+                  Internship
+                </span>
 
-                    <i class="fa-solid fa-code"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Frontend Developer</h3>
-
-                    <h4>Brain Station 23</h4>
-
-                    <p>
-                        Build modern and responsive websites and web applications
-                        using current frontend technologies.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Dhaka
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-clock"></i>
-                            Full Time
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 15 Sep 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 05 Sep 2026
+                </span>
+              </div>
             </div>
 
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
 
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
 
-            <!-- ================= SAVED 4 ================= -->
+          <!-- ================= SAVED 3 ================= -->
 
-            <div class="opportunity-card">
-
-                <div class="opportunity-icon">
-
-                    <i class="fa-solid fa-database"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Junior Data Analyst</h3>
-
-                    <h4>DataSoft</h4>
-
-                    <p>
-                        Analyze business data and create useful insights using
-                        modern data analysis tools and techniques.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Dhaka
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-clock"></i>
-                            Full Time
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 20 Sep 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-code"></i>
             </div>
 
+            <div class="opportunity-content">
+              <h3>Frontend Developer</h3>
 
+              <h4>Brain Station 23</h4>
 
-            <!-- ================= SAVED 5 ================= -->
+              <p>
+                Build modern and responsive websites and web applications using
+                current frontend technologies.
+              </p>
 
-            <div class="opportunity-card">
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-location-dot"></i>
+                  Dhaka
+                </span>
 
-                <div class="opportunity-icon">
+                <span>
+                  <i class="fa-solid fa-clock"></i>
+                  Full Time
+                </span>
 
-                    <i class="fa-solid fa-award"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Google Generation Scholarship</h3>
-
-                    <h4>Google</h4>
-
-                    <p>
-                        Scholarship opportunity for students interested in
-                        computer science and technology.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-money-bill"></i>
-                            $2,500
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            Undergraduate
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 05 Sep 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 15 Sep 2026
+                </span>
+              </div>
             </div>
 
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
 
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
 
-            <!-- ================= SAVED 6 ================= -->
+          <!-- ================= SAVED 4 ================= -->
 
-            <div class="opportunity-card">
-
-                <div class="opportunity-icon">
-
-                    <i class="fa-solid fa-building-columns"></i>
-
-                </div>
-
-
-                <div class="opportunity-content">
-
-                    <h3>Prime Minister Scholarship</h3>
-
-                    <h4>Government of Bangladesh</h4>
-
-                    <p>
-                        Financial support for talented students pursuing
-                        higher education and academic development.
-                    </p>
-
-
-                    <div class="opportunity-meta">
-
-                        <span>
-                            <i class="fa-solid fa-money-bill"></i>
-                            Up to ৳100,000
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            Undergraduate
-                        </span>
-
-                        <span>
-                            <i class="fa-solid fa-calendar"></i>
-                            Deadline: 25 Aug 2026
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="opportunity-actions">
-
-                    <button
-                        class="table-btn view-btn"
-                        title="Remove from Saved">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                    </button>
-
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        Apply Now
-
-                    </a>
-
-                </div>
-
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-database"></i>
             </div>
 
+            <div class="opportunity-content">
+              <h3>Junior Data Analyst</h3>
+
+              <h4>DataSoft</h4>
+
+              <p>
+                Analyze business data and create useful insights using modern
+                data analysis tools and techniques.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-location-dot"></i>
+                  Dhaka
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-clock"></i>
+                  Full Time
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 20 Sep 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- ================= SAVED 5 ================= -->
+
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-award"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Google Generation Scholarship</h3>
+
+              <h4>Google</h4>
+
+              <p>
+                Scholarship opportunity for students interested in computer
+                science and technology.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  $2,500
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  Undergraduate
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 05 Sep 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- ================= SAVED 6 ================= -->
+
+          <div class="opportunity-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Prime Minister Scholarship</h3>
+
+              <h4>Government of Bangladesh</h4>
+
+              <p>
+                Financial support for talented students pursuing higher
+                education and academic development.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Up to ৳100,000
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  Undergraduate
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 25 Aug 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Remove from Saved">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
         </div>
-
-
 
         <!-- ================= SAVING TIPS ================= -->
 
-        <div class="dashboard-grid" style="margin-top:30px;">
+        <div class="dashboard-grid" style="margin-top: 30px">
+          <div class="left-content">
+            <div class="panel">
+              <div class="section-title">
+                <h2>Saved Opportunity Tips</h2>
+              </div>
 
-            <div class="left-content">
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-calendar-check"></i>
+                  Check Deadlines Regularly
+                </h4>
 
-                <div class="panel">
+                <p>
+                  Some saved opportunities may have approaching deadlines. Apply
+                  before they expire.
+                </p>
+              </div>
 
-                    <div class="section-title">
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-star"></i>
+                  Prioritize Important Opportunities
+                </h4>
 
-                        <h2>Saved Opportunity Tips</h2>
+                <p>
+                  Focus on opportunities that best match your skills, interests
+                  and career goals.
+                </p>
+              </div>
 
-                    </div>
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-bookmark"></i>
+                  Keep Your List Organized
+                </h4>
 
-
-                    <div class="notification-item">
-
-                        <h4>
-                            <i class="fa-solid fa-calendar-check"></i>
-                            Check Deadlines Regularly
-                        </h4>
-
-                        <p>
-                            Some saved opportunities may have approaching
-                            deadlines. Apply before they expire.
-                        </p>
-
-                    </div>
-
-
-                    <div class="notification-item">
-
-                        <h4>
-                            <i class="fa-solid fa-star"></i>
-                            Prioritize Important Opportunities
-                        </h4>
-
-                        <p>
-                            Focus on opportunities that best match your
-                            skills, interests and career goals.
-                        </p>
-
-                    </div>
-
-
-                    <div class="notification-item">
-
-                        <h4>
-                            <i class="fa-solid fa-bookmark"></i>
-                            Keep Your List Organized
-                        </h4>
-
-                        <p>
-                            Remove opportunities that are no longer relevant
-                            to keep your saved list useful.
-                        </p>
-
-                    </div>
-
-                </div>
-
+                <p>
+                  Remove opportunities that are no longer relevant to keep your
+                  saved list useful.
+                </p>
+              </div>
             </div>
+          </div>
 
+          <!-- ================= UPCOMING DEADLINES ================= -->
 
+          <div class="right-content">
+            <div class="panel">
+              <div class="section-title">
+                <h2>Upcoming Deadlines</h2>
+              </div>
 
-            <!-- ================= UPCOMING DEADLINES ================= -->
+              <ul class="deadline-list">
+                <li>
+                  <strong> Prime Minister Scholarship </strong>
 
-            <div class="right-content">
+                  <span> 25 Aug </span>
+                </li>
 
-                <div class="panel">
+                <li>
+                  <strong> Google Internship </strong>
 
-                    <div class="section-title">
+                  <span> 30 Aug </span>
+                </li>
 
-                        <h2>Upcoming Deadlines</h2>
+                <li>
+                  <strong> Google Generation Scholarship </strong>
 
-                    </div>
+                  <span> 05 Sep </span>
+                </li>
 
+                <li>
+                  <strong> Microsoft Internship </strong>
 
-                    <ul class="deadline-list">
+                  <span> 05 Sep </span>
+                </li>
 
-                        <li>
+                <li>
+                  <strong> Frontend Developer </strong>
 
-                            <strong>
-                                Prime Minister Scholarship
-                            </strong>
-
-                            <span>
-                                25 Aug
-                            </span>
-
-                        </li>
-
-
-                        <li>
-
-                            <strong>
-                                Google Internship
-                            </strong>
-
-                            <span>
-                                30 Aug
-                            </span>
-
-                        </li>
-
-
-                        <li>
-
-                            <strong>
-                                Google Generation Scholarship
-                            </strong>
-
-                            <span>
-                                05 Sep
-                            </span>
-
-                        </li>
-
-
-                        <li>
-
-                            <strong>
-                                Microsoft Internship
-                            </strong>
-
-                            <span>
-                                05 Sep
-                            </span>
-
-                        </li>
-
-
-                        <li>
-
-                            <strong>
-                                Frontend Developer
-                            </strong>
-
-                            <span>
-                                15 Sep
-                            </span>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
+                  <span> 15 Sep </span>
+                </li>
+              </ul>
             </div>
-
+          </div>
         </div>
-
-
 
         <!-- ================= QUICK ACTIONS ================= -->
 
-        <div class="quick-actions" style="margin-top:40px;">
+        <div class="quick-actions" style="margin-top: 40px">
+          <div class="section-title">
+            <h2>Quick Actions</h2>
+          </div>
 
-            <div class="section-title">
+          <div class="action-grid">
+            <div class="action-card">
+              <i class="fa-solid fa-briefcase"></i>
 
-                <h2>Quick Actions</h2>
+              <h4>Find Opportunities</h4>
 
+              <p>Explore more jobs and internships.</p>
+
+              <br />
+
+              <a href="student_opportunities.html" class="hero-btn">
+                Explore Jobs
+              </a>
             </div>
 
+            <div class="action-card">
+              <i class="fa-solid fa-award"></i>
 
-            <div class="action-grid">
+              <h4>Find Scholarships</h4>
 
+              <p>Discover scholarships that match your profile.</p>
 
-                <div class="action-card">
+              <br />
 
-                    <i class="fa-solid fa-briefcase"></i>
-
-                    <h4>Find Opportunities</h4>
-
-                    <p>
-                        Explore more jobs and internships.
-                    </p>
-
-                    <br>
-
-                    <a
-                        href="student_opportunities.html"
-                        class="hero-btn">
-
-                        Explore Jobs
-
-                    </a>
-
-                </div>
-
-
-                <div class="action-card">
-
-                    <i class="fa-solid fa-award"></i>
-
-                    <h4>Find Scholarships</h4>
-
-                    <p>
-                        Discover scholarships that match your profile.
-                    </p>
-
-                    <br>
-
-                    <a
-                        href="student_scholarships.html"
-                        class="hero-btn">
-
-                        Explore Scholarships
-
-                    </a>
-
-                </div>
-
-
-                <div class="action-card">
-
-                    <i class="fa-solid fa-file-lines"></i>
-
-                    <h4>My Applications</h4>
-
-                    <p>
-                        Track your submitted applications.
-                    </p>
-
-                    <br>
-
-                    <a
-                        href="student_applications.html"
-                        class="hero-btn">
-
-                        View Applications
-
-                    </a>
-
-                </div>
-
+              <a href="student_scholarships.html" class="hero-btn">
+                Explore Scholarships
+              </a>
             </div>
 
+            <div class="action-card">
+              <i class="fa-solid fa-file-lines"></i>
+
+              <h4>My Applications</h4>
+
+              <p>Track your submitted applications.</p>
+
+              <br />
+
+              <a href="student_applications.html" class="hero-btn">
+                View Applications
+              </a>
+            </div>
+          </div>
         </div>
-
-
 
         <!-- ================= FOOTER ================= -->
 
         <footer class="dashboard-footer">
+          <div class="footer-content">
+            <div>
+              <h3>Student Career & Scholarship Portal</h3>
 
-            <div class="footer-content">
-
-                <div>
-
-                    <h3>
-                        Student Career & Scholarship Portal
-                    </h3>
-
-                    <p>
-                        Helping students discover career opportunities,
-                        scholarships and build a successful future.
-                    </p>
-
-                </div>
-
-
-                <div class="footer-links">
-
-                    <a href="dashboard.html">
-                        Dashboard
-                    </a>
-
-                    <a href="student_opportunities.html">
-                        Career Opportunities
-                    </a>
-
-                    <a href="student_scholarships.html">
-                        Scholarships
-                    </a>
-
-                    <a href="student_applications.html">
-                        My Applications
-                    </a>
-
-                </div>
-
+              <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+              </p>
             </div>
 
+            <div class="footer-links">
+              <a href="dashboard.html"> Dashboard </a>
 
-            <hr>
+              <a href="student_opportunities.html"> Career Opportunities </a>
 
+              <a href="student_scholarships.html"> Scholarships </a>
 
-            <p class="copyright">
+              <a href="student_applications.html"> My Applications </a>
+            </div>
+          </div>
 
-                © 2026 Student Career & Scholarship Portal.
-                All Rights Reserved.
+          <hr />
 
-            </p>
-
+          <p class="copyright">
+            © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+          </p>
         </footer>
-
-
-    </main>
-
-</div>
-
-</body>
-
+      </main>
+    </div>
+  </body>
 </html>
