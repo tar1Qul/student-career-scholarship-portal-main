@@ -185,6 +185,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  margin-left: auto;
 }
 
 /* ===========================
@@ -798,18 +799,57 @@ body {
 
 .dashboard-footer {
   margin-top: 30px;
-
-  text-align: center;
-
-  padding: 20px;
-
-  color: #64748b;
-
-  font-size: 14px;
-
-  border-top: 1px solid #e5e7eb;
+  padding: 30px 50px;
+  border: 1px solid #e8edf4;
+  border-radius: 11px;
+  background: #0f172a;
 }
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-content h3 {
+  margin-bottom: 6px;
+  color: #eae1e1;
+  font-size: 14px;
+}
+
+.footer-content p {
+  max-width: 450px;
+  color: #eae1e1;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-links a {
+  color: #eae1e1;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: #60a5fa;
+}
+
+.dashboard-footer hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid #334155;
+}
+
+.dashboard-footer .copyright {
+  text-align: center;
+  color: #eae1e1;
+  font-size: 10px;
+}
 /* ===================================
    Smooth Animation
 =================================== */
@@ -1486,4 +1526,16 @@ body {
     align-items: flex-start;
     gap: 10px;
   }
+}
+
+@media (max-width: 768px) {
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .dashboard-footer {
+    padding: 25px;
+  }
+
 }
