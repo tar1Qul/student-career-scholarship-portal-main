@@ -785,29 +785,6 @@ nav a {
 
 
 
-/* =========================
- FOOTER
-========================= */
-
-
-footer {
-
-    background: white;
-    padding: 50px 8%;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 30px;
-
-}
-
-
-footer p {
-
-    color: #64748b;
-    margin-top: 10px;
-    font-size: 14px;
-
-}
 
 
 
