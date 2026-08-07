@@ -246,18 +246,6 @@ cards.forEach(function (card) {
 const loginButton = document.querySelector(".login");
 
 
-loginButton.addEventListener("click", function (e) {
-
-
-    e.preventDefault();
-
-
-    alert(
-        "Login page will be connected with PHP."
-    );
-
-
-});
 
 
 
