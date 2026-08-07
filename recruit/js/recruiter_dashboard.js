@@ -268,17 +268,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // New Opportunity Button
     // ======================================
 
-    const newButtons = document.querySelectorAll(".primary-btn, .new-btn");
+    // const newButtons = document.querySelectorAll(".primary-btn, .new-btn");
 
-    newButtons.forEach(btn => {
+    // newButtons.forEach(btn => {
 
-        btn.addEventListener("click", () => {
+    //     btn.addEventListener("click", () => {
 
-            alert("Redirect to Post Opportunity page.");
+    //         alert("Redirect to Post Opportunity page.");
 
-        });
+    //     });
 
-    });
+    // });
 
     // ======================================
     // Stat Card Hover Counter Animation
@@ -365,27 +365,37 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
 
     const dashboardBtn = document.querySelector('a.active');
-    const postBtn = document.querySelectorAll('a')[1];
+    const postBtn = document.getElementById("post_opportunity_btn");
 
     const dashboard1 = document.getElementById("dashboard_1");
     const dashboard2 = document.getElementById("dashboard_2");
 
-    // Show Dashboard by default
+
+    // Show Dashboard 1 by default
     dashboard1.style.display = "block";
     dashboard2.style.display = "none";
 
+
+    // Sidebar Dashboard button
     dashboardBtn.addEventListener("click", function (e) {
+
         e.preventDefault();
 
         dashboard1.style.display = "block";
         dashboard2.style.display = "none";
+
     });
 
+
+    // Post New Opportunity button
     postBtn.addEventListener("click", function (e) {
+
         e.preventDefault();
 
         dashboard1.style.display = "none";
         dashboard2.style.display = "block";
+
     });
+
 
 });
