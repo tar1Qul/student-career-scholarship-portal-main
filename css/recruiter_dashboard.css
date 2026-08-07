@@ -47,7 +47,8 @@ body {
 .dashboard {
 
     display: flex;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    /* width: 320px; */
 
 }
 
@@ -58,7 +59,7 @@ body {
 .sidebar {
 
     width: 260px;
-    background: var(--white);
+    background: #111827;
     border-right: 1px solid var(--border);
 
     display: flex;
@@ -115,18 +116,18 @@ body {
 
 }
 
-.logo-text h2 {
+.logo-text h4 {
 
     font-size: 22px;
     font-weight: 700;
-    color: var(--text);
+    color:#cbd5e1;
 
 }
 
 .logo-text span {
 
     font-size: 13px;
-    color: var(--text-light);
+    color: #cbd5e1;
 
 }
 
@@ -147,44 +148,44 @@ body {
 }
 
 .sidebar-menu a {
-
-    text-decoration: none;
-
-    color: var(--text);
-
     display: flex;
     align-items: center;
     gap: 14px;
-
-    padding: 15px 18px;
-
-    border-radius: 14px;
-
-    transition: var(--transition);
-
-    font-size: 15px;
-    font-weight: 500;
-
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #cbd5e1;
+    /* Dashboard & Post Opportunity text color */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 15px;
 }
 
+/* Keep icons the same color as the text */
 .sidebar-menu a i {
+    color: #cbd5e1;
+}
 
-    width: 22px;
-    text-align: center;
+/* Active state */
+.sidebar-menu a.active {
+    color: #cbd5e1;
+}
 
+/* Hover effect */
+.sidebar-menu a:hover {
+    color: #ffffff;
+    /* Optional: brighter on hover */
 }
 
 .sidebar-menu a:hover {
 
-    background: #edf4ff;
-    color: var(--primary);
+    background: #2563eb;
+    color:#ffffff ;
 
 }
 
 .sidebar-menu .active {
 
-    background: #edf4ff;
-    color: var(--primary);
+    background: #2563eb;
+    color: black;
     font-weight: 600;
 
 }
@@ -261,6 +262,22 @@ body {
 
 }
 
+
+.logout {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    text-decoration: none;
+    background: #ef4444;
+    color: #fff;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.logout:hover {
+    background: #dc2626;
+}
 /* ================================
           MAIN CONTENT
 ================================ */
