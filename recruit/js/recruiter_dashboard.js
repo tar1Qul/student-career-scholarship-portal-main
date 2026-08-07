@@ -9,15 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // Sidebar Active Menu
     // ======================================
 
+    // const menuItems = document.querySelectorAll(".sidebar-menu a");
+
+    // menuItems.forEach(item => {
+
+    //     item.addEventListener("click", function (e) {
+
+    //         e.preventDefault();
+
+    //         menuItems.forEach(link => link.classList.remove("active"));
+
+    //         this.classList.add("active");
+
+    //     });
+
+    // });
+
     const menuItems = document.querySelectorAll(".sidebar-menu a");
 
     menuItems.forEach(item => {
 
-        item.addEventListener("click", function (e) {
+        item.addEventListener("click", function () {
 
-            e.preventDefault();
-
-            menuItems.forEach(link => link.classList.remove("active"));
+            menuItems.forEach(link => {
+                link.classList.remove("active");
+            });
 
             this.classList.add("active");
 
@@ -360,42 +376,133 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// post_opportunity toggole
+// ==========================================
+// POST OPPORTUNITY TOGGLE
+// ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const dashboardBtn = document.querySelector('a.active');
-    const postBtn = document.getElementById("post_opportunity_btn");
+    // ==========================================
+    // GET ELEMENTS
+    // ==========================================
 
-    const dashboard1 = document.getElementById("dashboard_1");
-    const dashboard2 = document.getElementById("dashboard_2");
+    const dashboardBtn =
+        document.querySelector('a.active');
+
+    const postBtn =
+        document.getElementById("post_opportunity_btn");
+
+    const dashboard1 =
+        document.getElementById("dashboard_1");
+
+    const dashboard2 =
+        document.getElementById("dashboard_2");
 
 
-    // Show Dashboard 1 by default
-    dashboard1.style.display = "block";
-    dashboard2.style.display = "none";
+    // Footer buttons
+    const footerDashboardBtn =
+        document.getElementById("footer-dashboard-btn");
+
+    const footerPostBtn =
+        document.getElementById("footer-post-btn");
 
 
-    // Sidebar Dashboard button
-    dashboardBtn.addEventListener("click", function (e) {
+    // ==========================================
+    // SHOW DASHBOARD 1
+    // ==========================================
 
-        e.preventDefault();
+    function showDashboard1() {
 
         dashboard1.style.display = "block";
         dashboard2.style.display = "none";
 
-    });
+    }
 
 
-    // Post New Opportunity button
-    postBtn.addEventListener("click", function (e) {
+    // ==========================================
+    // SHOW DASHBOARD 2
+    // ==========================================
 
-        e.preventDefault();
+    function showDashboard2() {
 
         dashboard1.style.display = "none";
         dashboard2.style.display = "block";
 
-    });
+    }
 
+
+    // ==========================================
+    // DEFAULT PAGE
+    // ==========================================
+
+    showDashboard1();
+
+
+    // ==========================================
+    // SIDEBAR DASHBOARD BUTTON
+    // ==========================================
+
+    if (dashboardBtn) {
+
+        dashboardBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            showDashboard1();
+
+        });
+
+    }
+
+
+    // ==========================================
+    // SIDEBAR POST OPPORTUNITY BUTTON
+    // ==========================================
+
+    if (postBtn) {
+
+        postBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            showDashboard2();
+
+        });
+
+    }
+
+
+    // ==========================================
+    // FOOTER DASHBOARD BUTTON
+    // ==========================================
+
+    if (footerDashboardBtn) {
+
+        footerDashboardBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            showDashboard1();
+
+        });
+
+    }
+
+
+    // ==========================================
+    // FOOTER POST OPPORTUNITY BUTTON
+    // ==========================================
+
+    if (footerPostBtn) {
+
+        footerPostBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            showDashboard2();
+
+        });
+
+    }
 
 });
