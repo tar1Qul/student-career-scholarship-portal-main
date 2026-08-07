@@ -179,165 +179,136 @@
         
         
         
-                            <form id="profileForm">
-        
-        
-                                <div class="form-grid">
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Full Name
-                                        </label>
-        
-                                        <input type="text" value="Talent - Google" disabled>
-        
-                                    </div>
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Email
-                                        </label>
-        
-                                        <input type="email" value="campus@google.com" disabled>
-        
-                                    </div>
-        
-        
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Password
-                                        </label>
-        
-                                        <input type="password" value="12345678" disabled>
-        
-                                    </div>
-        
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Phone
-                                        </label>
-        
-                                        <input type="text" value="+8801887964407" disabled>
-        
-                                    </div>
-        
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Organization
-                                        </label>
-        
-                                        <input type="text" value="Google" disabled>
-        
-                                    </div>
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Designation
-                                        </label>
-        
-                                        <input type="text" value="Talent Acquisition Manager" disabled>
-        
-                                    </div>
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Industry
-                                        </label>
-        
-                                        <input type="text" value="Technology" disabled>
-        
-                                    </div>
-        
-        
-        
-        
-                                    <div class="form-group">
-        
-                                        <label>
-                                            Location
-                                        </label>
-        
-                                        <input type="text" value="Dhaka, Bangladesh" disabled>
-        
-                                    </div>
-        
-        
-        
-                                </div>
-        
-        
-        
-        
-        
-                                <div class="form-group full">
-        
-        
-                                    <label>
-                                        About Organization
+                            <div class="form-grid">
+                            
+                                <!-- Full Name -->
+                                <div class="form-group">
+                            
+                                    <label for="fullName">
+                                        Full Name
                                     </label>
-        
-        
-                                    <textarea disabled>
-        
-                    Google is a global technology company focusing on innovation, software development and digital solutions.
-                    
-                                    </textarea>
-        
-        
+                            
+                                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name">
+                            
                                 </div>
-        
-        
-        
-        
-                                <div class="buttons">
-        
-        
-                                    <button type="button" id="editBtn" class="edit-btn">
-        
-                                        Edit Profile
-        
-                                    </button>
-        
-        
-        
-                                    <button type="submit" class="save-btn">
-        
-                                        Save Changes
-        
-                                    </button>
-        
-        
-        
+                            
+                            
+                                <!-- Email -->
+                                <div class="form-group">
+                            
+                                    <label for="email">
+                                        Email
+                                    </label>
+                            
+                                    <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email">
+                            
                                 </div>
-        
-        
-        
-                            </form>
-        
+                            
+                            
+                                <!-- Password -->
+                                <div class="form-group">
+                            
+                                    <label for="password">
+                                        Password
+                                    </label>
+                            
+                                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                                        autocomplete="new-password">
+                            
+                                </div>
+                            
+                            
+                                <!-- Phone -->
+                                <div class="form-group">
+                            
+                                    <label for="phone">
+                                        Phone
+                                    </label>
+                            
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="tel">
+                            
+                                </div>
+                            
+                            
+                                <!-- Organization -->
+                                <div class="form-group">
+                            
+                                    <label for="organization">
+                                        Organization
+                                    </label>
+                            
+                                    <input type="text" id="organization" name="organization" placeholder="Enter your organization"
+                                        autocomplete="organization">
+                            
+                                </div>
+                            
+                            
+                                <!-- Designation -->
+                                <div class="form-group">
+                            
+                                    <label for="designation">
+                                        Designation
+                                    </label>
+                            
+                                    <input type="text" id="designation" name="designation" placeholder="e.g. Talent Acquisition Manager">
+                            
+                                </div>
+                            
+                            
+                                <!-- Industry -->
+                                <div class="form-group">
+                            
+                                    <label for="industry">
+                                        Industry
+                                    </label>
+                            
+                                    <input type="text" id="industry" name="industry" placeholder="e.g. Technology">
+                            
+                                </div>
+                            
+                            
+                                <!-- Location -->
+                                <div class="form-group">
+                            
+                                    <label for="location">
+                                        Location
+                                    </label>
+                            
+                                    <input type="text" id="location" name="location" placeholder="e.g. Dhaka, Bangladesh"
+                                        autocomplete="address-level2">
+                            
+                                </div>
+                            
+                            </div>
+                            
+                            
+                            <!-- About Organization -->
+                            
+                            <div class="form-group full">
+                            
+                                <label for="aboutOrganization">
+                                    About Organization
+                                </label>
+                            
+                                <textarea id="aboutOrganization" name="aboutOrganization" rows="6"
+                                    placeholder="Tell students about your organization, its work, culture, and opportunities..."></textarea>
+                            
+                            </div>
+                            
+                            
+                            <!-- Buttons -->
+                            
+                            <div class="buttons">
+                            
+                                <button type="button" id="editBtn" class="edit-btn">
+                                    Edit Profile
+                                </button>
+                            
+                                <button type="submit" class="save-btn">
+                                    Save Changes
+                                </button>
+                            
+                            </div>
         
         
                         </div>
