@@ -1,60 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register - Student Career & Scholarship Portal</title>
-<link rel="stylesheet" href="register.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Career & Scholarship Portal</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
 <body>
 
-<div class="container">
+<nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Student Career & Scholarship Portal
+    </a>
 
-<div class="register-box">
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../career-opportunities.html">Career Opportunities</a>
+        <a href="../scholarship-management.html">Scholarships</a>
+        <a href="login.html" class="nav-login">Login</a>
+    </div>
+</nav>
 
-<h2>Create Account</h2>
-<p>Join the Student Career & Scholarship Portal</p>
+<main class="register-page">
 
-<form action="#" method="post">
+    <section class="register-left">
+        <div class="left-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Student Career & Scholarship Portal
+        </div>
 
-<div class="input-box">
-<label>Full Name</label>
-<input type="text" placeholder="Enter your name" required>
-</div>
+        <h1>Unlock 1,200+ verified scholarships and careers.</h1>
 
-<div class="input-box">
-<label>Email Address</label>
-<input type="email" placeholder="Enter your email" required>
-</div>
+        <p class="lead">
+            Build your profile once. We'll match you with opportunities
+            and remind you before every deadline.
+        </p>
 
-<div class="input-box">
-<label>Phone Number</label>
-<input type="text" placeholder="Enter phone number" required>
-</div>
+        <div class="stats">
+            <div class="stat">
+                <strong>8.4k</strong>
+                <span>Students</span>
+            </div>
 
-<div class="input-box">
-<label>Password</label>
-<input type="password" placeholder="Create password" required>
-</div>
+            <div class="stat">
+                <strong>1.2k</strong>
+                <span>Opportunities</span>
+            </div>
 
-<div class="input-box">
-<label>Confirm Password</label>
-<input type="password" placeholder="Confirm password" required>
-</div>
+            <div class="stat">
+                <strong>94%</strong>
+                <span>Match rate</span>
+            </div>
+        </div>
+    </section>
 
-<button type="submit">Create Account</button>
+    <section class="register-right">
+        <div class="form-wrap">
 
-<p class="login">
-Already have an account?
-<a href="login.html">Login Here</a>
-</p>
+            <h2>Create student account</h2>
 
-</form>
+            <p class="form-subtitle">
+                Already have one?
+                <a href="login.html">Login instead</a>
+            </p>
 
-</div>
+            <form action="#" method="post">
 
-</div>
+                <div class="photo-row">
+                    <div class="photo-circle">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    </div>
 
+                    <div class="photo-info">
+                        <strong>Profile photo</strong>
+                        <small>PNG or JPG, up to 2MB.</small>
+
+                        <label class="upload-btn">
+                            Upload
+                            <input type="file" accept=".png,.jpg,.jpeg">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="input-box">
+                        <label for="name">Full name</label>
+                        <input id="name" type="text" placeholder="Aisha Khan" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="aisha@univ.edu" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="tel" placeholder="+1 555 0100" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="university">University</label>
+                        <input id="university" type="text" placeholder="MIT" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="department">Department</label>
+                        <input id="department" type="text" placeholder="Computer Science" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="cgpa">CGPA</label>
+                        <input id="cgpa" type="text" placeholder="3.8 / 4.0">
+                    </div>
+
+                </div>
+
+                <button type="submit" class="create-btn">Create account</button>
+
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <h3>Student Career & Scholarship Portal</h3>
+
+            <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="../user-management.html">User Management</a>
+            <a href="../career-opportunities.html">Career Opportunities</a>
+            <a href="../scholarship-management.html">Scholarships</a>
+            <a href="../reports.html">Reports</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+        © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+    </p>
+</footer>
+
+<script src="../js/admin.js"></script>
 </body>
 </html>

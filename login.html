@@ -1,31 +1,119 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
-    <title>Login</title>
-    <link rel='stylesheet' href='login.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Career & Scholarship Portal</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
 <body>
-    <div class='wrap'>
-        <div class='card'>
-            <div class='logo'><i class='fa-solid fa-graduation-cap'></i></div>
-            <h4>Student Career & Scholarship Portal</h4>
-            <h1>Welcome back</h1>
-            <p>Sign in to continue to your dashboard.</p>
-            <div class='tabs'><button class='tab active' data-role='Student'>Student</button><button class='tab'
-                    data-role='Recruiter'>Recruiter</button><button class='tab' data-role='Admin'>Admin</button></div>
-            <label>Email address</label><input placeholder='example@ulab.edu.bd'><label>Password</label>
-            <div class='pass'><input type='password' placeholder='********'><i class='fa-regular fa-eye'></i></div>
-            <div class='opts'><label><input type='checkbox'> Remember me for 30 days</label><a href='#'>Forgot
-                    password?</a></div><button id='signin'>Sign in as Student →</button>
-            <div class='reg'>New to CareerScope? <a href='register.html'>Create account</a></div>
+
+<nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Student Career & Scholarship Portal
+    </a>
+
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../career-opportunities.html">Career Opportunities</a>
+        <a href="../scholarship-management.html">Scholarships</a>
+        <a href="register.html" class="nav-register">Register</a>
+    </div>
+</nav>
+
+<main class="login-main">
+    <div class="card">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <div class="brand-title">Student Career & Scholarship Portal</div>
+
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to continue to your dashboard.</p>
+
+        <div class="tabs">
+            <button class="tab active" data-role="Student">Student</button>
+            <button class="tab" data-role="Recruiter">Recruiter</button>
+            <button class="tab" data-role="Admin">Admin</button>
+        </div>
+
+        <label class="field-label">Email address</label>
+        <input type="email" placeholder="example@univ.edu">
+
+        <label class="field-label">Password</label>
+        <div class="pass">
+            <input id="password" type="password" placeholder="Enter your password">
+            <i id="togglePassword" class="fa-regular fa-eye"></i>
+        </div>
+
+        <div class="opts">
+            <label class="remember">
+                <input type="checkbox">
+                Remember me for 30 days
+            </label>
+            <a href="#">Forgot password?</a>
+        </div>
+
+        <button id="signin">Sign in as Student →</button>
+
+        <div class="reg">
+            New to Student Career & Scholarship Portal?
+            <a href="register.html">Create account</a>
         </div>
     </div>
-    <script>const t = document.querySelectorAll('.tab'), b = document.getElementById('signin'); t.forEach(x => x.onclick = () => { t.forEach(a => a.classList.remove('active')); x.classList.add('active'); b.textContent = 'Sign in as ' + x.dataset.role + ' →'; });</script>
-</body>
+</main>
 
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <h3>Student Career & Scholarship Portal</h3>
+            <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="../user-management.html">User Management</a>
+            <a href="../career-opportunities.html">Career Opportunities</a>
+            <a href="../scholarship-management.html">Scholarships</a>
+            <a href="../reports.html">Reports</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+        © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+    </p>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const signInButton = document.getElementById('signin');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(item => item.classList.remove('active'));
+            tab.classList.add('active');
+            signInButton.textContent = 'Sign in as ' + tab.dataset.role + ' →';
+        });
+    });
+
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+        const isPassword = password.type === 'password';
+        password.type = isPassword ? 'text' : 'password';
+        togglePassword.classList.toggle('fa-eye');
+        togglePassword.classList.toggle('fa-eye-slash');
+    });
+</script>
+
+<script src="../js/admin.js"></script>
+</body>
 </html>
