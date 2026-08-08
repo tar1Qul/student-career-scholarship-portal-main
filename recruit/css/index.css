@@ -32,217 +32,143 @@ body {
     background: var(--background);
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* =========================================
+   MAIN HEADER
+========================================= */
+
+.main-header {
     width: 100%;
-    height: 70px;
-    background: #0f172a;
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #e7edf7;
+    position: sticky;
+    top: 0;
     z-index: 1000;
 }
 
-/* ===========================
-   Logo Section
-=========================== */
 
-.logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-
+.header-container {
     width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
 
-    padding: 22px;
+    padding: 0 8%;
 
-    background: #ffffff;
-
-    border-bottom: 1px solid var(--border);
-}
-
-/* Icon Box */
-
-.logo-icon {
-    width: 50px;
-    height: 50px;
-
-    background: var(--primary);
-
-    border-radius: 12px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex-shrink: 0;
-}
-
-/* Font Awesome Icon */
-
-.logo-icon i {
-    font-size: 24px;
-    color: #ffffff;
-}
-
-/* Text */
-
-.logo-text {
-    display: flex;
-    align-items: center;
-}
-
-.logo-text h2 {
-    font-size: 30px;
-    font-weight: 800;
-    color: var(--text);
-    margin: 0;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-body {
-
-    background: #f8fbff;
-    color: #172033;
-
-}
-
-
-a {
-
-    text-decoration: none;
-    color: inherit;
-
-}
-
-
-section {
-
-    padding: 70px 8%;
-
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-
-header {
-
-    height: 70px;
-    background: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8%;
-    border-bottom: 1px solid #e7edf7;
-
 }
 
 
-
-.logo {
-    display:flex;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 700;
-    color: #1d293f;
-
-}
+/* =========================================
+   LOGO
+========================================= */
 
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+
     text-decoration: none;
-    color: inherit;
+    color: #1e293b;
 }
 
+
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
+
     background: #2563eb;
-    border-radius: 12px;
+    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    flex-shrink: 0;
 }
+
 
 .logo-icon i {
-    color: #fff;
-    font-size: 18px;
+    color: white;
+    font-size: 15px;
 }
+
 
 .logo-text h3 {
     margin: 0;
-    font-size: 16px;
+
+    font-size: 14px;
     font-weight: 700;
+
     color: #1e293b;
-    line-height: 1.2;
-}
-
-.logo span {
-
-    color: #2563eb;
-
 }
 
 
+/* =========================================
+   NAVIGATION
+========================================= */
 
-nav {
-
+.main-nav {
     display: flex;
     align-items: center;
-    gap: 30px;
-    font-size: 14px;
-
+    gap: 25px;
 }
 
 
-nav a {
-
+.main-nav a {
     text-decoration: none;
 
     color: #475569;
 
-    font-size: 14px;
+    font-size: 11px;
+    font-weight: 500;
 
-    transition: .25s;
-
+    transition: 0.25s;
 }
 
 
-.login {
-
-    color: #2563eb !important;
-
+.main-nav a:hover {
+    color: #2563eb;
 }
 
 
+.main-nav .nav-active {
+    color: #1e293b;
+    font-weight: 600;
+}
 
-.signup {
 
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-btn {
+    margin-left: 20px;
+
+    color: #1e293b !important;
+}
+
+
+/* =========================================
+   REGISTER BUTTON
+========================================= */
+
+.register-btn {
     background: #2563eb;
-    color: white;
-    border: 0;
-    padding: 10px 18px;
-    border-radius: 20px;
-    cursor: pointer;
 
+    color: white !important;
+
+    padding: 8px 16px;
+
+    border-radius: 9px;
+
+    font-weight: 600 !important;
 }
 
+
+.register-btn:hover {
+    background: #1d4ed8;
+}
 
 
 
@@ -852,7 +778,503 @@ nav a {
         display: none;
 
     }
+}
+/* =========================================
+   HERO RIGHT VISUAL
+========================================= */
+
+.hero-image {
+    width: 42%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
+.visual-background {
+    width: 390px;
+    height: 350px;
 
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbe7ff 0%,
+            #e7f0ff 45%,
+            #e3f8f4 100%
+        );
+
+    border-radius: 28px;
+}
+
+
+/* =========================================
+   MAIN MOCKUP
+========================================= */
+
+.mockup-card {
+    position: absolute;
+
+    width: 275px;
+    height: 220px;
+
+    top: 56px;
+    left: 58px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 18px 40px rgba(37, 99, 235, 0.12);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BROWSER BAR
+========================================= */
+
+.browser-bar {
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px;
+
+    border-bottom: 1px solid #edf1f7;
+}
+
+
+.browser-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    margin-right: 5px;
+}
+
+
+.browser-dot.red {
+    background: #ff7b7b;
+}
+
+
+.browser-dot.yellow {
+    background: #ffd166;
+}
+
+
+.browser-dot.green {
+    background: #56d6a5;
+}
+
+
+.browser-line {
+    height: 8px;
+
+    width: 170px;
+
+    margin-left: 12px;
+
+    background: #edf2f8;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MOCKUP CONTENT
+========================================= */
+
+.mockup-content {
+    padding: 20px 14px;
+}
+
+
+.mock-row {
+    height: 42px;
+
+    margin-bottom: 10px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 7px 10px;
+}
+
+
+.mock-icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 10px;
+
+    font-size: 11px;
+}
+
+
+.mock-icon.blue {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+
+.mock-icon.green {
+    background: #d9f8ef;
+    color: #16a085;
+}
+
+
+.mock-icon.orange {
+    background: #ffe9c7;
+    color: #f59e0b;
+}
+
+
+.mock-lines {
+    flex: 1;
+}
+
+
+.mock-lines span {
+    display: block;
+
+    height: 6px;
+
+    background: #e8eef6;
+
+    border-radius: 10px;
+
+    margin-bottom: 6px;
+}
+
+
+.mock-lines span:first-child {
+    width: 75%;
+}
+
+
+.mock-lines span:last-child {
+    width: 45%;
+}
+
+
+/* =========================================
+   FLOATING LABELS
+========================================= */
+
+.visual-label {
+    position: absolute;
+
+    background: #ffffff;
+
+    padding: 10px 14px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    box-shadow:
+        0 8px 25px rgba(30, 41, 59, 0.10);
+
+    z-index: 5;
+}
+
+
+.visual-label strong {
+    display: block;
+
+    font-size: 10px;
+
+    color: #1e293b;
+}
+
+
+.visual-label small {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: #64748b;
+}
+
+
+.label-icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #eaf2ff;
+
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+}
+
+
+.scholarship-label {
+    top: 28px;
+    left: -48px;
+}
+
+
+.internship-label {
+    top: 112px;
+    right: -52px;
+}
+
+
+.internship-icon {
+    background: #dff8f0;
+    color: #16a085;
+}
+
+
+.job-label {
+    bottom: 28px;
+    left: -5px;
+}
+
+
+.job-icon {
+    background: #fff0db;
+    color: #f59e0b;
+}
+
+
+/* =========================================
+   NEW MATCH
+========================================= */
+
+.new-match {
+    position: absolute;
+
+    right: -35px;
+    bottom: 78px;
+
+    background: white;
+
+    padding: 9px 13px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    box-shadow:
+        0 8px 25px rgba(30, 41, 59, 0.10);
+
+    z-index: 6;
+}
+
+
+.match-icon {
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: #dff8f0;
+
+    color: #16a085;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 10px;
+}
+
+
+.new-match strong {
+    display: block;
+
+    font-size: 9px;
+
+    color: #1e293b;
+}
+
+
+.new-match small {
+    display: block;
+
+    font-size: 7px;
+
+    color: #64748b;
+
+    margin-top: 2px;
+}
+
+/* =========================================
+   HERO IMPROVEMENT
+========================================= */
+
+.hero {
+    min-height: 490px;
+
+    padding-top: 55px;
+    padding-bottom: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+
+.hero-left {
+    width: 52%;
+}
+
+
+.hero h1 {
+    margin: 0;
+
+    font-size: 48px;
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+
+    color: #172033;
+}
+
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+
+.hero p {
+    max-width: 570px;
+
+    margin-top: 20px;
+
+    color: #64748b;
+
+    line-height: 1.65;
+
+    font-size: 14px;
+}
+
+
+.badge {
+    background: #eef5ff;
+
+    color: #2563eb;
+
+    border: 1px solid #cfe0ff;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    margin-bottom: 18px;
+}
+
+
+/* SEARCH */
+
+.search-box {
+    width: 430px;
+    height: 48px;
+
+    margin-top: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3eaf5;
+
+    border-radius: 14px;
+
+    padding: 4px;
+
+    display: flex;
+    align-items: center;
+
+    box-shadow:
+        0 8px 25px rgba(30, 41, 59, 0.08);
+}
+
+
+.search-box input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 0 14px;
+
+    font-size: 11px;
+
+    color: #334155;
+}
+
+
+.search-box button {
+    height: 40px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.features {
+    margin-top: 18px;
+
+    display: flex;
+    gap: 18px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+
+.features span::first-letter {
+    color: #10b981;
 }

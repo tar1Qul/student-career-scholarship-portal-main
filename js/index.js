@@ -128,31 +128,6 @@ applyButtons.forEach(function (button) {
 
 
 
-
-
-
-// ===============================
-// SIGN UP BUTTON
-// ===============================
-
-
-const signup = document.querySelector(".signup");
-
-
-signup.addEventListener("click", function () {
-
-
-    window.location.href = "#register";
-
-
-});
-
-
-
-
-
-
-
 // ===============================
 // SMOOTH SCROLL
 // ===============================
