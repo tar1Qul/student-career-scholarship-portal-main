@@ -382,127 +382,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================================
-    // GET ELEMENTS
-    // ==========================================
+    // Sidebar links
+    const dashboardBtn = document.getElementById("dashboard-btn");
+    const postBtn = document.getElementById("post_opportunity_btn");
+    const profileBtn = document.getElementById("profile-btn");
 
-    const dashboardBtn =
-        document.querySelector('a.active');
+    // Sections
+    const dashboard1 = document.getElementById("dashboard_1");
+    const dashboard2 = document.getElementById("dashboard_2");
+    const dashboard3 = document.getElementById("dashboard_3");
 
-    const postBtn =
-        document.getElementById("post_opportunity_btn");
+    // Sidebar menu active state
+    const menuItems = document.querySelectorAll(".sidebar-menu a");
 
-    const dashboard1 =
-        document.getElementById("dashboard_1");
-
-    const dashboard2 =
-        document.getElementById("dashboard_2");
-
-
-    // Footer buttons
-    const footerDashboardBtn =
-        document.getElementById("footer-dashboard-btn");
-
-    const footerPostBtn =
-        document.getElementById("footer-post-btn");
-
-
-    // ==========================================
-    // SHOW DASHBOARD 1
-    // ==========================================
+    function setActive(button) {
+        menuItems.forEach(link => link.classList.remove("active"));
+        button.classList.add("active");
+    }
 
     function showDashboard1() {
-
         dashboard1.style.display = "block";
         dashboard2.style.display = "none";
-
+        dashboard3.style.display = "none";
+        setActive(dashboardBtn);
     }
-
-
-    // ==========================================
-    // SHOW DASHBOARD 2
-    // ==========================================
 
     function showDashboard2() {
-
         dashboard1.style.display = "none";
         dashboard2.style.display = "block";
-
+        dashboard3.style.display = "none";
+        setActive(postBtn);
     }
 
+    function showDashboard3() {
+        dashboard1.style.display = "none";
+        dashboard2.style.display = "none";
+        dashboard3.style.display = "block";
+        setActive(profileBtn);
+    }
 
-    // ==========================================
-    // DEFAULT PAGE
-    // ==========================================
-
+    // Default page
     showDashboard1();
 
+    // Dashboard
+    dashboardBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        showDashboard1();
+    });
 
-    // ==========================================
-    // SIDEBAR DASHBOARD BUTTON
-    // ==========================================
+    // Post Opportunity
+    postBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        showDashboard2();
+    });
 
-    if (dashboardBtn) {
-
-        dashboardBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            showDashboard1();
-
-        });
-
-    }
-
-
-    // ==========================================
-    // SIDEBAR POST OPPORTUNITY BUTTON
-    // ==========================================
-
-    if (postBtn) {
-
-        postBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            showDashboard2();
-
-        });
-
-    }
-
-
-    // ==========================================
-    // FOOTER DASHBOARD BUTTON
-    // ==========================================
-
-    if (footerDashboardBtn) {
-
-        footerDashboardBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            showDashboard1();
-
-        });
-
-    }
-
-
-    // ==========================================
-    // FOOTER POST OPPORTUNITY BUTTON
-    // ==========================================
-
-    if (footerPostBtn) {
-
-        footerPostBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            showDashboard2();
-
-        });
-
-    }
+    // My Profile
+    profileBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        showDashboard3();
+    });
 
 });

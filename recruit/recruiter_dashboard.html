@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
     <link rel="stylesheet" href="css/recruiter_dashboard.css">
-    
+    <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -28,57 +28,52 @@
         <!-- ================= Sidebar ================= -->
 
         <aside class="sidebar">
-
+        
             <div class="logo">
-
+        
                 <div class="logo-icon">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-
+        
                 <div class="logo-text">
-                    <h4>Student Career & Scholarship Portal</h4>
-                    <span>Recruiter Portal</span>
+                    <h4>Student Career </h4>
+                    <span>& Scholarship Portal</span>
                 </div>
-
+        
             </div>
-
+        
             <nav class="sidebar-menu">
-
-                <a href="recruiter_profile.html">
-                    <i class="fa-solid fa-user"></i>
-                    <span>My Profile</span>
-                </a> 
-
-                <a href="#" id="dashboard-btn" id="sidebar-dashboard-btn" class="active">
+        
+                <a href="#" id="dashboard-btn" class="active">
                     <i class="fa-solid fa-table-cells-large"></i>
                     Dashboard
                 </a>
-
+        
                 <a href="#" id="post_opportunity_btn">
                     <i class="fa-regular fa-square-plus"></i>
                     Post Opportunity
                 </a>
-
-                
-
+        
+                <a href="#" id="profile-btn">
+                    <i class="fa-solid fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+        
+        
+        
             </nav>
-
+        
             <div class="sidebar-footer">
-
+        
                 <div class="user">
-
-                    <a href="../login.html" class="logout">
-                    
+                    <a class="logout" href="../login.html">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                    
-                        Logout
-                    
+                        <span>Logout</span>
                     </a>
-
                 </div>
-
+        
             </div>
-
+        
         </aside>
 
         <!-- =============== Main Content =============== -->
@@ -664,7 +659,7 @@
                 </footer>
             </div>
 
-            <div id="dashboard_2" class="dashboard_2">
+            <div id="dashboard_2" class="dashboard_2" style="display:none;">
                 <div class="page-header">
                     <h1>Create opportunity</h1>
                     <p>Submitted listings are reviewed by our admin team before going live.</p>
@@ -751,6 +746,229 @@
                                         © 2026 Student Career & Scholarship Portal. All Rights Reserved.
                                     </p>
                                 </footer>
+            </div>
+
+            <div id="dashboard_3" class="dashboard_3" style="display:none;">
+            
+            
+                <div class="profile-header">
+            
+                    <h1>Recruiter Profile</h1>
+            
+                    <p>
+                        Manage your recruiter account information.
+                    </p>
+            
+                </div>
+            
+            
+            
+                <div class="profile-card">
+            
+            
+                    <!-- Profile Image -->
+            
+                    <div class="profile-image-section">
+            
+            
+                        <div class="image-box">
+            
+                            <img id="profileImage" src="https://via.placeholder.com/120">
+            
+                            <label for="imageUpload">
+            
+                                <i>↑</i>
+            
+                            </label>
+            
+            
+                            <input type="file" id="imageUpload" accept="image/*">
+            
+            
+                        </div>
+            
+            
+            
+                        <div>
+            
+                            <h3>Profile Photo</h3>
+            
+                            <p>
+                                PNG or JPG, up to 2MB.
+                            </p>
+            
+                            <button class="upload-btn">
+                                Upload
+                            </button>
+            
+                        </div>
+            
+            
+                    </div>
+            
+            
+            
+            
+            
+                    <div class="form-grid">
+            
+                        <!-- Full Name -->
+                        <div class="form-group">
+            
+                            <label for="fullName">
+                                Full Name
+                            </label>
+            
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name">
+            
+                        </div>
+            
+            
+                        <!-- Email -->
+                        <div class="form-group">
+            
+                            <label for="email">
+                                Email
+                            </label>
+            
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email">
+            
+                        </div>
+            
+            
+                        <!-- Password -->
+                        <div class="form-group">
+            
+                            <label for="password">
+                                Password
+                            </label>
+            
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                autocomplete="new-password">
+            
+                        </div>
+            
+            
+                        <!-- Phone -->
+                        <div class="form-group">
+            
+                            <label for="phone">
+                                Phone
+                            </label>
+            
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="tel">
+            
+                        </div>
+            
+            
+                        <!-- Organization -->
+                        <div class="form-group">
+            
+                            <label for="organization">
+                                Organization
+                            </label>
+            
+                            <input type="text" id="organization" name="organization" placeholder="Enter your organization"
+                                autocomplete="organization">
+            
+                        </div>
+            
+            
+                        <!-- Designation -->
+                        <div class="form-group">
+            
+                            <label for="designation">
+                                Designation
+                            </label>
+            
+                            <input type="text" id="designation" name="designation" placeholder="e.g. Talent Acquisition Manager">
+            
+                        </div>
+            
+            
+                        <!-- Industry -->
+                        <div class="form-group">
+            
+                            <label for="industry">
+                                Industry
+                            </label>
+            
+                            <input type="text" id="industry" name="industry" placeholder="e.g. Technology">
+            
+                        </div>
+            
+            
+                        <!-- Location -->
+                        <div class="form-group">
+            
+                            <label for="location">
+                                Location
+                            </label>
+            
+                            <input type="text" id="location" name="location" placeholder="e.g. Dhaka, Bangladesh"
+                                autocomplete="address-level2">
+            
+                        </div>
+            
+                    </div>
+            
+            
+                    <!-- About Organization -->
+            
+                    <div class="form-group full">
+            
+                        <label for="aboutOrganization">
+                            About Organization
+                        </label>
+            
+                        <textarea id="aboutOrganization" name="aboutOrganization" rows="6"
+                            placeholder="Tell students about your organization, its work, culture, and opportunities..."></textarea>
+            
+                    </div>
+            
+            
+                    <!-- Buttons -->
+            
+                    <div class="buttons">
+            
+                        <button type="button" id="editBtn" class="edit-btn">
+                            Edit Profile
+                        </button>
+            
+                        <button type="submit" class="save-btn">
+                            Save Changes
+                        </button>
+            
+                    </div>
+            
+            
+                </div>
+            
+                <!-- ================= FOOTER ================= -->
+            
+                <footer class="dashboard-footer">
+                    <div class="footer-content">
+                        <div>
+                            <h4>Student Career & Scholarship Portal</h4>
+            
+                            <p>
+                                Helping students discover career opportunities, scholarships and
+                                build a successful future.
+                            </p>
+                        </div>
+            
+            
+            
+                    </div>
+            
+                    <hr />
+            
+                    <p class="copyright">
+                        © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+                    </p>
+                </footer>
+            
+            
             </div>
 
         </main>

@@ -41,94 +41,63 @@ body {
 }
 
 /* ================================
-        MAIN LAYOUT
-================================ */
-
-.dashboard {
-
-    display: flex;
-    /* min-height: 100vh; */
-    /* width: 320px; */
-
-}
-
-/* ================================
             SIDEBAR
 ================================ */
 
 .sidebar {
-
-    width: 260px;
+    width: 223px;
     background: #111827;
     border-right: 1px solid var(--border);
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-
 }
 
 /* Logo */
-
 .logo {
-
     display: flex;
     align-items: center;
-    gap: 14px;
-
-    padding: 26px 22px;
-
-    border-bottom: 1px solid var(--border);
-
-}
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 32px;
-
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+    gap: 10px;
+    padding: 18px 14px;
+    border-bottom: none;
+    flex-shrink: 0;
 }
 
 .logo-icon {
-
-    width: 48px;
-    height: 48px;
-
-    border-radius: 14px;
-
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 11px;
     background: var(--primary);
-
     color: #fff;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 17px;
+}
 
-    font-size: 20px;
-
+.logo-text {
+    min-width: 0;
 }
 
 .logo-text h4 {
-
-    font-size: 22px;
+    font-size: 16px;
+    line-height: 1.2;
     font-weight: 700;
-    color:#cbd5e1;
-
+    color: #f8fafc;
+    white-space: nowrap;
 }
 
 .logo-text span {
-
-    font-size: 13px;
-    color: #cbd5e1;
-
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #94a3b8;
 }
 
 /* ================================
@@ -140,54 +109,48 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px 14px;
-    gap: 8px;
-    margin-top: 0;
-    padding-top: 10px;
-
+    padding: 10px 14px;
+    gap: 3px;
+    margin: 0;
 }
 
 .sidebar-menu a {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 12px 16px;
+    min-height: 39px;
+    padding: 9px 12px;
     text-decoration: none;
     color: #cbd5e1;
-    /* Dashboard & Post Opportunity text color */
     transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: 15px;
+    border-radius: 9px;
+    font-size: 13px;
 }
 
-/* Keep icons the same color as the text */
 .sidebar-menu a i {
+    width: 16px;
+    text-align: center;
     color: #cbd5e1;
+    flex-shrink: 0;
 }
 
-/* Active state */
 .sidebar-menu a.active {
-    color: #cbd5e1;
-}
-
-/* Hover effect */
-.sidebar-menu a:hover {
-    color: #ffffff;
-    /* Optional: brighter on hover */
-}
-
-.sidebar-menu a:hover {
-
     background: #2563eb;
-    color:#ffffff ;
-
-}
-
-.sidebar-menu .active {
-
-    background: #2563eb;
-    color: black;
+    color: #fff;
     font-weight: 600;
+}
 
+.sidebar-menu a.active i {
+    color: #fff;
+}
+
+.sidebar-menu a:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+.sidebar-menu a:hover i {
+    color: #fff;
 }
 
 /* ================================
@@ -195,84 +158,36 @@ body {
 ================================ */
 
 .sidebar-footer {
-
-    padding: 18px;
+    padding: 14px;
     border-top: 1px solid var(--border);
-
+    flex-shrink: 0;
 }
 
 .user {
-
-    display: flex;
-    align-items: center;
-    gap: 14px;
-
+    display: block;
+    width: 100%;
 }
-
-.avatar {
-
-    width: 44px;
-    height: 44px;
-
-    border-radius: 50%;
-
-    background: #dbeafe;
-
-    color: var(--primary);
-
-    font-weight: 700;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.user-info {
-
-    flex: 1;
-
-}
-
-.user-info h4 {
-
-    font-size: 15px;
-    font-weight: 600;
-
-}
-
-.user-info p {
-
-    font-size: 12px;
-    color: var(--text-light);
-
-}
-
-.user i {
-
-    cursor: pointer;
-    color: var(--text-light);
-    transition: var(--transition);
-
-}
-
-.user i:hover {
-
-    color: var(--danger);
-
-}
-
 
 .logout {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 14px 16px;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    min-height: 39px;
+    padding: 9px 14px;
     text-decoration: none;
     background: #ef4444;
     color: #fff;
-    border-radius: 12px;
+    border-radius: 9px;
     transition: .3s;
+    font-size: 13px;
+}
+
+.logout i {
+    color: #fff;
+    width: 16px;
+    text-align: center;
 }
 
 .logout:hover {
