@@ -796,7 +796,7 @@ section{
 
 .footer-brand h2{
     margin:0 0 10px;
-    color:#172033;
+    color: #64748b;
     font-size:17px;
     font-weight:700;
 }
@@ -818,7 +818,7 @@ section{
 .footer-links h3{
     margin:0 0 5px;
     font-size:13px;
-    color:#172033;
+    color: #64748b;
 }
 
 .footer-links a{
