@@ -1,505 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Student Career &amp; Scholarship Portal
-  </title>
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet"/>
-  <link href="css/index.css" rel="stylesheet"/>
- </head>
- <body>
-  <!-- ================= HEADER ================= -->
-  <header class="main-header">
-   <div class="header-container">
-    <a aria-label="Student Career &amp; Scholarship Portal Home" class="logo-link" href="index.html">
-     <div class="logo-icon">
-      <i class="fa-solid fa-graduation-cap">
-      </i>
-     </div>
-     <div class="logo-text">
-      <h3>
-       Student Career &amp; Scholarship Portal
-      </h3>
-     </div>
-    </a>
-    <nav aria-label="Main navigation" class="main-nav">
-     <a class="nav-active" href="index.html">
-      Home
-     </a>
-     <a href="student/student_opportunities.html">
-      Opportunities
-     </a>
-     <a href="student/student_scholarships.html">
-      Scholarships
-     </a>
-     <a href="#internships">
-      Internships
-     </a>
-     <a href="#jobs">
-      Jobs
-     </a>
-     <a href="#categories">
-      Categories
-     </a>
-     <a href="#faq">
-      FAQ
-     </a>
-     <a class="login-btn" href="login.html">
-      Login
-     </a>
-     <a class="register-btn" href="register.html">
-      Register
-     </a>
-    </nav>
-   </div>
-  </header>
-  <!-- ================= HERO SECTION ================= -->
-  <section class="hero">
-   <div class="hero-left">
-    <div class="badge">
-     🚀 1200+ verified opportunities
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Career & Scholarship Portal- Recruiter Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="student/dashboard.css">
+    <link rel="stylesheet" href="recruit/css/index.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+        
+                <div class="logo-text">
+                    <h3>Student Career & Scholarship Portal</h3>
+                </div>
+            </a>
+
+            <nav>
+            
+                <!-- <a href="#">Home</a>
+                        <a href="#">Opportunities</a>
+                        <a href="#">Scholarships</a>
+                        <a href="#">Internships</a>
+                        <a href="#">Jobs</a>
+                        <a href="#">Categories</a>
+                        <a href="#">FAQ</a> -->
+            
+                <a href="login.html" class="login">Login</a>
+                <a href="register.html" class="signup">
+                    Register
+                </a>
+            
+            </nav>
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+
+    <section class="hero">
+
+
+        <div class="hero-left">
+
+
+            <div class="badge">
+                🚀 1200+ verified opportunities
+            </div>
+
+
+            <h1>
+                Find Scholarships,<br>
+                Internships &<br>
+                Career
+                <span>
+                    Opportunities
+                </span>
+            </h1>
+
+
+            <p>
+                Discover verified scholarships, internships, research programs,
+                competitions, and career opportunities from trusted organizations.
+                Search, save, and apply everything in one place.
+            </p>
+
+
+
+            <div class="search-box">
+
+                <input type="text" placeholder="Search scholarships, internships, jobs...">
+
+                <button>
+                    Search
+                </button>
+
+
+            </div>
+
+
+            <div class="features">
+
+                <span>✔ Verified Opportunities</span>
+
+                <span>✔ Expert Guidance</span>
+
+                <span>✔ Trusted Sources</span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="hero-image">
+
+
+            <div class="dashboard-card">
+
+
+                <div class="small-card">
+                    Scholarship
+                    <br>
+                    Available
+                </div>
+
+
+                <div class="main-card">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+
+                </div>
+
+
+
+                <div class="floating internship">
+                    Internship
+                    Available
+                </div>
+
+
+                <div class="floating job">
+                    Job
+                    Available
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <section class="stats">
+
+
+        <div>
+            <h2>1,248+</h2>
+            <p>Verified Opportunities</p>
+        </div>
+
+
+        <div>
+            <h2>8,400+</h2>
+            <p>Registered Students</p>
+        </div>
+
+
+        <div>
+            <h2>246</h2>
+            <p>Partner Organizations</p>
+        </div>
+
+
+        <div>
+            <h2>14,920</h2>
+            <p>Successful Applications</p>
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ================= CATEGORY ================= -->
+
+    <section class="categories">
+
+
+        <h2>
+            Browse by category
+        </h2>
+
+        <p>
+            Explore opportunities across every stage of your academic and career journey.
+        </p>
+
+
+
+        <div class="category-container">
+
+
+            <div class="category">
+                🎓
+                <h3>
+                    Scholarships
+                </h3>
+                <span>
+                    420+
+                </span>
+            </div>
+
+
+            <div class="category">
+                💼
+                <h3>
+                    Internships
+                </h3>
+                <span>
+                    320+
+                </span>
+            </div>
+
+
+            <div class="category">
+                🧑‍💻
+                <h3>
+                    Jobs
+                </h3>
+                <span>
+                    280+
+                </span>
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- ================= FEATURED OPPORTUNITIES ================= -->
+
+    <section class="opportunities">
+
+
+        <div class="section-title">
+
+            <h2>
+                Featured Opportunities
+            </h2>
+
+            <a href="#">
+                View all →
+            </a>
+
+        </div>
+
+
+
+        <div class="cards">
+
+
+
+            <div class="card">
+
+                <label>
+                    Internship
+                </label>
+
+                <h3>
+                    Software Engineer Intern
+                </h3>
+
+
+                <p>
+                    Google Internship Program
+                </p>
+
+
+                <div class="details">
+
+                    📍 Dhaka Bangladesh
+
+                    <br>
+
+                    📅 2026-02-10
+
+                </div>
+
+
+                <button>
+                    Apply
+                </button>
+
+
+            </div>
+
+
+
+
+            <div class="card">
+
+                <label>
+                    Scholarship
+                </label>
+
+                <h3>
+                    Prime Minister Scholarship
+                </h3>
+
+
+                <p>
+                    Undergraduate Students
+                </p>
+
+
+                <div class="details">
+
+                    📍 University
+
+                    <br>
+
+                    📅 2026
+
+                </div>
+
+
+                <button>
+                    Apply
+                </button>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="card">
+
+                <label>
+                    Job
+                </label>
+
+                <h3>
+                    Junior Software Engineer
+                </h3>
+
+
+                <p>
+                    Technology Company
+                </p>
+
+
+                <div class="details">
+
+                    📍 Remote
+
+                    <br>
+
+                    📅 Full Time
+
+                </div>
+
+
+                <button>
+                    Apply
+                </button>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+
+    <section class="how">
+
+
+        <h2>
+            How it works
+        </h2>
+
+
+        <div class="steps">
+
+
+            <div>
+                <h3>
+                    01
+                </h3>
+
+                <strong>
+                    Create Account
+                </strong>
+
+                <p>
+                    Sign up and create your student profile.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    02
+                </h3>
+
+                <strong>
+                    Complete Profile
+                </strong>
+
+                <p>
+                    Add your education and interests.
+                </p>
+
+            </div>
+
+
+
+
+            <div>
+
+                <h3>
+                    03
+                </h3>
+
+                <strong>
+                    Search Opportunities
+                </strong>
+
+                <p>
+                    Find scholarships, internships and jobs.
+                </p>
+
+            </div>
+
+
+
+
+            <div>
+
+                <h3>
+                    04
+                </h3>
+
+                <strong>
+                    Apply
+                </strong>
+
+                <p>
+                    Submit applications online.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- ================= WHY CHOOSE ================= -->
+
+
+    <section class="why">
+
+
+        <h2>
+            Why choose our portal
+        </h2>
+
+
+        <div class="why-box">
+
+
+            <div>
+                ✔ Verified Opportunities
+            </div>
+
+
+            <div>
+                🔎 Easy Search & Filter
+            </div>
+
+
+            <div>
+                📄 Application Tracking
+            </div>
+
+
+            <div>
+                🔔 Real-Time Notifications
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ================= FAQ ================= -->
+
+
+    <section class="faq">
+
+
+        <h2>
+            Frequently asked questions
+        </h2>
+
+
+        <div class="question">
+
+            What is this platform for students?
+
+        </div>
+
+
+        <div class="question">
+
+            How are opportunities verified?
+
+        </div>
+
+
+        <div class="question">
+
+            Can I apply directly through the portal?
+
+        </div>
+
+
+        <div class="question">
+
+            How do I get notified about new opportunities?
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- ================= CTA ================= -->
+
+
+    <section class="cta">
+
+
+        <h2>
+            Your next opportunity is one click away
+        </h2>
+
+
+        <p>
+            Join thousands of students finding scholarships and careers.
+        </p>
+
+
+        <button>
+            Create free account
+        </button>
+
+
+        <button>
+            Browse opportunities
+        </button>
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+
+<footer class="dashboard-footer">
+    <div class="footer-content">
+        <div>
+            <h3>Student Career & Scholarship Portal</h3>
+
+            <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="login.html"> Login </a>
+            <a href="register.html"> Register </a>
+        </div>
+
     </div>
-    <h1>
-     Find Scholarships,
-     <br/>
-     Internships &amp;
-     <br/>
-     Career
-     <span>
-      Opportunities
-     </span>
-    </h1>
-    <p>
-     Discover verified scholarships, internships, research programs, competitions, and career opportunities from trusted organizations. Search, save, and apply everything in one place.
+
+    <hr />
+
+    <p class="copyright">
+        © 2026 Student Career & Scholarship Portal. All Rights Reserved.
     </p>
-    <div class="search-box">
-     <i class="fa-solid fa-magnifying-glass search-icon">
-     </i>
-     <input aria-label="Search opportunities" placeholder="Search scholarships, internships, jobs..." type="text"/>
-     <button type="button">
-      Search
-     </button>
-    </div>
-    <div class="features">
-     <span>
-      &checkmark; Verified Opportunities
-     </span>
-     <span>
-      &checkmark; Expert Guidance
-     </span>
-     <span>
-      &checkmark; Trusted Sources
-     </span>
-    </div>
-   </div>
-   <div class="hero-image">
-    <div class="visual-background">
-     <div class="visual-label scholarship-label">
-      <div class="label-icon">
-       <i class="fa-solid fa-graduation-cap">
-       </i>
-      </div>
-      <div>
-       <strong>
-        Scholarship
-       </strong>
-       <small>
-        Fully funded
-       </small>
-      </div>
-     </div>
-     <div class="mockup-card">
-      <div class="browser-bar">
-       <span class="browser-dot red">
-       </span>
-       <span class="browser-dot yellow">
-       </span>
-       <span class="browser-dot green">
-       </span>
-       <div class="browser-line">
-       </div>
-      </div>
-      <div class="mockup-content">
-       <div class="mock-row">
-        <div class="mock-icon blue">
-         <i class="fa-solid fa-graduation-cap">
-         </i>
-        </div>
-        <div class="mock-lines">
-         <span>
-         </span>
-         <span>
-         </span>
-        </div>
-       </div>
-       <div class="mock-row">
-        <div class="mock-icon green">
-         <i class="fa-solid fa-briefcase">
-         </i>
-        </div>
-        <div class="mock-lines">
-         <span>
-         </span>
-         <span>
-         </span>
-        </div>
-       </div>
-       <div class="mock-row">
-        <div class="mock-icon orange">
-         <i class="fa-solid fa-building">
-         </i>
-        </div>
-        <div class="mock-lines">
-         <span>
-         </span>
-         <span>
-         </span>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="visual-label internship-label">
-      <div class="label-icon internship-icon">
-       <i class="fa-solid fa-briefcase">
-       </i>
-      </div>
-      <div>
-       <strong>
-        Internship
-       </strong>
-       <small>
-        Bangladesh
-       </small>
-      </div>
-     </div>
-     <div class="visual-label job-label">
-      <div class="label-icon job-icon">
-       <i class="fa-solid fa-building">
-       </i>
-      </div>
-      <div>
-       <strong>
-        Job
-       </strong>
-       <small>
-        Full-time
-       </small>
-      </div>
-     </div>
-     <div class="new-match">
-      <div class="match-icon">
-       <i class="fa-regular fa-bell">
-       </i>
-      </div>
-      <div>
-       <strong>
-        New match!
-       </strong>
-       <small>
-        Chevening 2026
-       </small>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- ================= STATISTICS ================= -->
-  <section class="stats">
-   <div>
-    <h2>
-     1,248+
-    </h2>
-    <p>
-     Verified Opportunities
-    </p>
-   </div>
-   <div>
-    <h2>
-     8,400+
-    </h2>
-    <p>
-     Registered Students
-    </p>
-   </div>
-   <div>
-    <h2>
-     246
-    </h2>
-    <p>
-     Partner Organizations
-    </p>
-   </div>
-   <div>
-    <h2>
-     14,920
-    </h2>
-    <p>
-     Successful Applications
-    </p>
-   </div>
-  </section>
-  <!-- ================= CATEGORY ================= -->
-  <section class="categories" id="categories">
-   <h2>
-    Browse by category
-   </h2>
-   <p>
-    Explore opportunities across every stage of your academic and career journey.
-   </p>
-   <div class="category-container">
-    <a class="category" href="student/student_scholarships.html">
-     🎓
-     <h3>
-      Scholarships
-     </h3>
-     <span>
-      420+
-     </span>
-    </a>
-    <a class="category" href="#internships">
-     💼
-     <h3>
-      Internships
-     </h3>
-     <span>
-      320+
-     </span>
-    </a>
-    <a class="category" href="#jobs">
-     🧑&zwj;💻
-     <h3>
-      Jobs
-     </h3>
-     <span>
-      280+
-     </span>
-    </a>
-   </div>
-  </section>
-  <!-- ================= FEATURED OPPORTUNITIES ================= -->
-  <section class="opportunities" id="opportunities">
-   <div class="section-title">
-    <h2>
-     Featured Opportunities
-    </h2>
-    <a href="student/student_opportunities.html">
-     View all &rarr;
-    </a>
-   </div>
-   <div class="cards">
-    <div class="card" id="internships">
-     <label>
-      Internship
-     </label>
-     <h3>
-      Software Engineer Intern
-     </h3>
-     <p>
-      Google Internship Program
-     </p>
-     <div class="details">
-      📍 Dhaka Bangladesh
-      <br/>
-      📅 2026-02-10
-     </div>
-     <button onclick="window.location.href='login.html'">
-      Apply
-     </button>
-    </div>
-    <div class="card">
-     <label>
-      Scholarship
-     </label>
-     <h3>
-      Prime Minister Scholarship
-     </h3>
-     <p>
-      Undergraduate Students
-     </p>
-     <div class="details">
-      📍 University
-      <br/>
-      📅 2026
-     </div>
-     <button onclick="window.location.href='login.html'">
-      Apply
-     </button>
-    </div>
-    <div class="card" id="jobs">
-     <label>
-      Job
-     </label>
-     <h3>
-      Junior Software Engineer
-     </h3>
-     <p>
-      Technology Company
-     </p>
-     <div class="details">
-      📍 Remote
-      <br/>
-      📅 Full Time
-     </div>
-     <button onclick="window.location.href='login.html'">
-      Apply
-     </button>
-    </div>
-   </div>
-  </section>
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="how">
-   <h2>
-    How it works
-   </h2>
-   <div class="steps">
-    <div>
-     <h3>
-      01
-     </h3>
-     <strong>
-      Create Account
-     </strong>
-     <p>
-      Sign up and create your student profile.
-     </p>
-    </div>
-    <div>
-     <h3>
-      02
-     </h3>
-     <strong>
-      Complete Profile
-     </strong>
-     <p>
-      Add your education and interests.
-     </p>
-    </div>
-    <div>
-     <h3>
-      03
-     </h3>
-     <strong>
-      Search Opportunities
-     </strong>
-     <p>
-      Find scholarships, internships and jobs.
-     </p>
-    </div>
-    <div>
-     <h3>
-      04
-     </h3>
-     <strong>
-      Apply
-     </strong>
-     <p>
-      Submit applications online.
-     </p>
-    </div>
-   </div>
-  </section>
-  <!-- ================= WHY CHOOSE ================= -->
-  <section class="why">
-   <h2>
-    Why choose our portal
-   </h2>
-   <div class="why-box">
-    <div>
-     ✔ Verified Opportunities
-    </div>
-    <div>
-     🔎 Easy Search &amp; Filter
-    </div>
-    <div>
-     📄 Application Tracking
-    </div>
-    <div>
-     🔔 Real-Time Notifications
-    </div>
-   </div>
-  </section>
-  <!-- ================= FAQ ================= -->
-  <section class="faq" id="faq">
-   <h2>
-    Frequently asked questions
-   </h2>
-   <div class="question">
-    What is this platform for students?
-   </div>
-   <div class="question">
-    How are opportunities verified?
-   </div>
-   <div class="question">
-    Can I apply directly through the portal?
-   </div>
-   <div class="question">
-    How do I get notified about new opportunities?
-   </div>
-  </section>
-  <!-- ================= CTA ================= -->
-  <section class="cta">
-   <h2>
-    Your next opportunity is one click away
-   </h2>
-   <p>
-    Join thousands of students finding scholarships and careers.
-   </p>
-   <a class="cta-button" href="register.html">
-    Create free account
-   </a>
-   <a class="cta-button" href="student/student_opportunities.html">
-    Browse opportunities
-   </a>
-  </section>
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-   <div class="footer-container">
-    <div class="footer-brand">
-     <h2>
-      Student Career &amp; Scholarship Portal
-     </h2>
-     <p>
-      Helping students discover career opportunities, scholarships and build a successful future.
-     </p>
-    </div>
-    <div class="footer-links">
-     <h3>
-      Quick Links
-     </h3>
-     <a href="index.html">
-      Home
-     </a>
-     <a href="student/student_opportunities.html">
-      Opportunities
-     </a>
-     <a href="student/student_scholarships.html">
-      Scholarships
-     </a>
-     <a href="#faq">
-      FAQ
-     </a>
-     <a href="login.html">
-      Login
-     </a>
-     <a href="register.html">
-      Register
-     </a>
-    </div>
-    <div class="footer-right">
-     <p>
-      &copy; 2026 Student Career &amp; Scholarship Portal.
-      <br/>
-      All Rights Reserved.
-     </p>
-    </div>
-   </div>
-  </footer>
- </body>
+</footer>
+
+
+
+    <script src="js/index.js"></script>
+
+</body>
+
 </html>

@@ -16,10 +16,10 @@
     </a>
 
     <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="student/student_opportunities.html">Career Opportunities</a>
-        <a href="student/student_scholarships.html">Scholarships</a>
-        <a href="register.html" class="nav-register">Register</a
+        <a href="../index.html">Home</a>
+        <a href="../career-opportunities.html">Career Opportunities</a>
+        <a href="../scholarship-management.html">Scholarships</a>
+        <a href="register.html" class="nav-register">Register</a>
     </div>
 </nav>
 
@@ -35,97 +35,29 @@
         <p class="subtitle">Sign in to continue to your dashboard.</p>
 
         <div class="tabs">
+            <button class="tab active" data-role="Student">Student</button>
+            <button class="tab" data-role="Recruiter">Recruiter</button>
+            <button class="tab" data-role="Admin">Admin</button>
+        </div>
 
-    <button
-        type="button"
-        class="tab active"
-        data-role="Student"
-    >
-        Student
-    </button>
+        <label class="field-label">Email address</label>
+        <input type="email" placeholder="example@univ.edu">
 
-    <button
-        type="button"
-        class="tab"
-        data-role="Recruiter"
-    >
-        Recruiter
-    </button>
+        <label class="field-label">Password</label>
+        <div class="pass">
+            <input id="password" type="password" placeholder="Enter your password">
+            <i id="togglePassword" class="fa-regular fa-eye"></i>
+        </div>
 
-    <button
-        type="button"
-        class="tab"
-        data-role="Admin"
-    >
-        Admin
-    </button>
+        <div class="opts">
+            <label class="remember">
+                <input type="checkbox">
+                Remember me for 30 days
+            </label>
+            <a href="#">Forgot password?</a>
+        </div>
 
-</div>
-
-        <form action="backend/login.php" method="POST" id="loginForm">
-
-    <!-- Selected role -->
-    <input type="hidden" name="role" id="selectedRole" value="student">
-
-
-    <label class="field-label">Email address</label>
-
-    <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="example@univ.edu"
-        required
-    >
-
-
-    <label class="field-label">Password</label>
-
-    <div class="pass">
-
-        <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            required
-        >
-
-        <i
-            id="togglePassword"
-            class="fa-regular fa-eye"
-        ></i>
-
-    </div>
-
-
-    <div class="opts">
-
-        <label class="remember">
-
-            <input
-                type="checkbox"
-                name="remember"
-            >
-
-            Remember me for 30 days
-
-        </label>
-
-        <a href="#">Forgot password?</a>
-
-    </div>
-
-
-    <button
-        type="submit"
-        id="signin"
-    >
-        Sign in as Student →
-    </button>
-
-</form>
-
+        <button id="signin">Sign in as Student →</button>
 
         <div class="reg">
             New to Student Career & Scholarship Portal?
@@ -183,47 +115,5 @@
 </script>
 
 <script src="../js/admin.js"></script>
-<script>
-
-const tabs = document.querySelectorAll(".tab");
-
-const selectedRole =
-    document.getElementById("selectedRole");
-
-const signinButton =
-    document.getElementById("signin");
-
-
-tabs.forEach(tab => {
-
-    tab.addEventListener("click", function () {
-
-        // Remove active class
-        tabs.forEach(t => {
-            t.classList.remove("active");
-        });
-
-        // Add active class to clicked tab
-        this.classList.add("active");
-
-
-        // Get selected role
-        const role =
-            this.dataset.role.toLowerCase();
-
-
-        // Update hidden input
-        selectedRole.value = role;
-
-
-        // Update button text
-        signinButton.textContent =
-            "Sign in as " + this.dataset.role + " →";
-
-    });
-
-});
-
-</script>
 </body>
 </html>
