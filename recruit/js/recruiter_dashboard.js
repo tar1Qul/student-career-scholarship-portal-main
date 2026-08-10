@@ -437,9 +437,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // My Profile
-    profileBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        showDashboard3();
+    // Open the dedicated recruiter profile page.
+    // Do not prevent the browser's normal link navigation.
+    profileBtn.addEventListener("click", function () {
+        window.location.href = "recruiter_profile.html";
     });
 
 });

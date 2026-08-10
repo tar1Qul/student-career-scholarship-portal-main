@@ -1999,3 +1999,9 @@ html {
 .mb-20 { margin-bottom: 20px; }
 .mb-30 { margin-bottom: 30px; }
 .hidden { display: none; }
+
+
+/* Profile-matched brand sizing */
+.logo-text { display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+.logo-text strong { color:#fff; font-size:12px; font-weight:600; }
+.logo-text span { color:#94a3b8; font-size:8px; margin-top:2px; }
