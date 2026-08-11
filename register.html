@@ -10,15 +10,15 @@
 <body>
 
 <nav class="navbar">
-    <a href="../index.html" class="nav-logo">
+    <a href="index.html" class="nav-logo">
         <i class="fa-solid fa-graduation-cap"></i>
         Student Career & Scholarship Portal
     </a>
 
     <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../career-opportunities.html">Career Opportunities</a>
-        <a href="../scholarship-management.html">Scholarships</a>
+        <a href="index.html">Home</a>
+        <a href="student/student_opportunities.html">Career Opportunities</a>
+        <a href="student/student_scholarships.html">Scholarships</a>
         <a href="login.html" class="nav-login">Login</a>
     </div>
 </nav>
@@ -66,66 +66,128 @@
                 <a href="login.html">Login instead</a>
             </p>
 
-            <form action="#" method="post">
+<form action="backend/register.php" method="POST" enctype="multipart/form-data">
 
-                <div class="photo-row">
-                    <div class="photo-circle">
-                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                    </div>
+    <div class="photo-row">
+        <div class="photo-circle">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </div>
 
-                    <div class="photo-info">
-                        <strong>Profile photo</strong>
-                        <small>PNG or JPG, up to 2MB.</small>
+        <div class="photo-info">
+            <strong>Profile photo</strong>
+            <small>PNG or JPG, up to 2MB.</small>
 
-                        <label class="upload-btn">
-                            Upload
-                            <input type="file" accept=".png,.jpg,.jpeg">
-                        </label>
-                    </div>
-                </div>
+            <label class="upload-btn">
+                Upload
+                <input
+                    type="file"
+                    name="profile_image"
+                    accept=".png,.jpg,.jpeg,.webp"
+                >
+            </label>
+        </div>
+    </div>
 
-                <div class="form-grid">
 
-                    <div class="input-box">
-                        <label for="name">Full name</label>
-                        <input id="name" type="text" placeholder="Mehrab Mashrafee" required>
-                    </div>
+    <div class="form-grid">
 
-                    <div class="input-box">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="mehrab.mashrafee.cse@ulab.edu.bd" required>
-                    </div>
+        <div class="input-box">
+            <label for="name">Full name</label>
 
-                    <div class="input-box">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" placeholder="••••••••" required>
-                    </div>
+            <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Mehrab Mashrafee"
+                required
+            >
+        </div>
 
-                    <div class="input-box">
-                        <label for="phone">Phone</label>
-                        <input id="phone" type="tel" placeholder="+08801887964407" required>
-                    </div>
 
-                    <div class="input-box">
-                        <label for="university">University</label>
-                        <input id="university" type="text" placeholder="ULAB" required>
-                    </div>
+        <div class="input-box">
+            <label for="email">Email</label>
 
-                    <div class="input-box">
-                        <label for="department">Department</label>
-                        <input id="department" type="text" placeholder="Computer Science" required>
-                    </div>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="mehrab.mashrafee.cse@ulab.edu.bd"
+                required
+            >
+        </div>
 
-                    <div class="input-box">
-                        <label for="cgpa">CGPA</label>
-                        <input id="cgpa" type="text" placeholder="3.8 / 4.0">
-                    </div>
 
-                </div>
+        <div class="input-box">
+            <label for="password">Password</label>
 
-                <button type="submit" class="create-btn">Create account</button>
+            <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                required
+            >
+        </div>
 
-            </form>
+
+        <div class="input-box">
+            <label for="phone">Phone</label>
+
+            <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+08801887964407"
+                required
+            >
+        </div>
+
+
+        <div class="input-box">
+            <label for="university">University</label>
+
+            <input
+                id="university"
+                name="university"
+                type="text"
+                placeholder="ULAB"
+                required
+            >
+        </div>
+
+
+        <div class="input-box">
+            <label for="department">Department</label>
+
+            <input
+                id="department"
+                name="department"
+                type="text"
+                placeholder="Computer Science"
+                required
+            >
+        </div>
+
+
+        <div class="input-box">
+            <label for="cgpa">CGPA</label>
+
+            <input
+                id="cgpa"
+                name="cgpa"
+                type="text"
+                placeholder="3.8 / 4.0"
+            >
+        </div>
+
+    </div>
+
+
+    <button type="submit" class="create-btn">
+        Create account
+    </button>
+
+</form>
         </div>
     </section>
 
@@ -143,10 +205,10 @@
         </div>
 
         <div class="footer-links">
-            <a href="../user-management.html">User Management</a>
-            <a href="../career-opportunities.html">Career Opportunities</a>
-            <a href="../scholarship-management.html">Scholarships</a>
-            <a href="../reports.html">Reports</a>
+            <a href="index.html">Home</a>
+            <a href="student/student_opportunities.html">Career Opportunities</a>
+            <a href="student/student_scholarships.html">Scholarships</a>
+            <a href="index.html#faq">FAQ</a>
         </div>
     </div>
 
@@ -157,6 +219,21 @@
     </p>
 </footer>
 
-<script src="../js/admin.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const box = document.createElement('div');
+  box.style.cssText='max-width:520px;margin:12px auto;padding:12px 16px;border-radius:8px;background:#eef5ff;color:#1e3a8a;font-family:Arial,sans-serif;';
+  let msg = '';
+  if (params.get('registered') === '1') msg = 'Registration successful. Please log in.';
+  try {
+    const error = sessionStorage.getItem('portal_login_error');
+    if (error) { msg = error; sessionStorage.removeItem('portal_login_error'); }
+  } catch(e) {}
+  if (msg) { box.textContent=msg; document.body.insertBefore(box, document.body.firstChild); }
+})();
+</script>
 </body>
 </html>

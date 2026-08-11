@@ -10,15 +10,15 @@
 <body>
 
 <nav class="navbar">
-    <a href="../index.html" class="nav-logo">
+    <a href="index.html" class="nav-logo">
         <i class="fa-solid fa-graduation-cap"></i>
         Student Career & Scholarship Portal
     </a>
 
     <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../career-opportunities.html">Career Opportunities</a>
-        <a href="../scholarship-management.html">Scholarships</a>
+        <a href="index.html">Home</a>
+        <a href="student/student_opportunities.html">Career Opportunities</a>
+        <a href="student/student_scholarships.html">Scholarships</a>
         <a href="register.html" class="nav-register">Register</a>
     </div>
 </nav>
@@ -35,29 +35,107 @@
         <p class="subtitle">Sign in to continue to your dashboard.</p>
 
         <div class="tabs">
-            <button class="tab active" data-role="Student">Student</button>
-            <button class="tab" data-role="Recruiter">Recruiter</button>
-            <button class="tab" data-role="Admin">Admin</button>
-        </div>
 
-        <label class="field-label">Email address</label>
-        <input type="email" placeholder="example@univ.edu">
+    <button
+        type="button"
+        class="tab active"
+        data-role="Student"
+    >
+        Student
+    </button>
 
-        <label class="field-label">Password</label>
-        <div class="pass">
-            <input id="password" type="password" placeholder="Enter your password">
-            <i id="togglePassword" class="fa-regular fa-eye"></i>
-        </div>
+    <button
+        type="button"
+        class="tab"
+        data-role="Recruiter"
+    >
+        Recruiter
+    </button>
 
-        <div class="opts">
-            <label class="remember">
-                <input type="checkbox">
-                Remember me for 30 days
-            </label>
-            <a href="#">Forgot password?</a>
-        </div>
+    <button
+        type="button"
+        class="tab"
+        data-role="Admin"
+    >
+        Admin
+    </button>
 
-        <button id="signin">Sign in as Student →</button>
+</div>
+
+        <form action="backend/login.php" method="POST" id="loginForm">
+
+    <!-- Selected role -->
+    <input type="hidden" name="role" id="selectedRole" value="student">
+
+
+    <label class="field-label">Email address</label>
+
+    <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="example@univ.edu"
+        required
+    >
+
+
+    <label class="field-label">Password</label>
+
+    <div class="pass">
+
+        <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            required
+        >
+
+        <i
+            id="togglePassword"
+            class="fa-regular fa-eye"
+        ></i>
+
+    </div>
+
+
+    <div class="opts">
+
+        <label class="remember">
+
+            <input
+                type="checkbox"
+                name="remember"
+            >
+
+            Remember me for 30 days
+
+        </label>
+
+        <a href="#">Forgot password?</a>
+
+    </div>
+
+
+    <button
+        type="submit"
+        id="signin"
+    >
+        Sign in as Student →
+    </button>
+
+</form>
+
+
+<div class="reg">
+
+    New to Student Career & Scholarship Portal?
+
+    <a href="register.html">
+        Create account
+    </a>
+
+</div>
 
         <div class="reg">
             New to Student Career & Scholarship Portal?
@@ -77,10 +155,10 @@
         </div>
 
         <div class="footer-links">
-            <a href="../user-management.html">User Management</a>
-            <a href="../career-opportunities.html">Career Opportunities</a>
-            <a href="../scholarship-management.html">Scholarships</a>
-            <a href="../reports.html">Reports</a>
+            <a href="index.html">Home</a>
+            <a href="student/student_opportunities.html">Career Opportunities</a>
+            <a href="student/student_scholarships.html">Scholarships</a>
+            <a href="index.html#faq">FAQ</a>
         </div>
     </div>
 
@@ -94,11 +172,13 @@
 <script>
     const tabs = document.querySelectorAll('.tab');
     const signInButton = document.getElementById('signin');
+    const selectedRole = document.getElementById('selectedRole');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(item => item.classList.remove('active'));
             tab.classList.add('active');
+            selectedRole.value = tab.dataset.role.toLowerCase();
             signInButton.textContent = 'Sign in as ' + tab.dataset.role + ' →';
         });
     });
@@ -114,6 +194,21 @@
     });
 </script>
 
-<script src="../js/admin.js"></script>
+<script src="js/index.js"></script>
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const box = document.createElement('div');
+  box.style.cssText='max-width:520px;margin:12px auto;padding:12px 16px;border-radius:8px;background:#eef5ff;color:#1e3a8a;font-family:Arial,sans-serif;';
+  let msg = '';
+  if (params.get('registered') === '1') msg = 'Registration successful. Please log in.';
+  if (params.get('error')) msg = params.get('error');
+  try {
+    const error = sessionStorage.getItem('portal_login_error');
+    if (error) { msg = error; sessionStorage.removeItem('portal_login_error'); }
+  } catch(e) {}
+  if (msg) { box.textContent=msg; document.body.insertBefore(box, document.body.firstChild); }
+})();
+</script>
 </body>
 </html>
