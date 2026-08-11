@@ -68,6 +68,10 @@ try {
         ? (float) $cgpa
         : null;
 
+    if ($cgpaValue !== null && ($cgpaValue < 0 || $cgpaValue > 4)) {
+        throw new RuntimeException('CGPA must be between 0 and 4.');
+    }
+
 
     // Insert student profile
     $stmt = $pdo->prepare(
@@ -148,7 +152,7 @@ try {
     exit;
 
 
-} catch (PDOException $e) {
+} catch (Throwable $e) {
 
     // Undo database changes if something fails
     if ($pdo->inTransaction()) {
