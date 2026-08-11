@@ -118,35 +118,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (locationInput.value.trim() === "") {
 
             locationInput.style.borderColor = "#ef4444";
-
             valid = false;
-
         }
 
         if (deadlineInput.value === "") {
-
             deadlineInput.style.borderColor = "#ef4444";
-
             valid = false;
-
         }
 
         textareas.forEach(area => {
-
             if (area.value.trim() === "") {
-
                 area.style.borderColor = "#ef4444";
-
                 valid = false;
-
             }
-
         });
-
         return valid;
-
     }
-
     // ===============================
     // Submit
     // ===============================
