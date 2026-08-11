@@ -1,82 +1,60 @@
 <?php
-
+declare(strict_types=1);
 session_start();
-
 require_once __DIR__ . '/config.php';
 
+function back(string $message): never {
+    header('Location: ../login.html?error=' . rawurlencode($message));
+    exit;
+}
 
-// Only allow POST request
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../login.html');
     exit;
 }
 
-
-// Get form data
-$email = trim($_POST['email'] ?? '');
-$password = $_POST['password'] ?? '';
-$role = strtolower(trim($_POST['role'] ?? ''));
-
-
-// Allowed roles
+$email = trim((string)($_POST['email'] ?? ''));
+$password = (string)($_POST['password'] ?? '');
+$selectedRole = strtolower(trim((string)($_POST['role'] ?? '')));
 $allowedRoles = ['student', 'recruiter', 'admin'];
 
-
-// Validate input
-if (!$email || !$password || !in_array($role, $allowedRoles, true)) {
-    die('Email, password and valid role are required.');
+if ($email === '' || $password === '') {
+    back('Email and password are required.');
 }
 
-
-// Find user
-$stmt = $pdo->prepare(
-    'SELECT id, full_name, email, password_hash, role, status
-     FROM users
-     WHERE email = ? AND role = ?
-     LIMIT 1'
-);
-
-$stmt->execute([$email, $role]);
-
+// Email is unique in the database, so authenticate by email first.
+// The selected tab is used only as a preference; the real database role
+// determines the destination. This prevents a stale/broken hidden role
+// field from blocking a valid login.
+$stmt = $pdo->prepare('SELECT id, full_name, email, password_hash, role, status FROM users WHERE email = ? LIMIT 1');
+$stmt->execute([$email]);
 $user = $stmt->fetch();
 
-
-// Check email/password
-if (!$user || !password_verify($password, $user['password_hash'])) {
-    die('Invalid email, password or selected role.');
+if (!$user || !password_verify($password, (string)$user['password_hash'])) {
+    back('Invalid email or password.');
 }
 
-
-// Check account status
-if ($user['status'] !== 'active') {
-    die('This account is not active.');
+if ((string)$user['status'] !== 'active') {
+    back('This account is not active.');
 }
 
-
-// Save login information in session
-$_SESSION['user_id'] = (int) $user['id'];
-$_SESSION['role'] = $user['role'];
-$_SESSION['name'] = $user['full_name'];
-$_SESSION['email'] = $user['email'];
-
-
-// Redirect according to role
-switch ($user['role']) {
-
-    case 'student':
-        header('Location: ../student/dashboard.html');
-        exit;
-
-    case 'recruiter':
-        header('Location: ../recruit/recruiter_dashboard.html');
-        exit;
-
-    case 'admin':
-        header('Location: ../Admin/admin_dashboard.html');
-        exit;
-
-    default:
-        die('Invalid user role.');
+$actualRole = strtolower((string)$user['role']);
+if (!in_array($actualRole, $allowedRoles, true)) {
+    back('This account has an invalid role.');
 }
 
+session_regenerate_id(true);
+$_SESSION['user_id'] = (int)$user['id'];
+$_SESSION['role'] = $actualRole;
+$_SESSION['name'] = (string)$user['full_name'];
+$_SESSION['email'] = (string)$user['email'];
+
+$targets = [
+    'student' => '../student/dashboard.html',
+    'recruiter' => '../recruit/recruiter_dashboard.html',
+    'admin' => '../Admin/admin_dashboard.html'
+];
+
+header('Location: ' . $targets[$actualRole]);
+exit;
 ?>
