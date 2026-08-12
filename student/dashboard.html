@@ -146,7 +146,7 @@
             </div>
 
             <div>
-              <h3>18</h3>
+              <h3 id="totalApplications">0</h3>
 
               <p>Total Applications</p>
 
@@ -163,7 +163,7 @@
             </div>
 
             <div>
-              <h3>7</h3>
+              <h3 id="pendingApplications">0</h3>
 
               <p>Pending Applications</p>
 
@@ -177,7 +177,7 @@
             </div>
 
             <div>
-              <h3>8</h3>
+              <h3 id="acceptedApplications">0</h3>
 
               <p>Accepted</p>
 
@@ -191,7 +191,7 @@
             </div>
 
             <div>
-              <h3>12</h3>
+              <h3 id="savedOpportunities">0</h3>
 
               <p>Saved Opportunities</p>
 
@@ -247,36 +247,18 @@
                 <span>Status</span>
               </div>
 
-              <div class="dashboard-table-row">
-                <span> Software Engineer - Google </span>
+              <div class="dashboard-table" id="recentApplications">
+                <div class="dashboard-table-header">
+                  <span>Opportunity</span>
+                  <span>Type</span>
+                  <span>Status</span>
+                </div>
 
-                <span> Job </span>
-
-                <span class="status pending"> Pending </span>
-              </div>
-
-              <div class="dashboard-table-row">
-                <span> Google Generation Scholarship </span>
-
-                <span> Scholarship </span>
-
-                <span class="status review"> Under Review </span>
-              </div>
-
-              <div class="dashboard-table-row">
-                <span> Microsoft Internship </span>
-
-                <span> Internship </span>
-
-                <span class="status accepted"> Accepted </span>
-              </div>
-
-              <div class="dashboard-table-row">
-                <span> Chevening Scholarship </span>
-
-                <span> Scholarship </span>
-
-                <span class="status rejected"> Rejected </span>
+                <div class="dashboard-table-row">
+                  <span>Loading...</span>
+                  <span>-</span>
+                  <span>-</span>
+                </div>
               </div>
             </div>
           </div>
@@ -489,8 +471,9 @@
       </main>
     </div>
     <script src="../js/student_auth.js"></script>
+    <script src="dashboard.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", loadStudentIdentity);
+      document.addEventListener("DOMContentLoaded", loadStudentIdentity);
     </script>
   </body>
 </html>
