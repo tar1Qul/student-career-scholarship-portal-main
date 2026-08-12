@@ -129,9 +129,10 @@
         <div class="panel profile-header-card">
           <div class="profile-main">
             <img
-              src="../images/Mehrab.png"
-              alt="Student Profile"
-              class="large-profile-img"
+              src=""
+              alt="Profile"
+              class="profile-img"
+              data-student-profile-image
             />
 
             <div>
@@ -139,7 +140,9 @@
 
               <p>
                 <i class="fa-solid fa-graduation-cap"></i>
-                Computer Science & Engineering Student
+                <span data-student-department-text>
+                  Student
+                </span>
               </p>
 
               <p>
@@ -216,13 +219,13 @@
             <div class="form-group">
               <label>Full Name</label>
 
-              <input type="text" value="Mehrab Mashrafee" />
+              <input type="text" data-student-name-input />
             </div>
 
             <div class="form-group">
               <label>Email Address</label>
 
-              <input type="email" value="student@example.com" />
+              <input type="email" data-student-email-input />
             </div>
 
             <div class="form-group">
@@ -262,17 +265,18 @@
             <div class="form-group">
               <label>University</label>
 
-              <input
-                type="text"
-                value="University of Liberal Arts Bangladesh"
-              />
-            </div>
+<input
+    type="text"
+    data-student-university
+/>
 
             <div class="form-group">
               <label>Department</label>
 
-              <input type="text" value="Computer Science & Engineering" />
-            </div>
+              <input
+    type="text"
+    data-student-department
+/>
 
             <div class="form-group">
               <label>Student ID</label>
@@ -298,13 +302,19 @@
             <div class="form-group">
               <label>CGPA</label>
 
-              <input type="text" value="3.76" />
+              <input
+                type="text"
+                data-student-cgpa
+              />
             </div>
 
             <div class="form-group">
               <label>Expected Graduation</label>
 
-              <input type="text" value="2028" />
+              <input
+                  type="text"
+                  data-student-graduation
+              />
             </div>
           </div>
         </div>
@@ -316,28 +326,20 @@
             <h2>Skills & Interests</h2>
           </div>
 
-          <div class="skills-container">
-            <span class="skill-tag"> Python </span>
-
-            <span class="skill-tag"> Java </span>
-
-            <span class="skill-tag"> C++ </span>
-
-            <span class="skill-tag"> SQL </span>
-
-            <span class="skill-tag"> Machine Learning </span>
-
-            <span class="skill-tag"> Web Development </span>
-
-            <span class="skill-tag"> Git & GitHub </span>
+          <div
+            class="skills-container"
+            data-student-skills
+          >
           </div>
 
           <div class="form-group" style="margin-top: 20px">
             <label>Career Interests</label>
 
-            <textarea rows="4" placeholder="Write your career interests...">
-Software Engineering, Web Development, Machine Learning and Data Science.</textarea
-            >
+            <textarea
+                  rows="4"
+                  placeholder="Write your career interests..."
+                  data-student-bio
+              ></textarea>
           </div>
         </div>
 
