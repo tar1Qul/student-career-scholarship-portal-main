@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Career & Scholarship Portal- Recruiter Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/recruiter_dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ================= Sidebar ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div class="logo-text">
+                    <div class="brand-text">
+                        <strong>Student Career</strong>
+                        <span>& Scholarship Portal</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <nav class="sidebar-menu">
+        
+            <a href="recruiter_dashboard.html">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>Dashboard</span>
+            </a>
+        
+            <a href="recruit_post.html" class="active">
+                <i class="fa-regular fa-square-plus"></i>
+                <span>Post Opportunity</span>
+            </a>
+        
+            <a href="recruiter_profile.html">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+        
+        </nav>
+
+            <div class="sidebar-footer">
+
+                <div class="user">
+                    <a class="logout" href="../login.html">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- =============== Main Content =============== -->
+
+        <main id="dashboard-section" class="main-content">
+
+            <!-- Top Navbar -->
+
+            <header class="topbar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" placeholder="Search opportunities, organizations...">
+
+                </div>
+
+                <div class="top-icons">
+
+                    <button>
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <button>
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Dashboard Heading -->
+
+            <div id="dashboard_2" class="dashboard_2" >
+                <div class="page-header">
+                    <h1>Create opportunity</h1>
+                    <p>Submitted listings are reviewed by our admin team before going live.</p>
+                </div>
+
+                <!-- <a href="#" class="back-link"> <i class="fa-solid fa-arrow-left"></i> Back to dashboard </a> -->
+                <div class="layout">
+                    <div class="left-panel">
+                        <div class="card">
+                            <h2>Basics</h2>
+                            <p>Title and category help students discover the listing.</p>
+                            <form id="opportunityForm">
+                                <div class="form-group"> <label for="title">Title</label> <input type="text" id="title"
+                                        placeholder="e.g. Junior Frontend Engineer" required> </div>
+                                <div class="grid">
+                                    <div class="form-group"> <label for="category">Category</label> <select
+                                            id="category">
+                                            <option>Internship</option>
+                                            <option>Job</option>
+                                            <option>Scholarship</option>
+                                            <option>Competition</option>
+                                        </select> </div>
+                                    <div class="form-group"> <label for="organization">Organization</label> <input
+                                            type="text" id="organization" placeholder="e.g. Stripe" required> </div>
+                                    <div class="form-group"> <label for="location">Location</label> <input type="text"
+                                            id="location" placeholder="e.g. Berlin, Germany (Hybrid)" required> </div>
+                                    <div class="form-group"> <label for="deadline">Deadline</label> <input type="date"
+                                            id="deadline" required> </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card">
+                            <h2>Description</h2>
+                            <p>Explain the role, programme or competition in detail.</p>
+                            <div class="form-group"> <textarea id="description" rows="8"
+                                    placeholder="Describe the opportunity, what students will learn or build, benefits, etc."></textarea>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h2>Eligibility</h2>
+                            <p>One requirement per line.</p>
+                            <div class="form-group">
+                                <textarea placeholder="e.g.
+                            Currently enrolled student
+                            CGPA 3.0+
+                            Proficient in React"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="right-panel">
+                        <div class="review-card">
+                            <h3>Review process</h3>
+                            <ol>
+                                <li>You submit the listing</li>
+                                <li>Admin team reviews within 24h</li>
+                                <li>Verified badge & published</li>
+                            </ol>
+                        </div> <button type="submit" form="opportunityForm" class="submit-btn"> Submit for verification
+                        </button>
+                        <button type="button" id="draftBtn" class="draft-btn"> Save as draft </button>
+                    </aside>
+                </div>
+
+                <!-- ================= FOOTER ================= -->
+
+                <footer class="dashboard-footer">
+                    <div class="footer-content">
+                        <div>
+                            <h3>Student Career & Scholarship Portal</h3>
+
+                            <p>
+                                Helping students discover career opportunities, scholarships and
+                                build a successful future.
+                            </p>
+                        </div>
+
+
+
+                    </div>
+
+                    <hr />
+
+                    <p class="copyright">
+                        © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+                    </p>
+                </footer>
+            </div>
+
+            
+
+        </main>
+
+
+    </div>
+
+
+    <script src="js/recruiter_dashboard.js"></script>
+
+</body>
+
+</html>

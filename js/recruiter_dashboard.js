@@ -362,30 +362,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // post_opportunity toggole
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
-    const dashboardBtn = document.querySelector('a.active');
-    const postBtn = document.querySelectorAll('a')[1];
+//     const dashboardBtn = document.querySelector('a.active');
+//     const postBtn = document.querySelectorAll('a')[1];
 
-    const dashboard1 = document.getElementById("dashboard_1");
-    const dashboard2 = document.getElementById("dashboard_2");
+//     const dashboard1 = document.getElementById("dashboard_1");
+//     const dashboard2 = document.getElementById("dashboard_2");
 
-    // Show Dashboard by default
-    dashboard1.style.display = "block";
-    dashboard2.style.display = "none";
+//     // Show Dashboard by default
+//     dashboard1.style.display = "block";
+//     dashboard2.style.display = "none";
 
-    dashboardBtn.addEventListener("click", function (e) {
-        e.preventDefault();
+//     dashboardBtn.addEventListener("click", function (e) {
+//         e.preventDefault();
 
-        dashboard1.style.display = "block";
-        dashboard2.style.display = "none";
-    });
+//         dashboard1.style.display = "block";
+//         dashboard2.style.display = "none";
+//     });
 
-    postBtn.addEventListener("click", function (e) {
-        e.preventDefault();
+//     postBtn.addEventListener("click", function (e) {
+//         e.preventDefault();
 
-        dashboard1.style.display = "none";
-        dashboard2.style.display = "block";
-    });
+//         dashboard1.style.display = "none";
+//         dashboard2.style.display = "block";
+//     });
 
-});
+// });
