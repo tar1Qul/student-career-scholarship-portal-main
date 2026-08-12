@@ -135,7 +135,7 @@
             />
 
             <div>
-              <h2>Mehrab Mashrafee</h2>
+              <h2 data-student-name>Student Name</h2>
 
               <p>
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -144,8 +144,9 @@
 
               <p>
                 <i class="fa-solid fa-envelope"></i>
-                student@example.com
+                <span data-student-email>student@example.com</span>
               </p>
+
 
               <p>
                 <i class="fa-solid fa-location-dot"></i>
@@ -459,5 +460,9 @@ Software Engineering, Web Development, Machine Learning and Data Science.</texta
         </footer>
       </main>
     </div>
+    <script src="../js/student_auth.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", loadStudentIdentity);
+</script>
   </body>
 </html>

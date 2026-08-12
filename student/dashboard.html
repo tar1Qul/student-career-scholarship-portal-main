@@ -122,7 +122,7 @@
 
         <section class="welcome-section">
           <div>
-            <h1>Welcome back, Mehrab! 👋</h1>
+            <h1>Welcome back, <span data-student-name>Student</span>! 👋</h1>
 
             <p>
               Here’s what's happening with your career and scholarship journey
@@ -488,5 +488,9 @@
         </footer>
       </main>
     </div>
+    <script src="../js/student_auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", loadStudentIdentity);
+    </script>
   </body>
 </html>
