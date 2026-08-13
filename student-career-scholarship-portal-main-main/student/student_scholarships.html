@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Scholarships | Student Career & Scholarship Portal</title>
+
+    <link rel="stylesheet" href="dashboard.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ================= SIDEBAR ================= -->
+
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <div class="logo-text">
+            <h2>Student Career</h2>
+            <p>& Scholarship Portal</p>
+          </div>
+        </div>
+
+        <ul class="menu">
+          <li>
+            <a href="dashboard.html">
+              <i class="fa-solid fa-house"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_profile.html">
+              <i class="fa-solid fa-user"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_opportunities.html">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Career Opportunities</span>
+            </a>
+          </li>
+
+          <!-- ACTIVE -->
+
+          <li class="active">
+            <a href="student_scholarships.html">
+              <i class="fa-solid fa-award"></i>
+              <span>Scholarships</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_applications.html">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>My Applications</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_saved.html">
+              <i class="fa-solid fa-bookmark"></i>
+              <span>Saved Opportunities</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_notifications.html">
+              <i class="fa-solid fa-bell"></i>
+              <span>Notifications</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+
+          <li class="logout">
+            <a href="../login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- ================= MAIN CONTENT ================= -->
+
+      <main class="main-content">
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" placeholder="Search scholarships..." />
+          </div>
+
+          <div class="top-icons">
+            <i class="fa-regular fa-bell"></i>
+
+            <img
+              src="../images/Mehrab.png"
+              alt="Student Profile"
+              class="profile-img"
+            />
+          </div>
+        </header>
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="section-title">
+          <h2>Scholarships</h2>
+        </div>
+
+        <p style="color: #64748b; margin-bottom: 30px">
+          Discover scholarships that match your academic profile and financial
+          needs.
+        </p>
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <div class="cards">
+          <div class="card">
+            <i class="fa-solid fa-award"></i>
+
+            <h3>84</h3>
+
+            <p>Available Scholarships</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>18</h3>
+
+            <p>Eligible Scholarships</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3>7</h3>
+
+            <p>Applications</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-bookmark"></i>
+
+            <h3>9</h3>
+
+            <p>Saved Scholarships</p>
+          </div>
+        </div>
+
+        <!-- ================= FILTER ================= -->
+
+        <div class="filter-bar">
+          <div class="filter-left">
+            <select>
+              <option>All Scholarships</option>
+
+              <option>Merit Based</option>
+
+              <option>Need Based</option>
+
+              <option>International</option>
+
+              <option>Research</option>
+
+              <option>Undergraduate</option>
+
+              <option>Graduate</option>
+            </select>
+
+            <select>
+              <option>All Providers</option>
+
+              <option>Government</option>
+
+              <option>University</option>
+
+              <option>Private Organization</option>
+
+              <option>International Organization</option>
+            </select>
+
+            <select>
+              <option>All Deadlines</option>
+
+              <option>This Week</option>
+
+              <option>This Month</option>
+
+              <option>Next Month</option>
+            </select>
+          </div>
+
+          <button class="filter-btn">
+            <i class="fa-solid fa-filter"></i>
+
+            Apply Filter
+          </button>
+        </div>
+
+        <!-- ================= SCHOLARSHIP LIST ================= -->
+
+        <div class="panel">
+          <div class="section-title">
+            <h2>Available Scholarships</h2>
+          </div>
+
+          <!-- SCHOLARSHIP 1 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Prime Minister Scholarship</h3>
+
+              <h4>Government of Bangladesh</h4>
+
+              <p>
+                Financial support for talented students pursuing higher
+                education and academic development.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Up to ৳100,000
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  Undergraduate
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 25 Aug 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- SCHOLARSHIP 2 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Chevening Scholarship</h3>
+
+              <h4>UK Government</h4>
+
+              <p>
+                Fully funded scholarship for outstanding students who want to
+                pursue postgraduate studies in the UK.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Fully Funded
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  Master's
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 10 Nov 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- SCHOLARSHIP 3 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-university"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Google Generation Scholarship</h3>
+
+              <h4>Google</h4>
+
+              <p>
+                Scholarship program supporting students interested in computer
+                science and technology.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  $2,500
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-code"></i>
+                  Computer Science
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 05 Sep 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- SCHOLARSHIP 4 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-flask"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>BRAC University Research Scholarship</h3>
+
+              <h4>BRAC University</h4>
+
+              <p>
+                Research-focused financial support for students interested in
+                academic and technology research.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Up to ৳80,000
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-flask"></i>
+                  Research
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 18 Sep 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- SCHOLARSHIP 5 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Commonwealth Scholarship</h3>
+
+              <h4>Commonwealth Organisation</h4>
+
+              <p>
+                International scholarship opportunity for talented students
+                pursuing higher education abroad.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Fully Funded
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  Postgraduate
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 30 Oct 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+
+          <!-- SCHOLARSHIP 6 -->
+
+          <div class="opportunity-card scholarship-card">
+            <div class="opportunity-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div class="opportunity-content">
+              <h3>Merit Excellence Scholarship</h3>
+
+              <h4>University Scholarship Program</h4>
+
+              <p>
+                Merit-based scholarship for students with strong academic
+                performance and extracurricular activities.
+              </p>
+
+              <div class="opportunity-meta">
+                <span>
+                  <i class="fa-solid fa-money-bill"></i>
+                  Up to ৳60,000
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-star"></i>
+                  Merit Based
+                </span>
+
+                <span>
+                  <i class="fa-solid fa-calendar"></i>
+                  Deadline: 15 Oct 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="opportunity-actions">
+              <button class="table-btn view-btn" title="Save Scholarship">
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+
+              <a href="student_applications.html" class="hero-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SCHOLARSHIP TIPS ================= -->
+
+        <div class="dashboard-grid" style="margin-top: 30px">
+          <div class="left-content">
+            <div class="panel">
+              <div class="section-title">
+                <h2>Scholarship Tips</h2>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-file-lines"></i>
+                  Prepare Required Documents
+                </h4>
+
+                <p>
+                  Keep your academic transcripts, certificates, resume and
+                  recommendation letters ready.
+                </p>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-calendar-check"></i>
+                  Check Deadlines
+                </h4>
+
+                <p>
+                  Always submit your scholarship application before the official
+                  deadline.
+                </p>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-pen"></i>
+                  Write a Strong Statement
+                </h4>
+
+                <p>
+                  Clearly explain your academic goals, achievements and future
+                  plans.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= ELIGIBILITY ================= -->
+
+          <div class="right-content">
+            <div class="panel">
+              <div class="section-title">
+                <h2>Your Eligibility</h2>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-circle-check"></i>
+                  Academic Performance
+                </h4>
+
+                <p>
+                  You meet the academic requirements for 18 available
+                  scholarships.
+                </p>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-circle-check"></i>
+                  Field of Study
+                </h4>
+
+                <p>
+                  Several technology and computer science scholarships match
+                  your profile.
+                </p>
+              </div>
+
+              <div class="notification-item">
+                <h4>
+                  <i class="fa-solid fa-circle-info"></i>
+                  Complete Your Profile
+                </h4>
+
+                <p>
+                  Completing your profile may help identify more suitable
+                  scholarships.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <div class="quick-actions" style="margin-top: 40px">
+          <div class="section-title">
+            <h2>Quick Actions</h2>
+          </div>
+
+          <div class="action-grid">
+            <div class="action-card">
+              <i class="fa-solid fa-bookmark"></i>
+
+              <h4>Saved Scholarships</h4>
+
+              <p>Review scholarships you saved for later.</p>
+
+              <br />
+
+              <a href="student_saved.html" class="hero-btn"> View Saved </a>
+            </div>
+
+            <div class="action-card">
+              <i class="fa-solid fa-file-lines"></i>
+
+              <h4>My Applications</h4>
+
+              <p>Track your scholarship applications.</p>
+
+              <br />
+
+              <a href="student_applications.html" class="hero-btn">
+                View Applications
+              </a>
+            </div>
+
+            <div class="action-card">
+              <i class="fa-solid fa-user"></i>
+
+              <h4>My Profile</h4>
+              <p>Update your academic information and documents.</p>
+              <br />
+              <a href="student_profile.html" class="hero-btn">
+                Update Profile
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="dashboard-footer">
+          <div class="footer-content">
+            <div>
+              <h3>Student Career & Scholarship Portal</h3>
+              <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+              </p>
+            </div>
+
+            <div class="footer-links">
+              <a href="dashboard.html"> Dashboard </a>
+              <a href="student_opportunities.html"> Career Opportunities </a>
+              <a href="student_applications.html"> My Applications </a>
+              <a href="student_profile.html"> My Profile </a>
+            </div>
+          </div>
+          <hr />
+
+          <p class="copyright">
+            © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+          </p>
+        </footer>
+      </main>
+    </div>
+      <script src="../js/portal.js"></script>
+</body>
+</html>

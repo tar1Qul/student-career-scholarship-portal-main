@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Profile | Student Career & Scholarship Portal</title>
+
+    <link rel="stylesheet" href="dashboard.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ================= SIDEBAR ================= -->
+
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <div class="logo-text">
+            <h2>Student Career</h2>
+            <p>& Scholarship Portal</p>
+          </div>
+        </div>
+
+        <ul class="menu">
+          <li>
+            <a href="dashboard.html">
+              <i class="fa-solid fa-house"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <!-- ACTIVE -->
+          <li class="active">
+            <a href="student_profile.html">
+              <i class="fa-solid fa-user"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_opportunities.html">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Career Opportunities</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_scholarships.html">
+              <i class="fa-solid fa-award"></i>
+              <span>Scholarships</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_applications.html">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>My Applications</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_saved.html">
+              <i class="fa-solid fa-bookmark"></i>
+              <span>Saved Opportunities</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./student_notifications.html">
+              <i class="fa-solid fa-bell"></i>
+              <span>Notifications</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="student_settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+
+          <li class="logout">
+            <a href="../login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- ================= MAIN CONTENT ================= -->
+
+      <main class="main-content">
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" placeholder="Search..." />
+          </div>
+
+          <div class="top-icons">
+            <i class="fa-regular fa-bell"></i>
+
+            <div class="large-profile-img"></div>
+          </div>
+        </header>
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="section-title">
+          <h2>My Profile</h2>
+        </div>
+
+        <p style="color: #64748b; margin-bottom: 25px">
+          Manage your personal, academic and professional information.
+        </p>
+
+        <!-- ================= PROFILE HEADER ================= -->
+
+        <div class="panel profile-header-card">
+          <div class="profile-main">
+            <div class="profile-img"></div>
+
+            <div>
+              <h2 data-student-name>Student Name</h2>
+
+              <p>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span data-student-department-text>
+                  Student
+                </span>
+              </p>
+
+              <p>
+                <i class="fa-solid fa-envelope"></i>
+                <span data-student-email>student@example.com</span>
+              </p>
+
+              <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Dhaka, Bangladesh
+              </p>
+            </div>
+          </div>
+
+          <button class="filter-btn">
+            <i class="fa-solid fa-pen"></i>
+
+            Edit Profile
+          </button>
+        </div>
+
+        <!-- ================= PROFILE COMPLETION ================= -->
+
+        <div class="panel" style="margin-top: 25px">
+          <div class="section-title">
+            <h2>Profile Completion</h2>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 8px;
+            "
+          >
+            <span> Your profile is almost complete. </span>
+
+            <strong> 90% </strong>
+          </div>
+
+          <div
+            style="
+              width: 100%;
+              height: 10px;
+              background: #e5e7eb;
+              border-radius: 10px;
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                width: 90%;
+                height: 100%;
+                background: #2563eb;
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+
+          <p style="color: #64748b; margin-top: 10px">
+            Complete your remaining information to get better career and
+            scholarship recommendations.
+          </p>
+        </div>
+
+        <!-- ================= PERSONAL INFORMATION ================= -->
+
+        <div class="panel" style="margin-top: 25px">
+          <div class="section-title">
+            <h2>Personal Information</h2>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Full Name</label>
+
+              <input type="text" data-student-name-input />
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+
+              <input type="email" data-student-email-input />
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number</label>
+
+              <input type="text" value="+880 1XXXXXXXXX" />
+            </div>
+
+            <div class="form-group">
+              <label>Date of Birth</label>
+
+              <input type="date" value="2004-01-01" />
+            </div>
+
+            <div class="form-group">
+              <label>City</label>
+
+              <input type="text" value="Dhaka" />
+            </div>
+
+            <div class="form-group">
+              <label>Country</label>
+
+              <input type="text" value="Bangladesh" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ACADEMIC INFORMATION ================= -->
+
+        <div class="panel" style="margin-top: 25px">
+          <div class="section-title">
+            <h2>Academic Information</h2>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>University</label>
+
+<input
+    type="text"
+    data-student-university
+/>
+
+            <div class="form-group">
+              <label>Department</label>
+
+              <input
+    type="text"
+    data-student-department
+/>
+
+            <div class="form-group">
+              <label>Student ID</label>
+
+              <input type="text" value="CSE-XXXX" />
+            </div>
+
+            <div class="form-group">
+              <label>Current Semester</label>
+
+              <select>
+                <option>1st Semester</option>
+                <option>2nd Semester</option>
+                <option>3rd Semester</option>
+                <option>4th Semester</option>
+                <option selected>5th Semester</option>
+                <option>6th Semester</option>
+                <option>7th Semester</option>
+                <option>8th Semester</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>CGPA</label>
+
+              <input
+                type="text"
+                data-student-cgpa
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Expected Graduation</label>
+
+              <input
+                  type="text"
+                  data-student-graduation
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SKILLS ================= -->
+
+        <div class="panel" style="margin-top: 25px">
+          <div class="section-title">
+            <h2>Skills & Interests</h2>
+          </div>
+
+          <div
+            class="skills-container"
+            data-student-skills
+          >
+          </div>
+
+          <div class="form-group" style="margin-top: 20px">
+            <label>Career Interests</label>
+
+            <textarea
+                  rows="4"
+                  placeholder="Write your career interests..."
+                  data-student-bio
+              ></textarea>
+          </div>
+        </div>
+
+        <!-- ================= DOCUMENTS ================= -->
+
+        <div class="panel" style="margin-top: 25px">
+          <div class="section-title">
+            <h2>Documents</h2>
+          </div>
+
+          <div class="document-list">
+            <div class="document-item">
+              <div>
+                <i class="fa-solid fa-file-pdf"></i>
+
+                <div>
+                  <strong>Resume.pdf</strong>
+
+                  <small> Uploaded 2 days ago </small>
+                </div>
+              </div>
+
+              <button class="table-btn">
+                <i class="fa-solid fa-download"></i>
+              </button>
+            </div>
+
+            <div class="document-item">
+              <div>
+                <i class="fa-solid fa-file-lines"></i>
+
+                <div>
+                  <strong>Academic Transcript.pdf</strong>
+
+                  <small> Uploaded 5 days ago </small>
+                </div>
+              </div>
+
+              <button class="table-btn">
+                <i class="fa-solid fa-download"></i>
+              </button>
+            </div>
+
+            <div class="document-item">
+              <div>
+                <i class="fa-solid fa-certificate"></i>
+
+                <div>
+                  <strong>Certificates.pdf</strong>
+
+                  <small> Uploaded 1 week ago </small>
+                </div>
+              </div>
+
+              <button class="table-btn">
+                <i class="fa-solid fa-download"></i>
+              </button>
+            </div>
+          </div>
+
+          <button class="filter-btn" style="margin-top: 20px">
+            <i class="fa-solid fa-upload"></i>
+
+            Upload Document
+          </button>
+        </div>
+
+        <!-- ================= SAVE BUTTON ================= -->
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+            margin-bottom: 30px;
+          "
+        >
+          <button class="table-btn" style="padding: 10px 20px; width: auto">
+            Cancel
+          </button>
+
+          <button class="filter-btn">
+            <i class="fa-solid fa-check"></i>
+
+            Save Changes
+          </button>
+        </div>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="dashboard-footer">
+          <div class="footer-content">
+            <div>
+              <h3>Student Career & Scholarship Portal</h3>
+
+              <p>
+                Helping students discover career opportunities, scholarships and
+                build a successful future.
+              </p>
+            </div>
+
+            <div class="footer-links">
+              <a href="dashboard.html"> Dashboard </a>
+
+              <a href="student_opportunities.html"> Career Opportunities </a>
+
+              <a href="student_scholarships.html"> Scholarships </a>
+
+              <a href="student_applications.html"> My Applications </a>
+            </div>
+          </div>
+
+          <hr />
+
+          <p class="copyright">
+            © 2026 Student Career & Scholarship Portal. All Rights Reserved.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script src="../recruit/js/student_auth.js"></script>
+    <script src="student_profile.js"></script>
+  </body>
+</html>
