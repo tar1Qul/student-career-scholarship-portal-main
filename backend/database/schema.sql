@@ -148,6 +148,9 @@ CREATE TABLE opportunities (
     description TEXT NULL,
     requirements TEXT NULL,
     benefits TEXT NULL,
+    -- External URL (LinkedIn, Indeed, company career page, etc.) where the
+    -- student actually completes the application. Our site never hosts the
+    -- application form itself; the Apply button redirects here.
     application_url VARCHAR(500) NULL,
     deadline DATE NULL,
     status ENUM('draft','pending','approved','rejected','closed') NOT NULL DEFAULT 'pending',
@@ -179,7 +182,12 @@ CREATE TABLE applications (
     scholarship_id INT UNSIGNED NULL,
     resume_path VARCHAR(500) NULL,
     cover_letter TEXT NULL,
-    status ENUM('pending','under_review','accepted','rejected','withdrawn')
+    -- 'redirected' means the student clicked an external application link
+    -- (application_url on the opportunity). It does NOT mean the external
+    -- site confirmed a completed application - we only know the student
+    -- was sent there. Internal-style tracking statuses continue to be used
+    -- for scholarships / any opportunity without an external URL.
+    status ENUM('pending','under_review','accepted','rejected','withdrawn','redirected')
         NOT NULL DEFAULT 'pending',
     applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

@@ -111,8 +111,8 @@
 
             <div id="dashboard_2" class="dashboard_2" >
                 <div class="page-header">
-                    <h1>Create opportunity</h1>
-                    <p>Submitted listings are reviewed by our admin team before going live.</p>
+                    <h1 id="postHeading">Create opportunity</h1>
+                    <p id="postSubheading">Submitted listings are reviewed by our admin team before going live.</p>
                 </div>
 
                 <!-- <a href="#" class="back-link"> <i class="fa-solid fa-arrow-left"></i> Back to dashboard </a> -->
@@ -139,6 +139,14 @@
                                     <div class="form-group"> <label for="deadline">Deadline</label> <input type="date"
                                             id="deadline" required> </div>
                                 </div>
+                                <div class="form-group"> <label for="applicationUrl">External application URL</label>
+                                    <input type="url" id="applicationUrl"
+                                        placeholder="https://www.linkedin.com/jobs/view/..." required>
+                                    <small style="display:block;color:#64748b;margin-top:4px;">
+                                        Students are redirected here to actually apply (LinkedIn, Indeed, your
+                                        company site, etc). We never host the application form ourselves.
+                                    </small>
+                                </div>
                             </form>
                         </div>
                         <div class="card">
@@ -152,7 +160,7 @@
                             <h2>Eligibility</h2>
                             <p>One requirement per line.</p>
                             <div class="form-group">
-                                <textarea placeholder="e.g.
+                                <textarea id="eligibility" placeholder="e.g.
                             Currently enrolled student
                             CGPA 3.0+
                             Proficient in React"></textarea>
@@ -167,7 +175,7 @@
                                 <li>Admin team reviews within 24h</li>
                                 <li>Verified badge & published</li>
                             </ol>
-                        </div> <button type="submit" form="opportunityForm" class="submit-btn"> Submit for verification
+                        </div> <button type="submit" form="opportunityForm" id="postSubmitBtn" class="submit-btn"> Submit for verification
                         </button>
                         <button type="button" id="draftBtn" class="draft-btn"> Save as draft </button>
                     </aside>
@@ -208,6 +216,7 @@
 
     <script src="js/recruiter_dashboard.js"></script>
 
+    <script src="../js/portal.js"></script>
 </body>
 
 </html>

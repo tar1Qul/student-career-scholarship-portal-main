@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-session_start();
 require_once __DIR__ . '/config.php';
+session_start();
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -43,6 +43,10 @@ function body(): array {
 
 function clean($value): string {
     return trim((string)($value ?? ''));
+}
+
+function validUrlOrEmpty(string $url): bool {
+    return $url === '' || filter_var($url, FILTER_VALIDATE_URL) !== false;
 }
 
 $action = clean($_GET['action'] ?? ($_POST['action'] ?? ''));
@@ -161,34 +165,58 @@ try {
             jsonResponse(true,null,'Profile updated successfully.');
 
         case 'apply':
+            // The actual application is completed on the recruiter's/
+            // provider's external website (see application_url). This
+            // endpoint only verifies the item, records that the student
+            // clicked Apply, and hands back the external URL so the
+            // frontend can redirect. We never claim the external site
+            // confirmed a completed application.
             $u=requireRole(['student']);
             $d=body();
             $oid=isset($d['opportunity_id']) && $d['opportunity_id']!=='' ? (int)$d['opportunity_id'] : null;
             $sid=isset($d['scholarship_id']) && $d['scholarship_id']!=='' ? (int)$d['scholarship_id'] : null;
             if (($oid===null && $sid===null) || ($oid!==null && $sid!==null)) jsonResponse(false,null,'Select one opportunity or scholarship.',422);
+            $externalUrl = null;
             if ($oid!==null) {
-                $check=$pdo->prepare("SELECT id,title,recruiter_id FROM opportunities WHERE id=? AND status='approved'");
+                $check=$pdo->prepare("SELECT id,title,recruiter_id,application_url FROM opportunities WHERE id=? AND status='approved'");
                 $check->execute([$oid]); $item=$check->fetch();
-                if (!$item) jsonResponse(false,null,'Opportunity not found.',404);
+                if (!$item) jsonResponse(false,null,'Opportunity not found or no longer active.',404);
+                $externalUrl = $item['application_url'] ?: null;
             } else {
-                $check=$pdo->prepare("SELECT id,title FROM scholarships WHERE id=? AND status='approved'");
+                $check=$pdo->prepare("SELECT id,title,application_url FROM scholarships WHERE id=? AND status='approved'");
                 $check->execute([$sid]); $item=$check->fetch();
-                if (!$item) jsonResponse(false,null,'Scholarship not found.',404);
+                if (!$item) jsonResponse(false,null,'Scholarship not found or no longer active.',404);
+                $externalUrl = $item['application_url'] ?? null ?: null;
             }
-            $stmt=$pdo->prepare("INSERT INTO applications(student_id,opportunity_id,scholarship_id,resume_path,cover_letter) VALUES(?,?,?,?,?)");
+            // 'redirected' = student was sent to an external application URL.
+            // Regular tracked statuses are used only when there is no
+            // external link to send the student to.
+            $initialStatus = $externalUrl ? 'redirected' : 'pending';
+            $stmt=$pdo->prepare("INSERT INTO applications(student_id,opportunity_id,scholarship_id,resume_path,cover_letter,status) VALUES(?,?,?,?,?,?)");
             try {
-                $stmt->execute([$u['id'],$oid,$sid,clean($d['resume_path']??''),clean($d['cover_letter']??'')]);
+                $stmt->execute([$u['id'],$oid,$sid,clean($d['resume_path']??''),clean($d['cover_letter']??''),$initialStatus]);
+                $applicationId=(int)$pdo->lastInsertId();
             } catch(PDOException $e) {
-                if ((int)($e->errorInfo[1]??0)===1062) jsonResponse(false,null,'You have already applied.',409);
+                if ((int)($e->errorInfo[1]??0)===1062) {
+                    // Already applied before - this is not an error from the
+                    // student's point of view if there is an external link;
+                    // just resend the same redirect so the button still works.
+                    if ($externalUrl) {
+                        jsonResponse(true, ['already_applied'=>true,'redirect_url'=>$externalUrl], 'You already applied. Redirecting you to the external application page.');
+                    }
+                    jsonResponse(false,null,'You have already applied.',409);
+                }
                 throw $e;
             }
-            $applicationId=(int)$pdo->lastInsertId();
             $recipient = $oid ? (int)$item['recruiter_id'] : null;
             if ($recipient) {
                 $n=$pdo->prepare("INSERT INTO notifications(user_id,title,message,type,related_application_id) VALUES(?,?,?,?,?)");
                 $n->execute([$recipient,'New application',"{$u['name']} applied to {$item['title']}",'application',$applicationId]);
             }
-            jsonResponse(true,['id'=>$applicationId],'Application submitted successfully.');
+            $message = $externalUrl
+                ? 'Application click recorded. Redirecting you to the external application page.'
+                : 'Application submitted successfully.';
+            jsonResponse(true,['id'=>$applicationId,'redirect_url'=>$externalUrl],$message);
 
         case 'save':
             $u=requireRole(['student']); $d=body();
@@ -224,12 +252,64 @@ try {
             $title=clean($d['title']??''); $org=clean($d['organization']??''); $location=clean($d['location']??'');
             $deadline=clean($d['deadline']??''); $description=clean($d['description']??''); $requirements=clean($d['requirements']??$d['eligibility']??'');
             $category=clean($d['category']??''); $type=strtolower(clean($d['opportunity_type']??$d['type']??'job'));
+            $applicationUrl=clean($d['application_url']??$d['external_url']??'');
             $map=['internship'=>'internship','job'=>'job','research'=>'research','competition'=>'competition','other'=>'other'];
             $type=$map[$type]??'job';
             if ($title===''||$org===''||$location===''||$deadline===''||$description==='') jsonResponse(false,null,'Please complete all required fields.',422);
-            $stmt=$pdo->prepare("INSERT INTO opportunities(recruiter_id,title,organization,category,opportunity_type,location,description,requirements,deadline,status) VALUES(?,?,?,?,?,?,?,?,?,'pending')");
-            $stmt->execute([$u['id'],$title,$org,$category,$type,$location,$description,$requirements,$deadline]);
+            if ($applicationUrl==='') jsonResponse(false,null,'An external application URL is required. Students are always redirected to it to apply.',422);
+            if (!validUrlOrEmpty($applicationUrl)) jsonResponse(false,null,'Please enter a valid external application URL (must start with http:// or https://).',422);
+            $stmt=$pdo->prepare("INSERT INTO opportunities(recruiter_id,title,organization,category,opportunity_type,location,description,requirements,application_url,deadline,status) VALUES(?,?,?,?,?,?,?,?,?,?,'pending')");
+            $stmt->execute([$u['id'],$title,$org,$category,$type,$location,$description,$requirements,$applicationUrl,$deadline]);
             jsonResponse(true,['id'=>(int)$pdo->lastInsertId()],'Opportunity submitted for admin verification.');
+
+        case 'opportunity_get':
+            // Used by the recruiter's edit form. Admins may also inspect
+            // any opportunity; recruiters may only fetch their own.
+            $u=requireRole(['recruiter','admin']); $d=body(); if(!$d) $d=$_GET; $id=(int)($d['id']??$_GET['id']??0);
+            if ($id<=0) jsonResponse(false,null,'Invalid opportunity id.',422);
+            $sql="SELECT * FROM opportunities WHERE id=?";
+            $params=[$id];
+            if ($u['role']==='recruiter') { $sql.=" AND recruiter_id=?"; $params[]=$u['id']; }
+            $stmt=$pdo->prepare($sql); $stmt->execute($params); $row=$stmt->fetch();
+            if (!$row) jsonResponse(false,null,'Opportunity not found.',404);
+            jsonResponse(true,$row);
+
+        case 'opportunity_update':
+            $u=requireRole(['recruiter']); $d=body(); $id=(int)($d['id']??0);
+            if ($id<=0) jsonResponse(false,null,'Invalid opportunity id.',422);
+            // Ownership check: never trust the id alone.
+            $own=$pdo->prepare("SELECT id FROM opportunities WHERE id=? AND recruiter_id=?");
+            $own->execute([$id,$u['id']]);
+            if (!$own->fetch()) jsonResponse(false,null,'You can only edit your own opportunities.',403);
+            $title=clean($d['title']??''); $org=clean($d['organization']??''); $location=clean($d['location']??'');
+            $deadline=clean($d['deadline']??''); $description=clean($d['description']??''); $requirements=clean($d['requirements']??$d['eligibility']??'');
+            $category=clean($d['category']??''); $type=strtolower(clean($d['opportunity_type']??$d['type']??'job'));
+            $applicationUrl=clean($d['application_url']??$d['external_url']??'');
+            $map=['internship'=>'internship','job'=>'job','research'=>'research','competition'=>'competition','other'=>'other'];
+            $type=$map[$type]??'job';
+            if ($title===''||$org===''||$location===''||$deadline===''||$description==='') jsonResponse(false,null,'Please complete all required fields.',422);
+            if ($applicationUrl==='') jsonResponse(false,null,'An external application URL is required.',422);
+            if (!validUrlOrEmpty($applicationUrl)) jsonResponse(false,null,'Please enter a valid external application URL.',422);
+            // Editing resets an already-approved listing back to pending so
+            // admin can re-verify the new details, matching the review-flow
+            // description shown in the recruiter UI.
+            $stmt=$pdo->prepare("UPDATE opportunities SET title=?,organization=?,category=?,opportunity_type=?,location=?,description=?,requirements=?,application_url=?,deadline=?,status='pending' WHERE id=? AND recruiter_id=?");
+            $stmt->execute([$title,$org,$category,$type,$location,$description,$requirements,$applicationUrl,$deadline,$id,$u['id']]);
+            jsonResponse(true,null,'Opportunity updated and resubmitted for admin verification.');
+
+        case 'opportunity_status':
+            // Recruiters may only pause/resume their own already-approved
+            // listing (active <-> closed). They cannot self-approve a
+            // pending/rejected listing - that still requires an admin.
+            $u=requireRole(['recruiter']); $d=body(); $id=(int)($d['id']??0); $status=clean($d['status']??'');
+            if (!in_array($status,['approved','closed'],true)) jsonResponse(false,null,'Invalid status.',422);
+            $own=$pdo->prepare("SELECT status FROM opportunities WHERE id=? AND recruiter_id=?");
+            $own->execute([$id,$u['id']]); $current=$own->fetch();
+            if (!$current) jsonResponse(false,null,'Opportunity not found.',404);
+            if (!in_array($current['status'],['approved','closed'],true)) jsonResponse(false,null,'Only an approved opportunity can be opened or closed.',409);
+            $stmt=$pdo->prepare("UPDATE opportunities SET status=? WHERE id=? AND recruiter_id=?");
+            $stmt->execute([$status,$id,$u['id']]);
+            jsonResponse(true,null,'Opportunity is now '.$status.'.');
 
         case 'opportunity_delete':
             $u=requireRole(['recruiter']); $d=body(); $id=(int)($d['id']??0);

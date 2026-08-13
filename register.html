@@ -59,14 +59,25 @@
     <section class="register-right">
         <div class="form-wrap">
 
-            <h2>Create student account</h2>
+            <h2 id="registerHeading">Create student account</h2>
 
             <p class="form-subtitle">
                 Already have one?
                 <a href="login.html">Login instead</a>
             </p>
 
-<form action="backend/register.php" method="POST" enctype="multipart/form-data">
+            <div class="role-tabs" style="display:flex;gap:8px;margin-bottom:18px;">
+                <button type="button" id="roleTabStudent" class="role-tab active" style="flex:1;padding:10px;border-radius:8px;border:1px solid #cbd5e1;background:#eef5ff;color:#1e3a8a;font-weight:600;cursor:pointer;">
+                    <i class="fa-solid fa-user-graduate"></i> Student
+                </button>
+                <button type="button" id="roleTabRecruiter" class="role-tab" style="flex:1;padding:10px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#334155;font-weight:600;cursor:pointer;">
+                    <i class="fa-solid fa-briefcase"></i> Recruiter
+                </button>
+            </div>
+
+<form action="backend/register.php" method="POST" enctype="multipart/form-data" id="registerForm">
+
+    <input type="hidden" id="role" name="role" value="student">
 
     <div class="photo-row">
         <div class="photo-circle">
@@ -143,7 +154,7 @@
         </div>
 
 
-        <div class="input-box">
+        <div class="input-box student-field">
             <label for="university">University</label>
 
             <input
@@ -156,7 +167,7 @@
         </div>
 
 
-        <div class="input-box">
+        <div class="input-box student-field">
             <label for="department">Department</label>
 
             <input
@@ -169,7 +180,7 @@
         </div>
 
 
-        <div class="input-box">
+        <div class="input-box student-field">
             <label for="cgpa">CGPA</label>
 
             <input
@@ -177,6 +188,39 @@
                 name="cgpa"
                 type="text"
                 placeholder="3.8 / 4.0"
+            >
+        </div>
+
+        <div class="input-box recruiter-field" style="display:none;">
+            <label for="organization">Company / organization name</label>
+
+            <input
+                id="organization"
+                name="organization"
+                type="text"
+                placeholder="ABC Technologies"
+            >
+        </div>
+
+        <div class="input-box recruiter-field" style="display:none;">
+            <label for="designation">Your designation</label>
+
+            <input
+                id="designation"
+                name="designation"
+                type="text"
+                placeholder="HR Manager"
+            >
+        </div>
+
+        <div class="input-box recruiter-field" style="display:none;">
+            <label for="company_website">Company website</label>
+
+            <input
+                id="company_website"
+                name="company_website"
+                type="url"
+                placeholder="https://www.example.com"
             >
         </div>
 
@@ -220,6 +264,38 @@
 </footer>
 
 <script src="js/index.js"></script>
+
+<script>
+(() => {
+  const tabStudent = document.getElementById('roleTabStudent');
+  const tabRecruiter = document.getElementById('roleTabRecruiter');
+  const roleInput = document.getElementById('role');
+  const heading = document.getElementById('registerHeading');
+  const studentFields = document.querySelectorAll('.student-field');
+  const recruiterFields = document.querySelectorAll('.recruiter-field');
+  const universityInput = document.getElementById('university');
+  const departmentInput = document.getElementById('department');
+
+  function setRole(role) {
+    roleInput.value = role;
+    const isStudent = role === 'student';
+    tabStudent.classList.toggle('active', isStudent);
+    tabRecruiter.classList.toggle('active', !isStudent);
+    tabStudent.style.background = isStudent ? '#eef5ff' : '#f8fafc';
+    tabStudent.style.color = isStudent ? '#1e3a8a' : '#334155';
+    tabRecruiter.style.background = !isStudent ? '#eef5ff' : '#f8fafc';
+    tabRecruiter.style.color = !isStudent ? '#1e3a8a' : '#334155';
+    studentFields.forEach(el => { el.style.display = isStudent ? '' : 'none'; });
+    recruiterFields.forEach(el => { el.style.display = isStudent ? 'none' : ''; });
+    if (universityInput) universityInput.required = isStudent;
+    if (departmentInput) departmentInput.required = isStudent;
+    heading.textContent = isStudent ? 'Create student account' : 'Create recruiter account';
+  }
+
+  tabStudent?.addEventListener('click', () => setRole('student'));
+  tabRecruiter?.addEventListener('click', () => setRole('recruiter'));
+})();
+</script>
 
 <script>
 (() => {

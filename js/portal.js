@@ -90,6 +90,28 @@
     if (path.includes('student_settings')) await renderSettings();
   }
 
+  // The actual application always happens on the recruiter's/provider's
+  // external site. This just records the click, then opens that site in
+  // a new tab so the student doesn't lose their place on the portal.
+  async function applyAndRedirect(button, body) {
+    const original = button.textContent;
+    button.disabled = true;
+    try {
+      const data = await api('apply', {method:'POST', body});
+      if (data && data.redirect_url) {
+        toast('Opening the external application page in a new tab...');
+        window.open(data.redirect_url, '_blank', 'noopener');
+      } else {
+        toast('Application submitted.');
+      }
+      button.textContent = 'Applied';
+    } catch (e) {
+      toast(e.message);
+      button.disabled = false;
+      button.textContent = original;
+    }
+  }
+
   async function renderStudentOpportunities() {
     const items=await api('opportunities');
     const cards=[...document.querySelectorAll('.opportunity-card')];
@@ -108,7 +130,7 @@
           </div>
         </div>
       </div>`).join(''):`<p>No approved opportunities are available yet.</p>`;
-    parent.querySelectorAll('[data-apply]').forEach(b=>b.onclick=async()=>{try{await api('apply',{method:'POST',body:{opportunity_id:b.dataset.apply}});toast('Application submitted.');}catch(e){toast(e.message);}});
+    parent.querySelectorAll('[data-apply]').forEach(b=>b.onclick=()=>applyAndRedirect(b, {opportunity_id:b.dataset.apply}));
     parent.querySelectorAll('[data-save]').forEach(b=>b.onclick=async()=>{try{await api('save',{method:'POST',body:{opportunity_id:b.dataset.save}});toast('Saved item updated.');}catch(e){toast(e.message);}});
   }
 
@@ -130,7 +152,7 @@
           </div>
         </div>
       </div>`).join(''):`<p>No approved scholarships are available yet.</p>`;
-    parent.querySelectorAll('[data-apply-scholarship]').forEach(b=>b.onclick=async()=>{try{await api('apply',{method:'POST',body:{scholarship_id:b.dataset.applyScholarship}});toast('Application submitted.');}catch(e){toast(e.message);}});
+    parent.querySelectorAll('[data-apply-scholarship]').forEach(b=>b.onclick=()=>applyAndRedirect(b, {scholarship_id:b.dataset.applyScholarship}));
     parent.querySelectorAll('[data-save-scholarship]').forEach(b=>b.onclick=async()=>{try{await api('save',{method:'POST',body:{scholarship_id:b.dataset.saveScholarship}});toast('Saved item updated.');}catch(e){toast(e.message);}});
   }
 
@@ -177,29 +199,193 @@
       const d=await api('recruiter_dashboard');
       document.querySelectorAll('.stat-card h2').forEach((el,i)=>{const v=[d.stats.total,d.stats.approved,d.stats.pending,d.stats.applications][i];if(v!==undefined)el.textContent=v;});
       const tbody=document.querySelector('table tbody');
-      if(tbody) tbody.innerHTML=d.opportunities.map(o=>`<tr><td>${esc(o.title)}</td><td>${esc(o.organization)}</td><td>${esc(o.category||o.opportunity_type)}</td><td>${fmtDate(o.deadline)}</td><td><span class="badge">${esc(o.status)}</span></td><td><button class="delete" data-delete="${o.id}">Delete</button></td></tr>`).join('')||'<tr><td colspan="6">No opportunities posted yet.</td></tr>';
-      document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this opportunity?')){await api('opportunity_delete',{method:'POST',body:{id:b.dataset.delete}});location.reload();}});
-      const form=document.getElementById('opportunityForm');
-      if(form)form.addEventListener('submit',async e=>{e.preventDefault();const g=id=>document.getElementById(id)?.value||'';try{await api('opportunity_create',{method:'POST',body:{title:g('title'),category:g('category'),organization:g('organization'),location:g('location'),deadline:g('deadline'),description:g('description'),requirements:[...form.querySelectorAll('textarea')].map(x=>x.value).slice(1).join('\n'),opportunity_type:g('category')}});toast('Opportunity submitted for admin verification.');form.reset();}catch(err){toast(err.message);}});
+      if(tbody) tbody.innerHTML=d.opportunities.map(o=>{
+        const canToggle = o.status==='approved' || o.status==='closed';
+        const toggleBtn = canToggle
+          ? `<button type="button" data-toggle-status="${o.id}" data-next="${o.status==='approved'?'closed':'approved'}" title="${o.status==='approved'?'Close':'Reopen'}"><i class="fa-solid ${o.status==='approved'?'fa-lock':'fa-lock-open'}"></i></button>`
+          : '';
+        return `<tr>
+          <td><strong>${esc(o.title)}</strong></td>
+          <td>${esc(o.organization)}</td>
+          <td>${esc(o.category||o.opportunity_type)}</td>
+          <td>${fmtDate(o.deadline)}</td>
+          <td><span class="badge">${esc(o.status)}</span></td>
+          <td><i class="fa-solid fa-users"></i> ${o.applicant_count||0}</td>
+          <td>${o.updated_at?new Date(o.updated_at).toLocaleDateString():'—'}</td>
+          <td class="actions">
+            <button type="button" data-view="${o.id}" title="View"><i class="fa-regular fa-eye"></i></button>
+            <button type="button" data-edit="${o.id}" title="Edit"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" data-applicants="${o.id}" title="Applicants"><i class="fa-solid fa-users"></i></button>
+            ${toggleBtn}
+            <button type="button" class="delete" data-delete="${o.id}" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>`;
+      }).join('')||'<tr><td colspan="8">No opportunities posted yet.</td></tr>';
+
+      document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this opportunity?')){try{await api('opportunity_delete',{method:'POST',body:{id:b.dataset.delete}});location.reload();}catch(e){toast(e.message);}}});
+      document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{location.href=`recruit_post.html?id=${b.dataset.edit}`;});
+      document.querySelectorAll('[data-view]').forEach(b=>b.onclick=async()=>{try{const o=await api('opportunity_get',{method:'POST',body:{id:b.dataset.view}});toast(`${o.title}\n\n${o.description||''}\n\nApply link: ${o.application_url||'—'}`);}catch(e){toast(e.message);}});
+      document.querySelectorAll('[data-toggle-status]').forEach(b=>b.onclick=async()=>{try{await api('opportunity_status',{method:'POST',body:{id:b.dataset.toggleStatus,status:b.dataset.next}});location.reload();}catch(e){toast(e.message);}});
+      document.querySelectorAll('[data-applicants]').forEach(b=>b.onclick=async()=>{
+        try{
+          const rows=await api('opportunity_applicants',{method:'POST',body:{opportunity_id:b.dataset.applicants}});
+          if(!rows.length){toast('No applicants yet for this opportunity.');return;}
+          toast(rows.map(r=>`${r.full_name} (${r.email}) — ${r.status}`).join('\n'));
+        }catch(e){toast(e.message);}
+      });
+
+      await wireOpportunityForm();
     }
+
+    if(path.includes('recruit_post')) {
+      await wireOpportunityForm();
+    }
+  }
+
+  // Shared by the standalone recruit_post.html page AND the embedded
+  // "Post Opportunity" tab inside recruiter_dashboard.html - both use the
+  // same #opportunityForm markup.
+  async function wireOpportunityForm() {
+    const form=document.getElementById('opportunityForm');
+    if(!form || form.dataset.wired) return;
+    form.dataset.wired='1';
+    const g=id=>document.getElementById(id)?.value||'';
+    const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+    const params=new URLSearchParams(location.search);
+    const editId=params.get('id');
+    const heading=document.getElementById('postHeading');
+    const subheading=document.getElementById('postSubheading');
+    const submitBtn=document.getElementById('postSubmitBtn');
+
+    if (editId) {
+      try {
+        const o=await api('opportunity_get',{method:'POST',body:{id:editId}});
+        set('title',o.title); set('organization',o.organization); set('location',o.location);
+        set('deadline',o.deadline); set('description',o.description); set('eligibility',o.requirements);
+        set('applicationUrl',o.application_url);
+        const categorySelect=document.getElementById('category');
+        if (categorySelect && o.opportunity_type) {
+          const match=[...categorySelect.options].find(opt=>opt.value.toLowerCase()===o.opportunity_type || opt.textContent.toLowerCase()===o.opportunity_type);
+          if (match) categorySelect.value=match.value;
+        }
+        if (heading) heading.textContent='Edit opportunity';
+        if (subheading) subheading.textContent='Changes are re-reviewed by our admin team before going live again.';
+        if (submitBtn) submitBtn.innerHTML='Save changes';
+      } catch (e) { toast(e.message); }
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const payload={
+        title:g('title'), category:g('category'), organization:g('organization'),
+        location:g('location'), deadline:g('deadline'), description:g('description'),
+        requirements:g('eligibility'), application_url:g('applicationUrl'), opportunity_type:g('category')
+      };
+      try {
+        if (editId) {
+          await api('opportunity_update',{method:'POST',body:{...payload,id:editId}});
+          toast('Opportunity updated and resubmitted for admin verification.');
+        } else {
+          await api('opportunity_create',{method:'POST',body:payload});
+          toast('Opportunity submitted for admin verification.');
+          form.reset();
+        }
+        location.href='recruiter_dashboard.html';
+      } catch (err) { toast(err.message); }
+    });
   }
 
   async function admin() {
     const me=await guard('admin'); if(!me)return; wireLogout();
-    if(path.endsWith('admin_dashboard.html')) { const d=await api('admin_dashboard'); document.querySelectorAll('.stat-card h2').forEach((el,i)=>{const v=[d.users_count,d.students_count,d.recruiters_count,d.pending_opportunities][i];if(v!==undefined)el.textContent=v;}); }
+    if(path.endsWith('admin_dashboard.html')) {
+      const d=await api('admin_dashboard');
+      document.querySelectorAll('.stat-card h2').forEach((el,i)=>{const v=[d.users_count,d.students_count,d.recruiters_count,d.pending_opportunities][i];if(v!==undefined)el.textContent=v;});
+    }
     if(path.includes('user-management')) { const data=await api('admin_users'); renderAdminTable(data,'users'); }
-    if(path.includes('career-opportunities')||path.includes('verification')) { const data=await api('admin_opportunities'); renderAdminTable(data,'opportunities'); }
-    if(path.includes('scholarship-management')) { const data=await api('admin_scholarships'); renderAdminTable(data,'scholarships'); }
+    if(path.includes('career-opportunities')) { const data=await api('admin_opportunities'); renderAdminTable(data,'opportunities'); }
+    if(path.includes('verification')) { const data=await api('admin_opportunities'); renderAdminTable(data,'verification'); }
+    if(path.includes('scholarship-management')) {
+      const data=await api('admin_scholarships'); renderAdminTable(data,'scholarships');
+      const addBtn=document.querySelector('.add-btn');
+      if(addBtn) addBtn.addEventListener('click', async () => {
+        const title=prompt('Scholarship title:'); if(!title) return;
+        const provider=prompt('Provider / organization:'); if(!provider) return;
+        const category=prompt('Category (optional):','') || '';
+        const amount=prompt('Amount (optional, e.g. $2,000):','') || '';
+        const deadline=prompt('Deadline (YYYY-MM-DD, optional):','') || '';
+        const application_url=prompt('External application URL (optional):','') || '';
+        const description=prompt('Description (optional):','') || '';
+        try {
+          await api('admin_scholarship_create',{method:'POST',body:{title,provider,category,amount,deadline,application_url,description}});
+          toast('Scholarship created.');
+          location.reload();
+        } catch(e) { toast(e.message); }
+      });
+    }
   }
 
   function renderAdminTable(data,type) {
     const tbody=document.querySelector('table tbody'); if(!tbody)return;
-    if(type==='users') tbody.innerHTML=data.map(x=>`<tr><td>${x.id}</td><td>${esc(x.full_name)}</td><td>${esc(x.email)}</td><td>${esc(x.role)}</td><td>${esc(x.status)}</td><td><select data-user-status="${x.id}"><option ${x.status==='active'?'selected':''}>active</option><option ${x.status==='inactive'?'selected':''}>inactive</option><option ${x.status==='suspended'?'selected':''}>suspended</option></select></td></tr>`).join('');
-    if(type==='opportunities') tbody.innerHTML=data.map(x=>`<tr><td>${esc(x.title)}</td><td>${esc(x.organization)}</td><td>${esc(x.recruiter_name)}</td><td>${fmtDate(x.deadline)}</td><td>${esc(x.status)}</td><td><button data-op-status="${x.id}" data-status="approved">Approve</button> <button data-op-status="${x.id}" data-status="rejected">Reject</button></td></tr>`).join('');
-    if(type==='scholarships') tbody.innerHTML=data.map(x=>`<tr><td>${x.id}</td><td>${esc(x.title)}</td><td>${esc(x.provider)}</td><td>${fmtDate(x.deadline)}</td><td>${esc(x.status)}</td><td><button data-sch-status="${x.id}" data-status="approved">Approve</button> <button data-sch-status="${x.id}" data-status="rejected">Reject</button></td></tr>`).join('');
-    document.querySelectorAll('[data-user-status]').forEach(s=>s.onchange=async()=>{await api('admin_user_status',{method:'POST',body:{id:s.dataset.userStatus,status:s.value}});toast('User status updated.');});
-    document.querySelectorAll('[data-op-status]').forEach(b=>b.onclick=async()=>{await api('admin_opportunity_status',{method:'POST',body:{id:b.dataset.opStatus,status:b.dataset.status}});location.reload();});
-    document.querySelectorAll('[data-sch-status]').forEach(b=>b.onclick=async()=>{await api('admin_scholarship_status',{method:'POST',body:{id:b.dataset.schStatus,status:b.dataset.status}});location.reload();});
+
+    if(type==='users') {
+      tbody.innerHTML=data.length?data.map(x=>`<tr>
+        <td>${x.id}</td><td>${esc(x.full_name)}</td><td>${esc(x.email)}</td><td>${esc(x.role)}</td>
+        <td>${esc(x.status)}</td>
+        <td><select data-user-status="${x.id}">
+          <option value="active" ${x.status==='active'?'selected':''}>active</option>
+          <option value="inactive" ${x.status==='inactive'?'selected':''}>inactive</option>
+          <option value="suspended" ${x.status==='suspended'?'selected':''}>suspended</option>
+        </select></td>
+      </tr>`).join(''):'<tr><td colspan="6">No users found.</td></tr>';
+    }
+
+    // career-opportunities.html: ID | Opportunity | Company | Category | Location | Deadline | Status | Action
+    if(type==='opportunities') {
+      tbody.innerHTML=data.length?data.map(x=>`<tr>
+        <td>${x.id}</td><td>${esc(x.title)}</td><td>${esc(x.organization)}</td><td>${esc(x.category||x.opportunity_type)}</td>
+        <td>${esc(x.location||'—')}</td><td>${fmtDate(x.deadline)}</td><td>${esc(x.status)}</td>
+        <td class="actions">
+          <button data-op-status="${x.id}" data-status="approved">Approve</button>
+          <button data-op-status="${x.id}" data-status="rejected">Reject</button>
+          <button data-op-status="${x.id}" data-status="closed">Close</button>
+          <button class="delete" data-op-delete="${x.id}">Delete</button>
+        </td>
+      </tr>`).join(''):'<tr><td colspan="8">No opportunities found.</td></tr>';
+    }
+
+    // Admin_verification.html: # | Opportunity | Category | Submitted By | Date | Status | Action
+    if(type==='verification') {
+      const pending=data.filter(x=>x.status==='pending');
+      const list=pending.length?pending:data;
+      tbody.innerHTML=list.length?list.map(x=>`<tr>
+        <td>${x.id}</td><td>${esc(x.title)}</td><td>${esc(x.category||x.opportunity_type)}</td>
+        <td>${esc(x.recruiter_name)}</td><td>${new Date(x.created_at).toLocaleDateString()}</td><td>${esc(x.status)}</td>
+        <td class="actions">
+          <button data-op-status="${x.id}" data-status="approved">Approve</button>
+          <button data-op-status="${x.id}" data-status="rejected">Reject</button>
+        </td>
+      </tr>`).join(''):'<tr><td colspan="7">No opportunities awaiting verification.</td></tr>';
+    }
+
+    // scholarship-management.html: ID | Scholarship Name | Provider | Category | Deadline | Status | Action
+    if(type==='scholarships') {
+      tbody.innerHTML=data.length?data.map(x=>`<tr>
+        <td>${x.id}</td><td>${esc(x.title)}</td><td>${esc(x.provider)}</td><td>${esc(x.category||'—')}</td>
+        <td>${fmtDate(x.deadline)}</td><td>${esc(x.status)}</td>
+        <td class="actions">
+          <button data-sch-status="${x.id}" data-status="approved">Approve</button>
+          <button data-sch-status="${x.id}" data-status="rejected">Reject</button>
+          <button data-sch-status="${x.id}" data-status="closed">Close</button>
+          <button class="delete" data-sch-delete="${x.id}">Delete</button>
+        </td>
+      </tr>`).join(''):'<tr><td colspan="7">No scholarships found.</td></tr>';
+    }
+
+    document.querySelectorAll('[data-user-status]').forEach(s=>s.onchange=async()=>{try{await api('admin_user_status',{method:'POST',body:{id:s.dataset.userStatus,status:s.value}});toast('User status updated.');}catch(e){toast(e.message);}});
+    document.querySelectorAll('[data-op-status]').forEach(b=>b.onclick=async()=>{try{await api('admin_opportunity_status',{method:'POST',body:{id:b.dataset.opStatus,status:b.dataset.status}});location.reload();}catch(e){toast(e.message);}});
+    document.querySelectorAll('[data-op-delete]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this opportunity?')){try{await api('admin_delete',{method:'POST',body:{type:'opportunity',id:b.dataset.opDelete}});location.reload();}catch(e){toast(e.message);}}});
+    document.querySelectorAll('[data-sch-status]').forEach(b=>b.onclick=async()=>{try{await api('admin_scholarship_status',{method:'POST',body:{id:b.dataset.schStatus,status:b.dataset.status}});location.reload();}catch(e){toast(e.message);}});
+    document.querySelectorAll('[data-sch-delete]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this scholarship?')){try{await api('admin_delete',{method:'POST',body:{type:'scholarship',id:b.dataset.schDelete}});location.reload();}catch(e){toast(e.message);}}});
   }
 
   document.addEventListener('DOMContentLoaded', async()=>{

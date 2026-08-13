@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-session_start();
 require_once __DIR__ . '/config.php';
+session_start();
 
 function back(string $message): never {
     header('Location: ../login.html?error=' . rawurlencode($message));
