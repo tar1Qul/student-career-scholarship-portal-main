@@ -149,7 +149,7 @@
               </div>
 
               <div class="card-info">
-                <h3>1,250</h3>
+                <h3 id="totalUsers">0</h3>
 
                 <span>Total Users</span>
               </div>
@@ -161,7 +161,7 @@
               </div>
 
               <div class="card-info">
-                <h3>1,180</h3>
+                <h3 id="totalStudents">0</h3>
 
                 <span>Students</span>
               </div>
@@ -173,7 +173,7 @@
               </div>
 
               <div class="card-info">
-                <h3>15</h3>
+                <h3 id="totalAdmins">0</h3>
 
                 <span>Admins</span>
               </div>
@@ -185,7 +185,7 @@
               </div>
 
               <div class="card-info">
-                <h3>1,205</h3>
+                <h3 id="activeUsers">0</h3>
 
                 <span>Active Users</span>
               </div>
@@ -199,11 +199,6 @@
             <div class="card-header">
               <h3>All Registered Users</h3>
 
-              <button class="add-btn">
-                <i class="fa-solid fa-user-plus"></i>
-
-                Add User
-              </button>
             </div>
 
             <!-- Search & Filter -->
@@ -212,21 +207,25 @@
               <div class="table-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
 
-                <input type="text" placeholder="Search by name, email or ID" />
+                <input
+    type="text"
+    id="userSearch"
+    placeholder="Search by name, email or ID"
+/>
               </div>
 
               <div class="table-filter">
-                <select>
-                  <option>All Roles</option>
-                  <option>Student</option>
-                  <option>Admin</option>
-                </select>
-
-                <select>
-                  <option>All Status</option>
-                  <option>Active</option>
-                  <option>Inactive</option>
-                </select>
+                <select id="roleFilter">
+    <option value="all">All Roles</option>
+    <option value="student">Student</option>
+    <option value="recruiter">Recruiter</option>
+    <option value="admin">Admin</option>
+<select id="statusFilter">
+    <option value="all">All Status</option>
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+    <option value="suspended">Suspended</option>
+</select>
               </div>
             </div>
 
@@ -244,35 +243,15 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
-                  <td>U001</td>
+<tbody id="usersTableBody">
 
-                  <td>Rahim Ahmed</td>
+    <tr>
+        <td colspan="6" style="text-align:center;">
+            Loading users...
+        </td>
+    </tr>
 
-                  <td>rahim@gmail.com</td>
-
-                  <td>Student</td>
-
-                  <td>
-                    <span class="status approved"> Active </span>
-                  </td>
-
-                  <td>
-                    <button class="view-btn">
-                      <i class="fa-solid fa-eye"></i>
-                    </button>
-
-                    <button class="edit-btn">
-                      <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="delete-btn">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-
+</tbody>
                 <tr>
                   <td>U002</td>
 
@@ -386,23 +365,7 @@
                 </tr>
               </tbody>
             </table>
-            <!-- ================= Pagination ================= -->
-
-            <div class="pagination">
-              <button class="page-btn">
-                <i class="fa-solid fa-angle-left"></i>
-              </button>
-
-              <button class="page-btn active-page">1</button>
-              <button class="page-btn">2</button>
-              <button class="page-btn">3</button>
-
-              <button class="page-btn">
-                <i class="fa-solid fa-angle-right"></i>
-              </button>
-            </div>
-          </div>
-
+ 
           <!-- ================= Footer ================= -->
 
 <footer class="dashboard-footer">
@@ -453,7 +416,7 @@
 
     <!-- ================= JavaScript ================= -->
 
-    <script src="admin.js"></script>
-      <script src="../js/portal.js"></script>
+<script src="user-management.js"></script>
+<script src="../js/portal.js"></script>
 </body>
 </html>

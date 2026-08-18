@@ -144,7 +144,7 @@
               </div>
 
               <div class="card-info">
-                <h3>48</h3>
+                <h3 id="totalScholarships">0</h3>
 
                 <span>Total Scholarships</span>
               </div>
@@ -156,7 +156,7 @@
               </div>
 
               <div class="card-info">
-                <h3>35</h3>
+                <h3 id="publishedScholarships">0</h3>
 
                 <span>Published</span>
               </div>
@@ -168,7 +168,7 @@
               </div>
 
               <div class="card-info">
-                <h3>09</h3>
+                <h3 id="pendingScholarships">0</h3>
 
                 <span>Pending</span>
               </div>
@@ -180,9 +180,9 @@
               </div>
 
               <div class="card-info">
-                <h3>04</h3>
+                <h3 id="closedScholarships">0</h3>
 
-                <span>Expired</span>
+                <span>Closed</span>
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@
             <div class="card-header">
               <h3>All Scholarships</h3>
 
-              <button class="add-btn">
+              <button class="add-btn" id="addScholarshipBtn"></button>
                 <i class="fa-solid fa-plus"></i>
 
                 Add Scholarship
@@ -207,23 +207,27 @@
               <div class="table-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
 
-                <input type="text" placeholder="Search scholarship..." />
+                <input
+                  type="text"
+                  id="scholarshipSearch"
+                  placeholder="Search scholarship..."
+              />
               </div>
 
               <div class="table-filter">
-                <select>
-                  <option>All Categories</option>
-                  <option>Merit</option>
-                  <option>Need Based</option>
-                  <option>Government</option>
-                  <option>International</option>
-                </select>
-
-                <select>
-                  <option>All Status</option>
-                  <option>Published</option>
-                  <option>Pending</option>
-                  <option>Expired</option>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Merit">Merit</option>
+                    <option value="Need Based">Need Based</option>
+                    <option value="Government">Government</option>
+                    <option value="International">International</option>
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="draft">Draft</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Published</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="closed">Closed</option>
                 </select>
               </div>
             </div>
@@ -395,22 +399,192 @@
                 </tr>
               </tbody>
             </table>
-            <!-- ================= Pagination ================= -->
+<!-- Add Scholarship Modal -->
+<div
+    id="scholarshipModal"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.45);
+        z-index:9999;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    "
+>
+    <div
+        style="
+            background:#fff;
+            width:100%;
+            max-width:700px;
+            max-height:90vh;
+            overflow-y:auto;
+            border-radius:12px;
+            padding:25px;
+        "
+    >
 
-            <div class="pagination">
-              <button class="page-btn">
-                <i class="fa-solid fa-angle-left"></i>
-              </button>
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:20px;
+            "
+        >
+            <h2>Add Scholarship</h2>
 
-              <button class="page-btn active-page">1</button>
-              <button class="page-btn">2</button>
-              <button class="page-btn">3</button>
+            <button
+                type="button"
+                id="closeScholarshipModal"
+                style="
+                    border:none;
+                    background:none;
+                    font-size:24px;
+                    cursor:pointer;
+                "
+            >
+                ×
+            </button>
+        </div>
 
-              <button class="page-btn">
-                <i class="fa-solid fa-angle-right"></i>
-              </button>
+
+        <form id="scholarshipForm">
+
+            <div class="form-group">
+                <label>Scholarship Title *</label>
+
+                <input
+                    type="text"
+                    id="scholarshipTitle"
+                    required
+                >
             </div>
-          </div>
+
+
+            <div class="form-group">
+                <label>Provider *</label>
+
+                <input
+                    type="text"
+                    id="scholarshipProvider"
+                    required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Category</label>
+
+                <select id="scholarshipCategory">
+
+                    <option value="">Select Category</option>
+
+                    <option value="Merit">
+                        Merit
+                    </option>
+
+                    <option value="Need Based">
+                        Need Based
+                    </option>
+
+                    <option value="Government">
+                        Government
+                    </option>
+
+                    <option value="International">
+                        International
+                    </option>
+
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>Amount</label>
+
+                <input
+                    type="text"
+                    id="scholarshipAmount"
+                    placeholder="Example: Full Tuition / ৳50,000"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Deadline</label>
+
+                <input
+                    type="date"
+                    id="scholarshipDeadline"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Application URL</label>
+
+                <input
+                    type="url"
+                    id="scholarshipUrl"
+                    placeholder="https://example.com/apply"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Description</label>
+
+                <textarea
+                    id="scholarshipDescription"
+                    rows="4"
+                ></textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label>Eligibility</label>
+
+                <textarea
+                    id="scholarshipEligibility"
+                    rows="4"
+                ></textarea>
+            </div>
+
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    justify-content:flex-end;
+                    margin-top:20px;
+                "
+            >
+
+                <button
+                    type="button"
+                    id="cancelScholarshipBtn"
+                    class="delete-btn"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="add-btn"
+                    id="saveScholarshipBtn"
+                >
+                    Save Scholarship
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
 
           <!-- ================= Footer ================= -->
 
