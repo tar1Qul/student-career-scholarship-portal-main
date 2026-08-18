@@ -353,6 +353,242 @@ try {
             $pdo->commit();
             jsonResponse(true,null,'Application status updated.');
 
+                    // =========================================================
+        // ADMIN VERIFICATION DASHBOARD
+        // Combined verification for Opportunities + Scholarships
+        // =========================================================
+
+        case 'admin_verification_stats':
+
+            requireRole(['admin']);
+
+            $stats = $pdo->query("
+                SELECT
+                    (
+                        (SELECT COUNT(*)
+                         FROM opportunities
+                         WHERE status IN ('pending','approved','rejected','closed'))
+                        +
+                        (SELECT COUNT(*)
+                         FROM scholarships
+                         WHERE status IN ('pending','approved','rejected','closed'))
+                    ) AS total_requests,
+
+                    (
+                        (SELECT COUNT(*)
+                         FROM opportunities
+                         WHERE status = 'pending')
+                        +
+                        (SELECT COUNT(*)
+                         FROM scholarships
+                         WHERE status = 'pending')
+                    ) AS pending,
+
+                    (
+                        (SELECT COUNT(*)
+                         FROM opportunities
+                         WHERE status = 'approved')
+                        +
+                        (SELECT COUNT(*)
+                         FROM scholarships
+                         WHERE status = 'approved')
+                    ) AS approved,
+
+                    (
+                        (SELECT COUNT(*)
+                         FROM opportunities
+                         WHERE status = 'rejected')
+                        +
+                        (SELECT COUNT(*)
+                         FROM scholarships
+                         WHERE status = 'rejected')
+                    ) AS rejected
+            ")->fetch();
+
+            jsonResponse(true, $stats);
+
+
+        // =========================================================
+        // GET ALL VERIFICATION REQUESTS
+        // =========================================================
+
+        case 'admin_verifications':
+
+            requireRole(['admin']);
+
+            $stmt = $pdo->query("
+                SELECT
+                    o.id,
+                    'opportunity' AS request_type,
+                    o.title AS opportunity,
+                    o.category,
+                    COALESCE(u.full_name, 'Unknown Recruiter') AS submitted_by,
+                    o.created_at AS submitted_date,
+                    o.status
+                FROM opportunities o
+                LEFT JOIN users u ON u.id = o.recruiter_id
+                WHERE o.status IN ('pending','approved','rejected','closed')
+
+                UNION ALL
+
+                SELECT
+                    s.id,
+                    'scholarship' AS request_type,
+                    s.title AS opportunity,
+                    s.category,
+                    COALESCE(u.full_name, 'Admin') AS submitted_by,
+                    s.created_at AS submitted_date,
+                    s.status
+                FROM scholarships s
+                LEFT JOIN users u ON u.id = s.created_by
+                WHERE s.status IN ('pending','approved','rejected','closed')
+
+                ORDER BY submitted_date DESC
+            ");
+
+            jsonResponse(true, $stmt->fetchAll());
+
+
+        // =========================================================
+        // APPROVE / REJECT VERIFICATION
+        // =========================================================
+
+        case 'admin_verification_status':
+
+            $admin = requireRole(['admin']);
+
+            $data = body();
+
+            $id = (int)($data['id'] ?? 0);
+            $type = clean($data['type'] ?? '');
+            $status = clean($data['status'] ?? '');
+            $adminNote = clean($data['admin_note'] ?? '');
+
+            if ($id <= 0) {
+                jsonResponse(
+                    false,
+                    null,
+                    'Invalid verification request.',
+                    422
+                );
+            }
+
+            if (!in_array(
+                $type,
+                ['opportunity', 'scholarship'],
+                true
+            )) {
+                jsonResponse(
+                    false,
+                    null,
+                    'Invalid verification type.',
+                    422
+                );
+            }
+
+            if (!in_array(
+                $status,
+                ['approved', 'rejected', 'pending'],
+                true
+            )) {
+                jsonResponse(
+                    false,
+                    null,
+                    'Invalid verification status.',
+                    422
+                );
+            }
+
+
+            // -----------------------------------------
+            // OPPORTUNITY
+            // -----------------------------------------
+
+            if ($type === 'opportunity') {
+
+                $stmt = $pdo->prepare("
+                    UPDATE opportunities
+                    SET
+                        status = ?,
+                        admin_note = ?
+                    WHERE id = ?
+                ");
+
+                $stmt->execute([
+                    $status,
+                    $adminNote,
+                    $id
+                ]);
+
+
+                // Get opportunity owner
+                $stmt = $pdo->prepare("
+                    SELECT recruiter_id, title
+                    FROM opportunities
+                    WHERE id = ?
+                ");
+
+                $stmt->execute([$id]);
+
+                $opportunity = $stmt->fetch();
+
+
+                // Notify recruiter
+                if ($opportunity) {
+
+                    $message =
+                        "Your opportunity '" .
+                        $opportunity['title'] .
+                        "' has been " .
+                        $status .
+                        ".";
+
+                    $notification = $pdo->prepare("
+                        INSERT INTO notifications
+                        (
+                            user_id,
+                            title,
+                            message,
+                            type
+                        )
+                        VALUES (?, ?, ?, ?)
+                    ");
+
+                    $notification->execute([
+                        (int)$opportunity['recruiter_id'],
+                        'Opportunity Verification Updated',
+                        $message,
+                        'verification'
+                    ]);
+                }
+            }
+
+
+            // -----------------------------------------
+            // SCHOLARSHIP
+            // -----------------------------------------
+
+            if ($type === 'scholarship') {
+
+                $stmt = $pdo->prepare("
+                    UPDATE scholarships
+                    SET status = ?
+                    WHERE id = ?
+                ");
+
+                $stmt->execute([
+                    $status,
+                    $id
+                ]);
+            }
+
+            jsonResponse(
+                true,
+                null,
+                'Verification status updated successfully.'
+            );
+
+
         case 'admin_dashboard':
             requireRole(['admin']);
             $stats=$pdo->query("SELECT
