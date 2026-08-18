@@ -1639,3 +1639,11 @@ select {
         flex-direction: column;
     }
 }
+.profile-avatar img,
+.profile-image img,
+#profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}

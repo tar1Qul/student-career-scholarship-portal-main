@@ -231,13 +231,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const profileImage =
                 document.getElementById("profileImage");
 
-            if (
-                profileImage &&
-                data.profile_image
-            ) {
-                profileImage.src =
-                    data.profile_image;
-            }
+if (profileImage) {
+
+    profileImage.src =
+        data.profile_image
+            ? data.profile_image
+            : "../images/default-recruiter.png";
+}
 
 
         } catch (error) {
