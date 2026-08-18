@@ -1,293 +1,368 @@
-// ==========================================
-// RECRUITER PROFILE - DYNAMIC VERSION
-// ==========================================
-
-const PROFILE_API = "../backend/api.php";
-
-let originalData = {};
-
 document.addEventListener("DOMContentLoaded", () => {
-    loadRecruiterProfile();
 
-    setupEditButton();
-    setupCancelButton();
-    setupProfileForm();
-    setupImagePreview();
-});
+    const API = "../backend/api.php";
+
+    const form = document.getElementById("profileForm");
+
+    if (!form) {
+        console.error("profileForm not found.");
+        return;
+    }
 
 
-// ==========================================
-// LOAD PROFILE
-// ==========================================
+    // =================================================
+    // API FUNCTION
+    // =================================================
 
-async function loadRecruiterProfile() {
+    async function api(action, method = "GET", data = null) {
 
-    try {
+        const options = {
+            method: method,
+            credentials: "same-origin",
+            headers: {}
+        };
+
+
+        if (method !== "GET") {
+
+            options.headers["Content-Type"] =
+                "application/json";
+
+            options.body =
+                JSON.stringify(data || {});
+        }
+
 
         const response = await fetch(
-            `${PROFILE_API}?action=profile`,
-            {
-                method: "GET",
-                credentials: "include"
+            `${API}?action=${encodeURIComponent(action)}`,
+            options
+        );
+
+
+        let result;
+
+        try {
+
+            result = await response.json();
+
+        } catch (error) {
+
+            throw new Error(
+                "Invalid response received from server."
+            );
+        }
+
+
+        if (!response.ok || !result.ok) {
+
+            throw new Error(
+                result.message ||
+                "Something went wrong."
+            );
+        }
+
+
+        return result.data;
+    }
+
+
+    // =================================================
+    // INPUTS
+    // =================================================
+
+    const inputs = form.querySelectorAll(
+        "input, textarea, select"
+    );
+
+
+    // =================================================
+    // SET INPUT VALUE
+    // =================================================
+
+    function setValue(id, value) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.value =
+                value ?? "";
+        }
+    }
+
+
+    // =================================================
+    // SET TEXT
+    // Used for profile header
+    // =================================================
+
+    function setText(id, value) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.textContent =
+                value || "";
+        }
+    }
+
+
+    // =================================================
+    // ENABLE / DISABLE EDITING
+    // =================================================
+
+    function setEditing(enabled) {
+
+        inputs.forEach(input => {
+
+            // Image upload should not be controlled here
+            if (input.id === "imageUpload") {
+                return;
             }
-        );
-
-        const result = await response.json();
-
-        console.log("Recruiter Profile API:", result);
-
-        if (!result.ok || !result.data) {
-
-            console.error("Unable to load recruiter profile.");
-
-            return;
-        }
-
-        const recruiter = result.data;
-
-        originalData = recruiter;
-
-        console.log("Logged-in Recruiter:", recruiter);
 
 
-        // ==========================================
-        // NAME
-        // ==========================================
-
-        document
-            .querySelectorAll("[data-recruiter-name]")
-            .forEach(element => {
-
-                element.textContent =
-                    recruiter.full_name || "Recruiter";
-
-            });
-
-
-        // ==========================================
-        // EMAIL
-        // ==========================================
-
-        document
-            .querySelectorAll("[data-recruiter-email]")
-            .forEach(element => {
-
-                element.textContent =
-                    recruiter.email || "Not provided";
-
-            });
-
-
-        // ==========================================
-        // PHONE
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-phone]",
-            recruiter.phone
-        );
-
-
-        // ==========================================
-        // DESIGNATION
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-designation]",
-            recruiter.designation
-        );
-
-
-        // ==========================================
-        // ORGANIZATION
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-organization]",
-            recruiter.company_name
-        );
-
-
-        // ==========================================
-        // ORGANIZATION EMAIL
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-company-email]",
-            recruiter.company_email
-        );
-
-
-        // ==========================================
-        // ORGANIZATION PHONE
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-company-phone]",
-            recruiter.company_phone
-        );
-
-
-        // ==========================================
-        // WEBSITE
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-company-website]",
-            recruiter.company_website
-        );
-
-
-        // ==========================================
-        // DESCRIPTION
-        // ==========================================
-
-        setValue(
-            "[data-recruiter-company-description]",
-            recruiter.company_description
-        );
-
-
-        // ==========================================
-        // TOPBAR
-        // ==========================================
-
-        const topName =
-            document.querySelector("[data-recruiter-top-name]");
-
-        if (topName) {
-
-            topName.textContent =
-                recruiter.full_name || "Recruiter";
-
-        }
-
-
-        console.log(
-            "Recruiter profile loaded successfully."
-        );
-
+            input.disabled = !enabled;
+        });
     }
 
-    catch (error) {
 
-        console.error(
-            "Recruiter profile loading error:",
-            error
-        );
+    // =================================================
+    // INITIAL FORM STATE
+    // =================================================
 
+    setEditing(false);
+
+
+    // =================================================
+    // LOAD PROFILE
+    // =================================================
+
+    async function loadProfile() {
+
+        try {
+
+            const data =
+                await api("profile");
+
+
+            if (!data) {
+                return;
+            }
+
+
+            // =============================================
+            // FORM DATA
+            // =============================================
+
+            setValue(
+                "fullName",
+                data.full_name
+            );
+
+
+            setValue(
+                "email",
+                data.email
+            );
+
+
+            setValue(
+                "phone",
+                data.phone
+            );
+
+
+            setValue(
+                "designation",
+                data.designation
+            );
+
+
+            setValue(
+                "organization",
+                data.company_name
+            );
+
+
+            setValue(
+                "companyWebsite",
+                data.company_website
+            );
+
+
+            setValue(
+                "companyEmail",
+                data.company_email
+            );
+
+
+            setValue(
+                "companyPhone",
+                data.company_phone
+            );
+
+
+            setValue(
+                "aboutOrganization",
+                data.company_description
+            );
+
+
+            // =============================================
+            // PROFILE HEADER DATA
+            // =============================================
+
+            const fullName =
+                data.full_name || "Recruiter";
+
+
+            const designation =
+                data.designation || "Recruiter";
+
+
+            const organization =
+                data.company_name ||
+                "Student Career & Scholarship Portal";
+
+
+            // Registered name
+            setText(
+                "profileName",
+                fullName
+            );
+
+
+            // Designation
+            setText(
+                "profileDesignation",
+                designation
+            );
+
+
+            // Organization
+            setText(
+                "profileOrganization",
+                organization
+            );
+
+
+            // Optional email display
+            setText(
+                "profileEmail",
+                data.email || ""
+            );
+
+
+            // Optional phone display
+            setText(
+                "profilePhone",
+                data.phone || ""
+            );
+
+
+            console.log(
+                "Recruiter profile loaded:",
+                data
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Profile loading error:",
+                error
+            );
+
+
+            const message =
+                error.message
+                    .toLowerCase();
+
+
+            if (
+                message.includes("log in") ||
+                message.includes("login") ||
+                message.includes("unauthorized")
+            ) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
+            alert(
+                "Could not load profile: " +
+                error.message
+            );
+        }
     }
 
-}
 
-
-// ==========================================
-// SET VALUE
-// ==========================================
-
-function setValue(selector, value) {
-
-    const element =
-        document.querySelector(selector);
-
-    if (!element) return;
-
-    element.value =
-        value !== null &&
-        value !== undefined
-            ? value
-            : "";
-
-}
-
-
-// ==========================================
-// EDIT BUTTON
-// ==========================================
-
-function setupEditButton() {
+    // =================================================
+    // EDIT BUTTON
+    // =================================================
 
     const editButton =
-        document.getElementById("editProfile");
+        document.getElementById("editBtn");
 
-    const fields =
-        document.querySelectorAll(
-            "#profileForm input, " +
-            "#profileForm select, " +
-            "#profileForm textarea"
+
+    if (editButton) {
+
+        editButton.addEventListener(
+            "click",
+            () => {
+
+                const fullNameInput =
+                    document.getElementById(
+                        "fullName"
+                    );
+
+
+                if (!fullNameInput) {
+                    return;
+                }
+
+
+                const currentlyDisabled =
+                    fullNameInput.disabled;
+
+
+                // Enable editing
+                if (currentlyDisabled) {
+
+                    setEditing(true);
+
+
+                    editButton.textContent =
+                        "Cancel Edit";
+
+                }
+
+                // Cancel editing
+                else {
+
+                    setEditing(false);
+
+
+                    editButton.textContent =
+                        "Edit Profile";
+
+
+                    // Restore database values
+                    loadProfile();
+                }
+            }
         );
-
-    if (!editButton) return;
-
-    editButton.addEventListener(
-        "click",
-        () => {
-
-            fields.forEach(field => {
-
-                field.disabled = false;
-
-            });
-
-            editButton.innerHTML =
-                '<i class="fas fa-check"></i> Editing';
-
-            editButton.classList.add("editing");
-
-        }
-    );
-
-}
+    }
 
 
-// ==========================================
-// CANCEL
-// ==========================================
-
-function setupCancelButton() {
-
-    const cancelButton =
-        document.getElementById("cancelChanges");
-
-    const fields =
-        document.querySelectorAll(
-            "#profileForm input, " +
-            "#profileForm select, " +
-            "#profileForm textarea"
-        );
-
-    if (!cancelButton) return;
-
-    cancelButton.addEventListener(
-        "click",
-        () => {
-
-            loadRecruiterProfile();
-
-            fields.forEach(field => {
-
-                field.disabled = true;
-
-            });
-
-            resetEditButton();
-
-        }
-    );
-
-}
-
-
-// ==========================================
-// SAVE PROFILE
-// ==========================================
-
-function setupProfileForm() {
-
-    const form =
-        document.getElementById("profileForm");
-
-    if (!form) return;
+    // =================================================
+    // SAVE PROFILE
+    // =================================================
 
     form.addEventListener(
         "submit",
@@ -295,213 +370,219 @@ function setupProfileForm() {
 
             event.preventDefault();
 
-            const data = {
+
+            const submitButton =
+                form.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            const payload = {
 
                 full_name:
-                    getValue(
-                        "[data-recruiter-name-input]"
-                    ),
+                    document
+                        .getElementById("fullName")
+                        ?.value
+                        .trim() || "",
+
+
+                email:
+                    document
+                        .getElementById("email")
+                        ?.value
+                        .trim() || "",
+
 
                 phone:
-                    getValue(
-                        "[data-recruiter-phone]"
-                    ),
+                    document
+                        .getElementById("phone")
+                        ?.value
+                        .trim() || "",
+
 
                 designation:
-                    getValue(
-                        "[data-recruiter-designation]"
-                    ),
+                    document
+                        .getElementById("designation")
+                        ?.value
+                        .trim() || "",
 
-                organization:
-                    getValue(
-                        "[data-recruiter-organization]"
-                    ),
 
-                company_email:
-                    getValue(
-                        "[data-recruiter-company-email]"
-                    ),
+                company_name:
+                    document
+                        .getElementById("organization")
+                        ?.value
+                        .trim() || "",
 
-                company_phone:
-                    getValue(
-                        "[data-recruiter-company-phone]"
-                    ),
 
                 company_website:
-                    getValue(
-                        "[data-recruiter-company-website]"
-                    ),
+                    document
+                        .getElementById("companyWebsite")
+                        ?.value
+                        .trim() || "",
+
+
+                company_email:
+                    document
+                        .getElementById("companyEmail")
+                        ?.value
+                        .trim() || "",
+
+
+                company_phone:
+                    document
+                        .getElementById("companyPhone")
+                        ?.value
+                        .trim() || "",
+
 
                 company_description:
-                    getValue(
-                        "[data-recruiter-company-description]"
-                    )
-
+                    document
+                        .getElementById(
+                            "aboutOrganization"
+                        )
+                        ?.value
+                        .trim() || ""
             };
 
 
             try {
 
-                const response =
-                    await fetch(
-                        `${PROFILE_API}?action=profile`,
-                        {
-                            method: "POST",
+                if (submitButton) {
 
-                            credentials: "include",
+                    submitButton.disabled =
+                        true;
 
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
-
-                            body:
-                                JSON.stringify(data)
-                        }
-                    );
-
-
-                const result =
-                    await response.json();
-
-
-                console.log(
-                    "Save Profile API:",
-                    result
-                );
-
-
-                if (!result.ok) {
-
-                    alert(
-                        result.message ||
-                        "Profile update failed."
-                    );
-
-                    return;
-
+                    submitButton.textContent =
+                        "Saving...";
                 }
 
 
-                alert(
-                    "Profile updated successfully!"
+                await api(
+                    "profile",
+                    "POST",
+                    payload
                 );
 
 
-                // Reload fresh database data
-                await loadRecruiterProfile();
+                alert(
+                    "Profile updated successfully."
+                );
 
 
-                // Disable fields
-                document
-                    .querySelectorAll(
-                        "#profileForm input, " +
-                        "#profileForm select, " +
-                        "#profileForm textarea"
-                    )
-                    .forEach(field => {
-
-                        field.disabled = true;
-
-                    });
+                // Disable form again
+                setEditing(false);
 
 
-                resetEditButton();
+                if (editButton) {
+
+                    editButton.textContent =
+                        "Edit Profile";
+                }
 
 
-            }
+                // Reload updated data
+                await loadProfile();
 
-            catch (error) {
+
+            } catch (error) {
 
                 console.error(
-                    "Profile update error:",
+                    "Profile save error:",
                     error
                 );
 
+
                 alert(
-                    "Server error. Please try again."
+                    error.message ||
+                    "Could not update profile."
                 );
 
+
+            } finally {
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        false;
+
+                    submitButton.textContent =
+                        "Save Changes";
+                }
             }
-
         }
     );
 
-}
+
+    // =================================================
+    // PROFILE IMAGE PREVIEW
+    // =================================================
+
+    const imageUpload =
+        document.getElementById(
+            "imageUpload"
+        );
 
 
-// ==========================================
-// GET INPUT VALUE
-// ==========================================
-
-function getValue(selector) {
-
-    const element =
-        document.querySelector(selector);
-
-    return element
-        ? element.value.trim()
-        : "";
-
-}
+    const profileImage =
+        document.getElementById(
+            "profileImage"
+        );
 
 
-// ==========================================
-// RESET EDIT BUTTON
-// ==========================================
+    if (imageUpload && profileImage) {
 
-function resetEditButton() {
+        imageUpload.addEventListener(
+            "change",
+            function () {
 
-    const editButton =
-        document.getElementById("editProfile");
-
-    if (!editButton) return;
-
-    editButton.innerHTML =
-        '<i class="fas fa-pen"></i> Edit Profile';
-
-    editButton.classList.remove("editing");
-
-}
+                const file =
+                    this.files?.[0];
 
 
-// ==========================================
-// PROFILE IMAGE PREVIEW
-// ==========================================
+                if (!file) {
+                    return;
+                }
 
-function setupImagePreview() {
 
-    const upload =
-        document.getElementById("imageUpload");
+                // Check image file
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
 
-    const image =
-        document.getElementById("profileImage");
+                    alert(
+                        "Please select a valid image file."
+                    );
 
-    if (!upload || !image) return;
+                    return;
+                }
 
-    upload.addEventListener(
-        "change",
-        event => {
 
-            const file =
-                event.target.files[0];
+                const reader =
+                    new FileReader();
 
-            if (!file) return;
 
-            const reader =
-                new FileReader();
+                reader.onload =
+                    event => {
 
-            reader.onload =
-                e => {
+                        profileImage.src =
+                            event.target.result;
+                    };
 
-                    image.src =
-                        e.target.result;
 
-                };
+                reader.readAsDataURL(
+                    file
+                );
+            }
+        );
+    }
 
-            reader.readAsDataURL(file);
 
-        }
-    );
+    // =================================================
+    // LOAD INITIAL DATA
+    // =================================================
 
-}
+    loadProfile();
+
+});
