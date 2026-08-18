@@ -3,6 +3,11 @@ declare(strict_types=1);
 // Local development helper. Run once, then delete this file.
 require_once __DIR__ . '/config.php';
 
+if (APP_ENV === 'production') {
+    http_response_code(403);
+    exit('Demo account repair is disabled in production.');
+}
+
 $accounts = [
     ['Portal Admin', 'admin@portal.local', 'Admin@123', 'admin'],
     ['Demo Recruiter', 'recruiter@portal.local', 'Recruiter@123', 'recruiter'],

@@ -74,42 +74,6 @@ CREATE TABLE student_profiles (
     INDEX idx_student_department (department)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO scholarships
-(title, provider, category, amount, description, eligibility, application_url, deadline, status)
-VALUES
-(
-    'Prime Minister Scholarship',
-    'Prime Minister Education Assistance Trust (PMEAT)',
-    'Government Scholarship',
-    'Financial Assistance',
-    'Bangladesh government education assistance for eligible students.',
-    'Eligible Bangladeshi students according to PMEAT requirements.',
-    'https://pmeat.gov.bd/',
-    NULL,
-    'approved'
-),
-(
-    'BRAC University Research Scholarship',
-    'BRAC University',
-    'University Scholarship',
-    'Scholarship / Financial Aid',
-    'Scholarship opportunity offered by BRAC University.',
-    'Eligible students according to BRAC University requirements.',
-    'https://www.bracu.ac.bd/admissions/apply-now',
-    NULL,
-    'approved'
-),
-(
-    'ULAB Scholarship & Financial Aid',
-    'University of Liberal Arts Bangladesh (ULAB)',
-    'University Scholarship',
-    'Merit Scholarship / Financial Aid',
-    'Scholarship and financial aid opportunity for eligible ULAB students.',
-    'Eligible students according to ULAB policies.',
-    'https://ulab.edu.bd/',
-    NULL,
-    'approved'
-);
 -- ============================================================
 -- 3. RECRUITER PROFILES
 -- ============================================================
@@ -161,6 +125,27 @@ CREATE TABLE scholarships (
     INDEX idx_scholarship_deadline (deadline),
     INDEX idx_scholarship_category (category)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- Starter listings are inserted only after the scholarships table exists.
+INSERT INTO scholarships
+    (title, provider, category, amount, description, eligibility, application_url, deadline, status)
+VALUES
+    ('Prime Minister Scholarship', 'Prime Minister Education Assistance Trust (PMEAT)',
+     'Government Scholarship', 'Financial Assistance',
+     'Bangladesh government education assistance for eligible students.',
+     'Eligible Bangladeshi students according to PMEAT requirements.',
+     'https://pmeat.gov.bd/', NULL, 'approved'),
+    ('BRAC University Research Scholarship', 'BRAC University',
+     'University Scholarship', 'Scholarship / Financial Aid',
+     'Scholarship opportunity offered by BRAC University.',
+     'Eligible students according to BRAC University requirements.',
+     'https://www.bracu.ac.bd/admissions/apply-now', NULL, 'approved'),
+    ('ULAB Scholarship & Financial Aid', 'University of Liberal Arts Bangladesh (ULAB)',
+     'University Scholarship', 'Merit Scholarship / Financial Aid',
+     'Scholarship and financial aid opportunity for eligible ULAB students.',
+     'Eligible students according to ULAB policies.',
+     'https://ulab.edu.bd/', NULL, 'approved');
 
 
 -- ============================================================
@@ -222,7 +207,7 @@ CREATE TABLE applications (
     -- site confirmed a completed application - we only know the student
     -- was sent there. Internal-style tracking statuses continue to be used
     -- for scholarships / any opportunity without an external URL.
-    status ENUM('pending','under_review','accepted','rejected','withdrawn','redirected')
+    status ENUM('pending','under_review','shortlisted','accepted','rejected','withdrawn','redirected')
         NOT NULL DEFAULT 'pending',
     applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

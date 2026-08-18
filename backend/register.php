@@ -17,6 +17,21 @@ $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 $phone = trim($_POST['phone'] ?? '');
 
+function validateImageUpload(array $file): string {
+    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
+        throw new RuntimeException('Image upload failed.');
+    }
+    if (($file['size'] ?? 0) <= 0 || $file['size'] > 2 * 1024 * 1024) {
+        throw new RuntimeException('Profile images must be no larger than 2 MB.');
+    }
+    $mime = (new finfo(FILEINFO_MIME_TYPE))->file((string)$file['tmp_name']);
+    $extensions = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
+    if (!isset($extensions[$mime])) {
+        throw new RuntimeException('Please upload a JPG, PNG, or WebP image.');
+    }
+    return $extensions[$mime];
+}
+
 // Student-only fields
 $university = trim($_POST['university'] ?? '');
 $department = trim($_POST['department'] ?? '');
@@ -118,16 +133,7 @@ try {
                 mkdir($uploadDir, 0775, true);
             }
 
-            $extension = strtolower(
-                pathinfo(
-                    $_FILES['profile_image']['name'],
-                    PATHINFO_EXTENSION
-                )
-            );
-
-            $allowed = ['jpg', 'jpeg', 'png', 'webp'];
-
-            if (in_array($extension, $allowed, true)) {
+            $extension = validateImageUpload($_FILES['profile_image']);
 
                 $filename =
                     'student_' .
@@ -137,10 +143,12 @@ try {
                     '.' .
                     $extension;
 
-                move_uploaded_file(
+                if (!move_uploaded_file(
                     $_FILES['profile_image']['tmp_name'],
                     $uploadDir . $filename
-                );
+                )) {
+                    throw new RuntimeException('Unable to store the uploaded image.');
+                }
 
                 // Save image path
                 $stmt = $pdo->prepare(
@@ -153,7 +161,6 @@ try {
                     'uploads/profile/' . $filename,
                     $userId
                 ]);
-            }
         }
 
     } else {
@@ -184,16 +191,7 @@ try {
                 mkdir($uploadDir, 0775, true);
             }
 
-            $extension = strtolower(
-                pathinfo(
-                    $_FILES['profile_image']['name'],
-                    PATHINFO_EXTENSION
-                )
-            );
-
-            $allowed = ['jpg', 'jpeg', 'png', 'webp'];
-
-            if (in_array($extension, $allowed, true)) {
+            $extension = validateImageUpload($_FILES['profile_image']);
 
                 $filename =
                     'recruiter_' .
@@ -203,10 +201,12 @@ try {
                     '.' .
                     $extension;
 
-                move_uploaded_file(
+                if (!move_uploaded_file(
                     $_FILES['profile_image']['tmp_name'],
                     $uploadDir . $filename
-                );
+                )) {
+                    throw new RuntimeException('Unable to store the uploaded image.');
+                }
 
                 $stmt = $pdo->prepare(
                     'UPDATE recruiter_profiles
@@ -218,7 +218,6 @@ try {
                     'uploads/logos/' . $filename,
                     $userId
                 ]);
-            }
         }
     }
 

@@ -1,8 +1,4 @@
 <?php
-
-require_once 'config.php';
-
-echo "PHP is working!<br>";
-echo "Database connected successfully!";
-
-?>
+declare(strict_types=1);
+http_response_code(404);
+exit;

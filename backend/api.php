@@ -143,11 +143,14 @@ try {
             $d=body();
             $name=clean($d['full_name'] ?? $d['fullName'] ?? '');
             $phone=clean($d['phone'] ?? '');
+            $email=clean($d['email'] ?? $u['email']);
             if ($name==='') jsonResponse(false,null,'Name is required.',422);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) jsonResponse(false,null,'A valid email address is required.',422);
             $pdo->beginTransaction();
-            $stmt=$pdo->prepare("UPDATE users SET full_name=?, phone=? WHERE id=?");
-            $stmt->execute([$name,$phone,$u['id']]);
+            $stmt=$pdo->prepare("UPDATE users SET full_name=?, email=?, phone=? WHERE id=?");
+            $stmt->execute([$name,$email,$phone,$u['id']]);
             $_SESSION['name']=$name;
+            $_SESSION['email']=$email;
             if ($u['role']==='student') {
                 $stmt=$pdo->prepare("INSERT INTO student_profiles (user_id,university,department,cgpa) VALUES (?,?,?,?)
                     ON DUPLICATE KEY UPDATE university=VALUES(university),department=VALUES(department),cgpa=VALUES(cgpa),
@@ -156,10 +159,14 @@ try {
                 $stmt=$pdo->prepare("UPDATE student_profiles SET graduation_year=?,bio=?,skills=?,linkedin_url=?,portfolio_url=? WHERE user_id=?");
                 $stmt->execute([$d['graduation_year']??null,clean($d['bio']??''),clean($d['skills']??''),clean($d['linkedin_url']??''),clean($d['portfolio_url']??''),$u['id']]);
             } elseif ($u['role']==='recruiter') {
+                $companyName=clean($d['organization']??$d['company_name']??'');
+                $website=clean($d['company_website']??'');
+                if ($companyName==='') jsonResponse(false,null,'Organization name is required.',422);
+                if ($website!=='' && !validUrlOrEmpty($website)) jsonResponse(false,null,'Please enter a valid company website URL.',422);
                 $stmt=$pdo->prepare("INSERT INTO recruiter_profiles (user_id,company_name,designation,company_email,company_phone,company_website,company_description)
                     VALUES (?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE company_name=VALUES(company_name),designation=VALUES(designation),
                     company_email=VALUES(company_email),company_phone=VALUES(company_phone),company_website=VALUES(company_website),company_description=VALUES(company_description)");
-                $stmt->execute([$u['id'],clean($d['organization']??$d['company_name']??''),clean($d['designation']??''),clean($d['company_email']??''),clean($d['company_phone']??''),clean($d['company_website']??''),clean($d['company_description']??$d['aboutOrganization']??'')]);
+                $stmt->execute([$u['id'],$companyName,clean($d['designation']??''),clean($d['company_email']??''),clean($d['company_phone']??''),$website,clean($d['company_description']??$d['aboutOrganization']??'')]);
             }
             $pdo->commit();
             jsonResponse(true,null,'Profile updated successfully.');
@@ -240,8 +247,13 @@ try {
                 (SELECT COUNT(*) FROM opportunities WHERE recruiter_id=?) total,
                 (SELECT COUNT(*) FROM opportunities WHERE recruiter_id=? AND status='approved') approved,
                 (SELECT COUNT(*) FROM opportunities WHERE recruiter_id=? AND status='pending') pending,
-                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=?) applications");
-            $stmt->execute([$u['id'],$u['id'],$u['id'],$u['id']]);
+                (SELECT COUNT(*) FROM opportunities WHERE recruiter_id=? AND status='closed') closed,
+                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=?) applications,
+                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=? AND a.status='pending') pending_applications,
+                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=? AND a.status='shortlisted') shortlisted_applications,
+                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=? AND a.status='accepted') accepted_applications,
+                (SELECT COUNT(*) FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE o.recruiter_id=? AND a.status='rejected') rejected_applications");
+            $stmt->execute([$u['id'],$u['id'],$u['id'],$u['id'],$u['id'],$u['id'],$u['id'],$u['id'],$u['id']]);
             $stats=$stmt->fetch();
             $stmt=$pdo->prepare("SELECT o.*, (SELECT COUNT(*) FROM applications a WHERE a.opportunity_id=o.id) applicant_count FROM opportunities o WHERE recruiter_id=? ORDER BY created_at DESC");
             $stmt->execute([$u['id']]);
@@ -253,14 +265,16 @@ try {
             $deadline=clean($d['deadline']??''); $description=clean($d['description']??''); $requirements=clean($d['requirements']??$d['eligibility']??'');
             $category=clean($d['category']??''); $type=strtolower(clean($d['opportunity_type']??$d['type']??'job'));
             $applicationUrl=clean($d['application_url']??$d['external_url']??'');
+            $requestedStatus=clean($d['status']??'pending');
+            $isDraft=$requestedStatus==='draft';
             $map=['internship'=>'internship','job'=>'job','research'=>'research','competition'=>'competition','other'=>'other'];
             $type=$map[$type]??'job';
-            if ($title===''||$org===''||$location===''||$deadline===''||$description==='') jsonResponse(false,null,'Please complete all required fields.',422);
-            if ($applicationUrl==='') jsonResponse(false,null,'An external application URL is required. Students are always redirected to it to apply.',422);
+            if ($title===''||$org===''||(!$isDraft && ($location===''||$deadline===''||$description===''))) jsonResponse(false,null,'Please complete all required fields.',422);
+            if (!$isDraft && $applicationUrl==='') jsonResponse(false,null,'An external application URL is required. Students are always redirected to it to apply.',422);
             if (!validUrlOrEmpty($applicationUrl)) jsonResponse(false,null,'Please enter a valid external application URL (must start with http:// or https://).',422);
-            $stmt=$pdo->prepare("INSERT INTO opportunities(recruiter_id,title,organization,category,opportunity_type,location,description,requirements,application_url,deadline,status) VALUES(?,?,?,?,?,?,?,?,?,?,'pending')");
-            $stmt->execute([$u['id'],$title,$org,$category,$type,$location,$description,$requirements,$applicationUrl,$deadline]);
-            jsonResponse(true,['id'=>(int)$pdo->lastInsertId()],'Opportunity submitted for admin verification.');
+            $stmt=$pdo->prepare("INSERT INTO opportunities(recruiter_id,title,organization,category,opportunity_type,location,description,requirements,application_url,deadline,status) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$u['id'],$title,$org,$category,$type,$location,$description,$requirements,$applicationUrl,$deadline,$isDraft?'draft':'pending']);
+            jsonResponse(true,['id'=>(int)$pdo->lastInsertId()],$isDraft?'Opportunity saved as draft.':'Opportunity submitted for admin verification.');
 
         case 'opportunity_get':
             // Used by the recruiter's edit form. Admins may also inspect
@@ -318,9 +332,26 @@ try {
 
         case 'opportunity_applicants':
             $u=requireRole(['recruiter','admin']); $d=body(); $id=(int)($d['opportunity_id']??0);
+            if ($id <= 0) jsonResponse(false, null, 'Invalid opportunity id.', 422);
             $sql="SELECT a.*,u.full_name,u.email,sp.university,sp.department,sp.cgpa FROM applications a JOIN users u ON u.id=a.student_id LEFT JOIN student_profiles sp ON sp.user_id=u.id WHERE a.opportunity_id=?";
-            if ($u['role']==='recruiter') $sql.=" AND EXISTS(SELECT 1 FROM opportunities o WHERE o.id=a.opportunity_id AND o.recruiter_id=".((int)$u['id']).")";
-            $stmt=$pdo->prepare($sql); $stmt->execute([$id]); jsonResponse(true,$stmt->fetchAll());
+            $params=[$id];
+            if ($u['role']==='recruiter') { $sql.=" AND EXISTS(SELECT 1 FROM opportunities o WHERE o.id=a.opportunity_id AND o.recruiter_id=?)"; $params[]=$u['id']; }
+            $stmt=$pdo->prepare($sql); $stmt->execute($params); jsonResponse(true,$stmt->fetchAll());
+
+        case 'application_status':
+            $u=requireRole(['recruiter']); $d=body();
+            $applicationId=(int)($d['application_id']??0); $status=clean($d['status']??'');
+            $allowed=['pending','under_review','shortlisted','accepted','rejected'];
+            if ($applicationId<=0 || !in_array($status,$allowed,true)) jsonResponse(false,null,'Invalid application status request.',422);
+            $stmt=$pdo->prepare("SELECT a.id,a.student_id,o.title FROM applications a JOIN opportunities o ON o.id=a.opportunity_id WHERE a.id=? AND o.recruiter_id=?");
+            $stmt->execute([$applicationId,$u['id']]); $application=$stmt->fetch();
+            if (!$application) jsonResponse(false,null,'Application not found for one of your opportunities.',404);
+            $pdo->beginTransaction();
+            $stmt=$pdo->prepare('UPDATE applications SET status=? WHERE id=?'); $stmt->execute([$status,$applicationId]);
+            $note=$pdo->prepare('INSERT INTO notifications(user_id,title,message,type,related_application_id) VALUES(?,?,?,?,?)');
+            $note->execute([(int)$application['student_id'],'Application status updated',"Your application for '{$application['title']}' is now " . str_replace('_',' ',$status) . '.', 'application', $applicationId]);
+            $pdo->commit();
+            jsonResponse(true,null,'Application status updated.');
 
         case 'admin_dashboard':
             requireRole(['admin']);
@@ -392,5 +423,8 @@ try {
     }
 } catch (Throwable $e) {
     if ($pdo->inTransaction()) $pdo->rollBack();
-    jsonResponse(false,null,'Server error: '.$e->getMessage(),500);
+    error_log('Portal API error: ' . $e->getMessage());
+    jsonResponse(false, null, APP_ENV === 'production'
+        ? 'A server error occurred. Please try again later.'
+        : 'Server error: ' . $e->getMessage(), 500);
 }

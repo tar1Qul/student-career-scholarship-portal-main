@@ -2005,3 +2005,9 @@ html {
 .logo-text { display:flex; flex-direction:column; line-height:1.2; min-width:0; }
 .logo-text strong { color:#fff; font-size:12px; font-weight:600; }
 .logo-text span { color:#94a3b8; font-size:8px; margin-top:2px; }
+/* Recruiter applicant review panel */
+.applicant-panel { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 20px; background: rgba(15,23,42,.52); }
+.applicant-dialog { width: min(980px,100%); max-height: min(760px,90vh); overflow: auto; padding: 24px; border-radius: 14px; background: #fff; box-shadow: 0 24px 70px rgba(15,23,42,.25); }
+.applicant-heading { display: flex; justify-content: space-between; gap: 20px; align-items: start; margin-bottom: 18px; }.applicant-heading h2 { margin: 0 0 4px; font-size: 20px; }.applicant-heading p { margin: 0; color: #64748b; }
+.applicant-close { border: 0; background: transparent; color: #475569; cursor: pointer; font-size: 28px; line-height: 1; }.applicant-tools { display: flex; gap: 12px; margin-bottom: 18px; }.applicant-tools input,.applicant-tools select,.applicant-table-wrap select { padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 7px; background: #fff; }.applicant-tools input { flex: 1; }.applicant-table-wrap { overflow-x: auto; }.applicant-table-wrap table { width: 100%; border-collapse: collapse; }.applicant-table-wrap th,.applicant-table-wrap td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: left; }.applicant-table-wrap small { color: #64748b; }
+@media (max-width: 600px) { .applicant-dialog { padding: 16px; }.applicant-tools { flex-direction: column; } }

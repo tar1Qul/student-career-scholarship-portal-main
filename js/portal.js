@@ -192,8 +192,8 @@
     const me=await guard('recruiter'); if(!me)return; wireLogout();
     if(path.includes('recruiter_profile')) {
       const p=await api('profile'); const form=document.getElementById('profileForm');
-      if(p&&form){const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||''};set('fullName',p.full_name);set('email',p.email);set('phone',p.phone);set('organization',p.company_name);set('designation',p.designation);set('aboutOrganization',p.company_description);}
-      if(form) form.addEventListener('submit',async e=>{e.preventDefault();try{await api('profile',{method:'POST',body:{full_name:document.getElementById('fullName')?.value,phone:document.getElementById('phone')?.value,organization:document.getElementById('organization')?.value,designation:document.getElementById('designation')?.value,company_description:document.getElementById('aboutOrganization')?.value}});toast('Profile updated successfully.');}catch(err){toast(err.message);}});
+      if(p&&form){const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||''};set('fullName',p.full_name);set('email',p.email);set('phone',p.phone);set('organization',p.company_name);set('designation',p.designation);set('companyWebsite',p.company_website);set('companyEmail',p.company_email);set('companyPhone',p.company_phone);set('aboutOrganization',p.company_description);}
+      if(form) form.addEventListener('submit',async e=>{e.preventDefault();try{await api('profile',{method:'POST',body:{full_name:document.getElementById('fullName')?.value,email:document.getElementById('email')?.value,phone:document.getElementById('phone')?.value,organization:document.getElementById('organization')?.value,designation:document.getElementById('designation')?.value,company_website:document.getElementById('companyWebsite')?.value,company_email:document.getElementById('companyEmail')?.value,company_phone:document.getElementById('companyPhone')?.value,company_description:document.getElementById('aboutOrganization')?.value}});toast('Profile updated successfully.');}catch(err){toast(err.message);}});
     }
     if(path.includes('recruiter_dashboard')) {
       const d=await api('recruiter_dashboard');
@@ -222,6 +222,11 @@
         </tr>`;
       }).join('')||'<tr><td colspan="8">No opportunities posted yet.</td></tr>';
 
+      // These controls filter the database-backed rows already loaded for
+      // this recruiter; they never expose another recruiter's records.
+      const filters=document.querySelector('.filters');
+      if(filters){const search=filters.querySelector('input'), selects=[...filters.querySelectorAll('select')]; const applyFilters=()=>{const query=(search?.value||'').toLowerCase(), category=(selects[0]?.value||'').toLowerCase(), status=(selects[1]?.value||'').toLowerCase(); [...tbody.querySelectorAll('tr')].forEach(row=>{const text=row.textContent.toLowerCase(), cells=row.querySelectorAll('td'); const rowCategory=(cells[2]?.textContent||'').toLowerCase(), rowStatus=(cells[4]?.textContent||'').toLowerCase(); const categoryMatch=!category||category.startsWith('all ')||rowCategory.includes(category.replace('internship','internship').replace('job','job')); const statusMatch=!status||status.startsWith('all ')||rowStatus.includes(status.replace('verified','approved').replace('pending verification','pending').replace('expired','closed')); row.hidden=!(text.includes(query)&&categoryMatch&&statusMatch);});}; search?.addEventListener('input',applyFilters); selects.slice(0,2).forEach(s=>s.addEventListener('change',applyFilters));}
+
       document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this opportunity?')){try{await api('opportunity_delete',{method:'POST',body:{id:b.dataset.delete}});location.reload();}catch(e){toast(e.message);}}});
       document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{location.href=`recruit_post.html?id=${b.dataset.edit}`;});
       document.querySelectorAll('[data-view]').forEach(b=>b.onclick=async()=>{try{const o=await api('opportunity_get',{method:'POST',body:{id:b.dataset.view}});toast(`${o.title}\n\n${o.description||''}\n\nApply link: ${o.application_url||'—'}`);}catch(e){toast(e.message);}});
@@ -229,7 +234,8 @@
       document.querySelectorAll('[data-applicants]').forEach(b=>b.onclick=async()=>{
         try{
           const rows=await api('opportunity_applicants',{method:'POST',body:{opportunity_id:b.dataset.applicants}});
-          if(!rows.length){toast('No applicants yet for this opportunity.');return;}
+          if(!rows.length){showApplicantPanel([]);return;}
+          showApplicantPanel(rows);
           toast(rows.map(r=>`${r.full_name} (${r.email}) — ${r.status}`).join('\n'));
         }catch(e){toast(e.message);}
       });
@@ -240,6 +246,16 @@
     if(path.includes('recruit_post')) {
       await wireOpportunityForm();
     }
+  }
+
+  function showApplicantPanel(rows) {
+    document.getElementById('applicantPanel')?.remove();
+    const panel=document.createElement('div'); panel.id='applicantPanel'; panel.className='applicant-panel';
+    panel.innerHTML=`<div class="applicant-dialog"><div class="applicant-heading"><div><h2>Applicants</h2><p>Review candidates and update their application status.</p></div><button type="button" class="applicant-close" aria-label="Close">×</button></div><div class="applicant-tools"><input type="search" placeholder="Search student, email, university…"><select><option value="">All statuses</option><option value="pending">Pending</option><option value="under_review">Under review</option><option value="shortlisted">Shortlisted</option><option value="accepted">Accepted</option><option value="rejected">Rejected</option></select></div><div class="applicant-table-wrap"><table><thead><tr><th>Student</th><th>Academic info</th><th>Applied</th><th>Status</th><th>Update</th></tr></thead><tbody></tbody></table></div></div>`;
+    document.body.appendChild(panel);
+    const body=panel.querySelector('tbody'), search=panel.querySelector('input'), filter=panel.querySelector('select');
+    const render=()=>{const query=search.value.toLowerCase(), status=filter.value; const list=rows.filter(r=>(!status||r.status===status)&&`${r.full_name} ${r.email} ${r.university||''} ${r.department||''}`.toLowerCase().includes(query)); body.innerHTML=list.length?list.map(r=>`<tr><td><strong>${esc(r.full_name)}</strong><br><small>${esc(r.email)}</small></td><td>${esc(r.university||'—')}<br><small>${esc(r.department||'')}</small></td><td>${r.applied_at?new Date(r.applied_at).toLocaleDateString():'—'}</td><td><span class="badge">${esc(String(r.status).replace('_',' '))}</span></td><td><select data-application-status="${r.id}">${['pending','under_review','shortlisted','accepted','rejected'].map(s=>`<option value="${s}" ${r.status===s?'selected':''}>${s.replace('_',' ')}</option>`).join('')}</select></td></tr>`).join(''):'<tr><td colspan="5">No applicants match the selected filters.</td></tr>'; body.querySelectorAll('[data-application-status]').forEach(select=>select.onchange=async()=>{try{await api('application_status',{method:'POST',body:{application_id:select.dataset.applicationStatus,status:select.value}});const row=rows.find(r=>String(r.id)===select.dataset.applicationStatus);if(row)row.status=select.value;render();toast('Application status updated.');}catch(e){toast(e.message);render();}});};
+    panel.querySelector('.applicant-close').onclick=()=>panel.remove(); panel.onclick=e=>{if(e.target===panel)panel.remove();}; search.oninput=render; filter.onchange=render; render();
   }
 
   // Shared by the standalone recruit_post.html page AND the embedded
@@ -256,6 +272,9 @@
     const heading=document.getElementById('postHeading');
     const subheading=document.getElementById('postSubheading');
     const submitBtn=document.getElementById('postSubmitBtn');
+    const draftBtn=document.getElementById('draftBtn');
+    let saveAsDraft=false;
+    if (draftBtn) draftBtn.onclick=()=>{saveAsDraft=true; form.requestSubmit();};
 
     if (editId) {
       try {
@@ -279,7 +298,7 @@
       const payload={
         title:g('title'), category:g('category'), organization:g('organization'),
         location:g('location'), deadline:g('deadline'), description:g('description'),
-        requirements:g('eligibility'), application_url:g('applicationUrl'), opportunity_type:g('category')
+        requirements:g('eligibility'), application_url:g('applicationUrl'), opportunity_type:g('category'), status:saveAsDraft?'draft':'pending'
       };
       try {
         if (editId) {
@@ -287,7 +306,7 @@
           toast('Opportunity updated and resubmitted for admin verification.');
         } else {
           await api('opportunity_create',{method:'POST',body:payload});
-          toast('Opportunity submitted for admin verification.');
+          toast(saveAsDraft?'Opportunity saved as draft.':'Opportunity submitted for admin verification.');
           form.reset();
         }
         location.href='recruiter_dashboard.html';

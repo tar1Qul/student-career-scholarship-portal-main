@@ -5,6 +5,11 @@
 
 require_once __DIR__ . '/config.php';
 
+if (APP_ENV === 'production') {
+    http_response_code(403);
+    exit('Demo account creation is disabled in production.');
+}
+
 $accounts = [
     [
         'name' => 'Portal Admin',

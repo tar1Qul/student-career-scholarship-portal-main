@@ -44,6 +44,11 @@ $user = env('DB_USER', 'root');
 $pass = env('DB_PASS', '');
 $charset = env('DB_CHARSET', 'utf8mb4');
 
+if (env('APP_ENV', 'production') === 'production') {
+    http_response_code(403);
+    exit('Database setup is disabled in production. Run the schema through your deployment process.');
+}
+
 try {
     // Connect without selecting a database yet, since schema.sql creates it.
     $pdo = new PDO("mysql:host=$host;port=$port;charset=$charset", $user, $pass, [

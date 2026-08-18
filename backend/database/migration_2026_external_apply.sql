@@ -18,5 +18,7 @@ ALTER TABLE opportunities
 -- Add the 'redirected' status used when a student clicks an external
 -- application link (see backend/api.php action=apply).
 ALTER TABLE applications
-    MODIFY COLUMN status ENUM('pending','under_review','accepted','rejected','withdrawn','redirected')
+    MODIFY COLUMN status ENUM('pending','under_review','shortlisted','accepted','rejected','withdrawn','redirected')
     NOT NULL DEFAULT 'pending';
+
+
