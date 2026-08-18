@@ -1,129 +1,232 @@
-// ===============================
-// Admin Dashboard JavaScript
-// ===============================
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     const API = "../backend/api.php";
 
 
-    // ===============================
-    // LOAD ADMIN DASHBOARD DATA
-    // ===============================
+    // ==========================================
+    // API FUNCTION
+    // ==========================================
 
-    async function loadDashboard() {
+    async function api(action, method = "GET", data = null) {
+
+        const options = {
+            method: method,
+            credentials: "same-origin",
+            headers: {}
+        };
+
+
+        if (method !== "GET") {
+
+            options.headers["Content-Type"] =
+                "application/json";
+
+            options.body =
+                JSON.stringify(data || {});
+        }
+
+
+        const response = await fetch(
+            `${API}?action=${encodeURIComponent(action)}`,
+            options
+        );
+
+
+        let result;
+
 
         try {
 
-            const response = await fetch(
-                `${API}?action=admin_dashboard`,
-                {
-                    method: "GET",
-                    credentials: "same-origin"
-                }
+            result = await response.json();
+
+        } catch (error) {
+
+            throw new Error(
+                "Invalid response from server."
             );
+        }
 
-            const result = await response.json();
 
-            if (!response.ok || !result.ok) {
-                throw new Error(
-                    result.message ||
-                    "Failed to load dashboard data."
-                );
+        if (!response.ok || !result.ok) {
+
+            throw new Error(
+                result.message || "Something went wrong."
+            );
+        }
+
+
+        return result.data;
+    }
+
+
+
+    // ==========================================
+    // SET TEXT SAFELY
+    // ==========================================
+
+    function setText(id, value) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.textContent =
+                value ?? 0;
+        }
+    }
+
+    // ==========================================
+    // LOAD ADMIN INFORMATION
+    // ==========================================
+
+    async function loadAdminInfo() {
+
+        try {
+
+            const user =
+                await api("me");
+
+
+            // if doesnot login
+            if (!user) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
             }
 
-            const data = result.data || {};
+            if (user.role !== "admin") {
 
-            // ===============================
-            // UPDATE STATISTICS
-            // ===============================
+                window.location.href =
+                    "../login.html";
 
-            document.getElementById("totalUsers").textContent =
-                data.total_users ?? 0;
+                return;
+            }
 
-            document.getElementById("totalScholarships").textContent =
-                data.total_scholarships ?? 0;
 
-            document.getElementById("totalOpportunities").textContent =
-                data.total_opportunities ?? 0;
+            // Topbar admin name
+            const adminName =
+                document.getElementById("adminName");
 
-            document.getElementById("pendingVerification").textContent =
-                data.pending_verification ?? 0;
+            if (adminName) {
+
+                adminName.textContent =
+                    user.name || "Admin";
+            }
+
+
+            // Welcome title
+            const welcomeAdminName =
+                document.getElementById(
+                    "welcomeAdminName"
+                );
+
+            if (welcomeAdminName) {
+
+                welcomeAdminName.textContent =
+                    user.name || "Admin";
+            }
+
 
             console.log(
-                "Admin dashboard loaded:",
+                "Admin loaded:",
+                user
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Admin info error:",
+                error
+            );
+
+            window.location.href =
+                "../login.html";
+        }
+    }
+
+
+
+    // ==========================================
+    // LOAD DASHBOARD STATISTICS
+    // ==========================================
+
+    async function loadDashboardStats() {
+
+        try {
+
+            const data =
+                await api("admin_dashboard");
+
+
+            // Total users
+            setText(
+                "totalUsers",
+                data.users_count || 0
+            );
+
+
+            // Scholarships
+            setText(
+                "totalScholarships",
+                data.pending_scholarships || 0
+            );
+
+
+            // Career posts
+            setText(
+                "totalCareerPosts",
+                data.pending_opportunities || 0
+            );
+
+
+            // Pending verification
+            const pendingVerification =
+                Number(
+                    data.pending_opportunities || 0
+                ) +
+                Number(
+                    data.pending_scholarships || 0
+                );
+
+
+            setText(
+                "pendingVerification",
+                pendingVerification
+            );
+
+
+            console.log(
+                "Dashboard statistics loaded:",
                 data
             );
 
         } catch (error) {
 
             console.error(
-                "Dashboard loading error:",
+                "Dashboard stats error:",
                 error
+            );
+
+            alert(
+                "Could not load dashboard data: " +
+                error.message
             );
         }
     }
 
 
-    // ===============================
-    // SIDEBAR ACTIVE MENU
-    // ===============================
 
-    const menuItems =
-        document.querySelectorAll(".sidebar nav a, .sidebar-menu a");
+    // ==========================================
+    // LOAD EVERYTHING
+    // ==========================================
 
-    menuItems.forEach(item => {
+    await loadAdminInfo();
 
-        item.addEventListener("click", function () {
+    await loadDashboardStats();
 
-            menuItems.forEach(link =>
-                link.classList.remove("active")
-            );
-
-            this.classList.add("active");
-        });
-    });
-
-
-    // ===============================
-    // SEARCH
-    // ===============================
-
-    const searchInputs =
-        document.querySelectorAll("input[type='text']");
-
-    searchInputs.forEach(input => {
-
-        input.addEventListener("keyup", function () {
-            console.log("Searching:", this.value);
-        });
-    });
-
-
-    // ===============================
-    // CARD HOVER
-    // ===============================
-
-    const cards =
-        document.querySelectorAll(".card, .small-card");
-
-    cards.forEach(card => {
-
-        card.addEventListener("mouseenter", () => {
-            card.style.transform = "translateY(-5px)";
-        });
-
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = "translateY(0px)";
-        });
-    });
-
-
-    // ===============================
-    // INITIAL LOAD
-    // ===============================
-
-    loadDashboard();
 
     console.log(
         "Admin Dashboard Loaded Successfully"
